@@ -4,16 +4,17 @@ interface PagoPageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function PagoPage({ searchParams }: PagoPageProps) {
-  const params = await searchParams;
-  const status = typeof params.status === "string" ? params.status : undefined;
+export default async function PagoPage(_: PagoPageProps) {
 
   return (
     <section className="mx-auto max-w-5xl space-y-6 px-4 py-10 md:px-6">
-      <h1 className="text-3xl font-bold">Pago</h1>
-      {status ? (
-        <p className="rounded-xl border border-[var(--border)] bg-white p-4 text-sm">Estado actual del pago: {status}</p>
-      ) : null}
+      <div className="space-y-2">
+        <p className="text-sm uppercase tracking-[0.3em] text-[var(--muted-foreground)]">Checkout</p>
+        <h1 className="text-3xl font-bold">Pago con Wompi</h1>
+        <p className="max-w-2xl text-sm text-[var(--muted-foreground)]">
+          Completa tus datos y el sistema te llevará al checkout oficial de Wompi para cerrar la compra sin base de datos.
+        </p>
+      </div>
       <CheckoutForm />
     </section>
   );
