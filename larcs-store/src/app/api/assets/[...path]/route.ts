@@ -30,7 +30,7 @@ export async function GET(
   }
 
   const fileName = rest.join("/");
-  const base = path.join(process.cwd(), "..", folder);
+  const base = path.join(process.cwd(), "src", "Img", folder);
   const filePath = path.join(base, fileName);
 
   if (!filePath.startsWith(base)) {

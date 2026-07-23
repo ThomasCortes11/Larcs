@@ -83,9 +83,20 @@ function normalizeFileBaseName(fileName: string) {
   return stripped.length > 0 ? stripped : "untitled";
 }
 
+function hasMeaningfulProductName(base: string) {
+  const normalized = normalizeComparable(base);
+
+  if (!normalized || normalized === "untitled") return false;
+  if (/^untitled[\s-\d]*$/i.test(normalized)) return false;
+  if (/^img[\s_-]*\d*$/i.test(normalized)) return false;
+  if (/^\d+[\s\d-]*$/.test(normalized)) return false;
+
+  return /[a-z\u00c0-\u017f]{3,}/i.test(base);
+}
+
 function titleFromFileName(fileName: string, category: CategoryKey) {
   const base = normalizeFileBaseName(fileName);
-  if (base.length > 2 && base.toLowerCase() !== "untitled") {
+  if (hasMeaningfulProductName(base)) {
     return base
       .split(" ")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
@@ -93,11 +104,11 @@ function titleFromFileName(fileName: string, category: CategoryKey) {
   }
 
   const fallback = {
-    botas: "Bota Signature",
-    botines: "Botin Atelier",
-    mocasines: "Mocasin Heritage",
-    sandalias: "Sandalia Sculpt",
-    tacones: "Tacon Royale"
+    botas: "Bota Premium",
+    botines: "Botin Premium",
+    mocasines: "Mocasin Premium",
+    sandalias: "Sandalia Premium",
+    tacones: "Tacon Premium"
   };
 
   return fallback[category];
@@ -189,7 +200,7 @@ function inferFeatures(name: string) {
 }
 
 async function readCategoryProducts(category: CategoryKey, folder: string) {
-  const categoryPath = path.join(process.cwd(), "..", folder);
+  const categoryPath = path.join(process.cwd(), "src", "Img", folder);
   const files = (await fs.readdir(categoryPath))
     .filter((f) => IMAGE_REGEX.test(f))
     .sort((a, b) => a.localeCompare(b, "es", { numeric: true, sensitivity: "base" }));

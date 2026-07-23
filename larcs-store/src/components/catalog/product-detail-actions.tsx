@@ -6,6 +6,7 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cart-store";
+import { useWishlistStore } from "@/store/wishlist-store";
 
 interface ProductDetailActionsProps {
   id: string;
@@ -25,6 +26,8 @@ export function ProductDetailActions({
   sizes
 }: ProductDetailActionsProps) {
   const addItem = useCartStore((state) => state.addItem);
+  const toggleWishlistItem = useWishlistStore((state) => state.toggleItem);
+  const isWishlisted = useWishlistStore((state) => state.hasItem(id));
   const [size, setSize] = useState(sizes[0] ?? "37");
 
   return (
@@ -58,7 +61,18 @@ export function ProductDetailActions({
           Agregar al carrito
         </Button>
         <Button variant="secondary">Comprar ahora</Button>
-        <button aria-label="Agregar a wishlist" className="rounded-full border border-[var(--border)] p-3">
+        <button
+          aria-label="Agregar a wishlist"
+          className={`rounded-full border p-3 ${
+            isWishlisted
+              ? "border-[var(--primary)] bg-[color-mix(in_srgb,var(--primary)_10%,white)] text-[var(--primary)]"
+              : "border-[var(--border)]"
+          }`}
+          onClick={() => {
+            const added = toggleWishlistItem({ id, slug, name, price, imageUrl });
+            toast.success(added ? "Producto guardado en favoritos" : "Producto eliminado de favoritos");
+          }}
+        >
           <Heart className="h-4 w-4" />
         </button>
         <button
