@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "../lib/theme.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-brand-body), "Segoe UI", sans-serif;
+  background-image:
+    radial-gradient(circle at 15% 5%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 32%),
+    radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--accent-orange) 12%, transparent), transparent 28%),
+    radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--accent-green) 18%, transparent), transparent 36%);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-brand-heading), "Times New Roman", serif;
+  letter-spacing: 0.01em;
+}
+
+.brand-display {
+  font-family: var(--font-brand-display), "Times New Roman", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
