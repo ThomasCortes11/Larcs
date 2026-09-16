@@ -8,22 +8,52 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://larcs.example.com"),
+  metadataBase: new URL("https://www.larcs.co"),
+  alternates: {
+    canonical: "/"
+  },
   title: {
     default: "LARCS | Calzado Femenino Premium",
     template: "%s | LARCS"
   },
   description:
-    "Ecommerce premium de calzado femenino con colecciones de botas, botines, mocasines, sandalias y tacones.",
+    "LARCS ofrece calzado femenino premium con botas, botines, mocasines, sandalias y tacones. Compra online con estilo, comodidad y atención personalizada.",
+  keywords: [
+    "LARCS",
+    "calzado femenino",
+    "botines premium",
+    "botas mujer",
+    "mocasines",
+    "sandalias",
+    "tacones",
+    "zapatos premium Colombia",
+    "ecommerce calzado"
+  ],
   openGraph: {
-    title: "LARCS",
-    description: "Calzado femenino premium",
-    type: "website"
+    title: "LARCS | Calzado Femenino Premium",
+    description:
+      "Colecciones premium de calzado femenino para cada paso. Estilo, confort y esencia colombiana.",
+    type: "website",
+    locale: "es_CO",
+    url: "https://www.larcs.co",
+    siteName: "LARCS"
   },
   twitter: {
     card: "summary_large_image",
-    title: "LARCS",
-    description: "Calzado femenino premium"
+    title: "LARCS | Calzado Femenino Premium",
+    description:
+      "Colecciones premium de calzado femenino para cada paso. Estilo, confort y esencia colombiana."
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1
+    }
   }
 };
 

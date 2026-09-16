@@ -93,9 +93,9 @@ export function Hero({ products = [] }: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fff9fb_0%,color-mix(in_srgb,var(--background)_86%,white)_38%,#f7f0f4_100%)]">
       <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--primary),transparent)]" />
-      <div className="absolute -left-20 top-12 h-72 w-72 rounded-full bg-[color-mix(in_srgb,var(--primary)_22%,transparent)] blur-3xl" />
-      <div className="absolute right-0 top-20 h-80 w-80 rounded-full bg-[color-mix(in_srgb,var(--secondary)_18%,transparent)] blur-3xl" />
-      <div className="absolute bottom-10 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[color-mix(in_srgb,var(--accent-rose)_16%,transparent)] blur-3xl" />
+      <div className="absolute -left-12 top-8 h-32 w-32 rounded-full bg-[color-mix(in_srgb,var(--primary)_18%,transparent)] blur-3xl sm:-left-20 sm:top-12 sm:h-72 sm:w-72" />
+      <div className="absolute right-0 top-20 h-48 w-48 rounded-full bg-[color-mix(in_srgb,var(--secondary)_14%,transparent)] blur-3xl sm:h-80 sm:w-80" />
+      <div className="absolute bottom-8 left-1/2 hidden h-48 w-48 -translate-x-1/2 rounded-full bg-[color-mix(in_srgb,var(--accent-rose)_12%,transparent)] blur-3xl sm:block sm:h-56 sm:w-56" />
 
       <div className="mx-auto grid min-h-[88vh] max-w-7xl gap-8 px-4 py-12 md:grid-cols-12 md:px-6 md:py-20">
         <motion.div
@@ -175,7 +175,7 @@ export function Hero({ products = [] }: HeroProps) {
                 <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--primary)]">{activeStory.label}</p>
                 <p className="mt-3 max-w-sm text-sm leading-7 text-[var(--muted-foreground)]">{activeStory.description}</p>
               </div>
-              <BrandLogo variant="bw" width={92} height={26} className="shrink-0" />
+              <BrandLogo variant="bw" width={92} height={26} className="h-[26px] w-[92px] shrink-0" />
             </div>
 
             <div className="relative mt-6 overflow-hidden rounded-[1.6rem] border border-[color-mix(in_srgb,var(--primary)_12%,white)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_34%,white),white)] px-4 py-8 sm:px-6 sm:py-10 md:mt-8 md:rounded-[1.9rem] md:px-10 md:py-12">

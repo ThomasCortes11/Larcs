@@ -43,7 +43,7 @@ export default function ContactoPage() {
         </a>
 
         <a
-          href="https://maps.app.goo.gl/NtL9N8v9Gmy418Ay7?g_st=iw"
+          href="https://www.google.com/maps/search/?api=1&query=Calzado+LARCS+Bogota+Colombia"
           target="_blank"
           rel="noreferrer"
           className="rounded-2xl border border-[var(--border)] bg-white p-5 transition hover:border-[var(--primary)]"

@@ -1,8 +1,18 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { ExternalLink, Mail, MapPin, Navigation, Phone, ShieldCheck, Truck, Undo2 } from "lucide-react";
 
 import { InstagramIcon } from "@/components/ui/instagram-icon";
 import { Button } from "@/components/ui/button";
+import mapsImage from "@/Img/Logos/Maps.jpeg";
+
+const locationLinks = {
+  googleMaps: "https://www.google.com/maps/search/?api=1&query=Calzado+LARCS+Bogota+Colombia",
+  waze: "https://www.waze.com/ul?q=Calzado%20LARCS%20Bogota%20Colombia&navigate=yes"
+};
 
 const benefits = [
   {
@@ -89,65 +99,70 @@ export function ConversionSections() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 md:px-6">
-        <div className="grid gap-5 rounded-3xl border border-[var(--border)] bg-white p-8 md:grid-cols-[2fr_1fr] md:items-center">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-[var(--primary)]">Newsletter</p>
-            <h2 className="mt-2 text-2xl font-bold">Recibe nuevos ingresos y promociones VIP</h2>
-          </div>
-          <div className="flex gap-2">
-            <input
-              placeholder="Tu correo"
-              className="h-11 flex-1 rounded-full border border-[var(--border)] px-4 text-sm"
-              aria-label="Correo newsletter"
-            />
-            <Button>Unirme</Button>
-          </div>
-        </div>
-      </section>
-
       <section className="mx-auto max-w-7xl px-4 pb-14 md:px-6">
-        <div className="overflow-hidden rounded-3xl border border-[var(--border)] bg-white p-6 md:p-8">
-          <div className="grid gap-6 md:grid-cols-[1.25fr_1fr] md:items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="overflow-hidden rounded-3xl border border-[var(--border)] bg-white p-6 shadow-[0_25px_60px_-42px_var(--ink-black)] md:p-8"
+        >
+          <div className="grid gap-6 md:grid-cols-[1fr_1.15fr] md:items-center">
             <div>
-              <h2 className="text-2xl font-bold">Ubicacion</h2>
+              <p className="text-xs uppercase tracking-[0.2em] text-[var(--primary)]">Ubicacion</p>
+              <h2 className="mt-2 text-2xl font-bold">Visitanos en la zona exacta</h2>
               <p className="mt-2 max-w-xl text-sm text-[var(--muted-foreground)]">
-                Visitanos o abre la ruta en tu app favorita para llegar directo a Calzado LARCS.
+                LARCS está ubicado en Bogotá y te lleva directo al punto más cercano para recoger o visitar la tienda.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <a
-                  href="https://maps.app.goo.gl/NtL9N8v9Gmy418Ay7?g_st=iw"
+                  href={locationLinks.googleMaps}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-11 items-center gap-2 rounded-full bg-[var(--primary)] px-5 text-sm font-semibold text-white"
+                  className="inline-flex h-11 items-center gap-2 rounded-full bg-[var(--primary)] px-5 text-sm font-semibold text-white shadow-[0_14px_26px_-18px_var(--primary)] transition-transform duration-200 hover:-translate-y-0.5"
                 >
                   <MapPin className="h-4 w-4" />
                   Abrir en Google Maps
                 </a>
                 <a
-                  href="https://waze.com/ul?ll=4.7110,-74.0721&navigate=yes"
+                  href={locationLinks.waze}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-11 items-center gap-2 rounded-full border border-[var(--border)] bg-white px-5 text-sm font-semibold"
+                  className="inline-flex h-11 items-center gap-2 rounded-full border border-[var(--border)] bg-white px-5 text-sm font-semibold transition-transform duration-200 hover:-translate-y-0.5"
                 >
                   <Navigation className="h-4 w-4" />
                   Abrir en Waze
                 </a>
               </div>
             </div>
-            <a
-              href="https://maps.app.goo.gl/NtL9N8v9Gmy418Ay7?g_st=iw"
+            <motion.a
+              href={locationLinks.googleMaps}
               target="_blank"
               rel="noreferrer"
-              className="block rounded-2xl border border-[var(--border)] bg-[radial-gradient(circle_at_30%_20%,#ffd7cd,#f5b39f_35%,#e27f60_100%)] p-6 text-white"
+              whileHover={{ y: -4, scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              className="group relative block min-h-[250px] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--foreground)] shadow-[0_24px_60px_-34px_rgba(211,108,93,0.95)] sm:min-h-[290px]"
             >
-              <p className="text-xs uppercase tracking-[0.18em] text-white/85">Calzado LARCS</p>
-              <p className="mt-2 text-2xl font-semibold">Ver mapa interactivo</p>
-              <p className="mt-3 text-sm text-white/90">Toca aqui para abrir la ubicacion exacta en Maps.</p>
-              <ExternalLink className="mt-6 h-5 w-5" />
-            </a>
+              <Image
+                src={mapsImage}
+                alt="Mapa de ubicación de Calzado LARCS"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(25,15,20,0.04)_15%,rgba(25,15,20,0.82)_100%)]" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                <p className="text-xs uppercase tracking-[0.18em] text-white/80">Calzado LARCS</p>
+                <p className="mt-2 text-2xl font-semibold">Ruta exacta</p>
+                <p className="mt-3 max-w-md text-sm text-white/90">Toca aquí para abrir la ubicación correcta y navegar directo al punto.</p>
+                <div className="mt-5 flex items-center gap-2 text-sm font-medium">
+                  <span>Ir ahora</span>
+                  <ExternalLink className="h-4 w-4" />
+                </div>
+              </div>
+            </motion.a>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   );

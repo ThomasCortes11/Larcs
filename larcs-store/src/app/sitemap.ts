@@ -15,13 +15,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/politicas",
     "/terminos"
   ].map((route) => ({
-    url: `https://larcs.example.com${route}`,
-    lastModified: new Date()
+    url: `https://www.larcs.co${route}`,
+    lastModified: new Date(),
+    changeFrequency: route === "" ? "weekly" : "monthly",
+    priority: route === "" ? 1 : 0.8
   }));
 
   const productPages: MetadataRoute.Sitemap = products.map((product) => ({
-    url: `https://larcs.example.com/producto/${product.slug}`,
-    lastModified: new Date()
+    url: `https://www.larcs.co/producto/${product.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9
   }));
 
   return [...staticPages, ...productPages];
