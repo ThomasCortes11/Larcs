@@ -98,19 +98,19 @@ export function Hero({ products = [] }: HeroProps) {
       <div className="absolute right-0 top-20 h-48 w-48 rounded-full bg-[color-mix(in_srgb,var(--secondary)_14%,transparent)] blur-3xl sm:h-80 sm:w-80" />
       <div className="absolute bottom-8 left-1/2 hidden h-48 w-48 -translate-x-1/2 rounded-full bg-[color-mix(in_srgb,var(--accent-rose)_12%,transparent)] blur-3xl sm:block sm:h-56 sm:w-56" />
 
-      <div className="mx-auto grid max-w-7xl gap-7 px-4 py-8 sm:gap-8 sm:py-12 md:min-h-[88vh] md:grid-cols-12 md:px-6 md:py-20">
+      <div className="mx-auto grid min-w-0 max-w-7xl gap-6 px-4 py-6 sm:gap-8 sm:py-12 md:min-h-[88vh] md:grid-cols-12 md:px-6 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative z-10 flex flex-col justify-center md:col-span-5"
+          className="relative z-10 flex min-w-0 flex-col justify-center md:col-span-5"
         >
           <div className="inline-flex w-fit items-center gap-3 rounded-full border border-[color-mix(in_srgb,var(--primary)_26%,white)] bg-[color-mix(in_srgb,var(--primary)_8%,white)] px-4 py-2 text-[10px] uppercase tracking-[0.24em] text-[var(--muted-foreground)] backdrop-blur sm:text-[11px] sm:tracking-[0.28em]">
             <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
             LARCS Atelier Digital
           </div>
 
-          <h1 className="brand-display mt-5 max-w-xl text-[2.35rem] leading-[0.96] text-[var(--foreground)] sm:mt-6 sm:text-6xl md:text-7xl">
+          <h1 className="brand-display mt-5 max-w-xl text-[2.1rem] leading-[0.98] text-[var(--foreground)] sm:mt-6 sm:text-6xl md:text-7xl">
             El par que transforma tu presencia empieza aqui.
           </h1>
 
@@ -166,7 +166,7 @@ export function Hero({ products = [] }: HeroProps) {
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.1 }}
-          className="relative z-10 md:col-span-7"
+          className="relative z-10 min-w-0 md:col-span-7"
         >
           <div className="relative overflow-hidden rounded-[1.5rem] border border-[color-mix(in_srgb,var(--primary)_18%,white)] bg-[linear-gradient(160deg,rgba(255,255,255,0.96)_0%,color-mix(in_srgb,var(--muted)_78%,white)_100%)] p-3 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.28)] sm:rounded-[2rem] sm:p-4 md:rounded-[2.25rem] md:p-8">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,color-mix(in_srgb,var(--primary)_14%,transparent),transparent_32%),radial-gradient(circle_at_15%_85%,color-mix(in_srgb,var(--secondary)_12%,transparent),transparent_25%)]" />
@@ -174,7 +174,7 @@ export function Hero({ products = [] }: HeroProps) {
             <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--primary)]">{activeStory.label}</p>
-                <p className="mt-3 max-w-sm text-sm leading-7 text-[var(--muted-foreground)]">{activeStory.description}</p>
+                <p className="mt-3 hidden max-w-sm text-sm leading-7 text-[var(--muted-foreground)] sm:block">{activeStory.description}</p>
               </div>
               <BrandLogo variant="bw" width={92} height={26} className="h-[26px] w-[92px] shrink-0" />
             </div>
@@ -216,26 +216,26 @@ export function Hero({ products = [] }: HeroProps) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.28 }}
-                  className="rounded-[1.35rem] border border-[var(--border)] bg-white/88 p-4 sm:p-5"
+                  className="rounded-[1.2rem] border border-[var(--border)] bg-white/88 p-4 sm:rounded-[1.35rem] sm:p-5"
                 >
                   <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted-foreground)]">{CATEGORY_LABELS[activeCategory]}</p>
-                  <h2 className="brand-display mt-3 max-w-md text-2xl leading-tight text-[var(--foreground)] sm:text-3xl">
+                  <h2 className="brand-display mt-3 max-w-md text-xl leading-tight text-[var(--foreground)] sm:text-3xl">
                     {activeStory.title}
                   </h2>
-                  <div className="mt-5 flex flex-wrap items-end gap-3">
-                    <p className="text-xl font-semibold text-[var(--foreground)]">{toCurrency(activeProduct.price)}</p>
-                    <p className="text-sm text-[var(--muted-foreground)]">{activeStory.note}</p>
+                  <div className="mt-4 flex flex-wrap items-end gap-2 sm:mt-5 sm:gap-3">
+                    <p className="text-lg font-semibold text-[var(--foreground)] sm:text-xl">{toCurrency(activeProduct.price)}</p>
+                    <p className="text-xs text-[var(--muted-foreground)] sm:text-sm">{activeStory.note}</p>
                   </div>
                 </motion.article>
               </AnimatePresence>
 
               <Link
                 href={`/producto/${activeProduct.slug}`}
-                className="flex items-end justify-between rounded-[1.35rem] border border-[color-mix(in_srgb,var(--secondary)_24%,white)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--secondary)_12%,white),color-mix(in_srgb,var(--muted)_62%,white))] p-4 transition hover:border-[var(--primary)] sm:p-5"
+                className="flex min-w-0 items-end justify-between rounded-[1.2rem] border border-[color-mix(in_srgb,var(--secondary)_24%,white)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--secondary)_12%,white),color-mix(in_srgb,var(--muted)_62%,white))] p-4 transition hover:border-[var(--primary)] sm:rounded-[1.35rem] sm:p-5"
               >
                 <div>
                   <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted-foreground)]">Producto destacado</p>
-                  <p className="mt-3 text-lg font-semibold text-[var(--foreground)]">{activeProduct.name}</p>
+                  <p className="mt-3 line-clamp-2 text-base font-semibold text-[var(--foreground)] sm:text-lg">{activeProduct.name}</p>
                   <p className="mt-2 text-sm text-[var(--muted-foreground)]">
                     Tallas {activeProduct.variant.sizes.slice(0, 4).join(" - ")}
                   </p>
