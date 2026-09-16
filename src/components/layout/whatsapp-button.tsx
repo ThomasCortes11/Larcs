@@ -7,9 +7,9 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noreferrer"
       aria-label="Escribenos por WhatsApp"
-      className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:bg-[#20bd5a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] md:h-16 md:w-16"
+      className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition hover:scale-105 hover:bg-[#20bd5a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] md:h-16 md:w-16"
     >
-      <svg viewBox="0 0 32 32" fill="currentColor" className="h-8 w-8 md:h-9 md:w-9" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="#ffffff" className="h-8 w-8 md:h-9 md:w-9" aria-hidden="true">
         <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.696 4.61 1.9 6.478L4 29l7.72-1.86A11.94 11.94 0 0 0 16.001 27C22.629 27 28 21.627 28 15S22.629 3 16.001 3Zm0 21.6a9.55 9.55 0 0 1-4.87-1.33l-.35-.21-4.58 1.1 1.12-4.46-.23-.36A9.56 9.56 0 1 1 25.56 15c0 5.29-4.29 9.6-9.559 9.6Zm5.24-7.17c-.287-.144-1.698-.838-1.961-.934-.263-.096-.454-.144-.645.144-.19.288-.741.934-.909 1.126-.167.192-.335.216-.622.072-.287-.144-1.213-.447-2.311-1.428-.854-.762-1.431-1.703-1.599-1.991-.167-.288-.018-.443.126-.587.13-.129.287-.336.43-.504.144-.168.192-.288.287-.48.096-.192.048-.36-.024-.504-.072-.144-.645-1.555-.884-2.13-.233-.56-.47-.484-.645-.492l-.55-.01c-.192 0-.504.072-.767.36-.263.288-1.003.98-1.003 2.39s1.027 2.773 1.17 2.965c.144.192 2.02 3.084 4.895 4.325.684.295 1.218.472 1.634.604.686.218 1.31.187 1.803.113.55-.082 1.698-.694 1.938-1.365.24-.67.24-1.245.168-1.365-.072-.12-.263-.192-.55-.336Z" />
       </svg>
     </a>
