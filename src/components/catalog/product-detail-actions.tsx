@@ -1,6 +1,7 @@
 "use client";
 
 import { Heart, Share2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -25,6 +26,7 @@ export function ProductDetailActions({
   imageUrl,
   sizes
 }: ProductDetailActionsProps) {
+  const router = useRouter();
   const addItem = useCartStore((state) => state.addItem);
   const toggleWishlistItem = useWishlistStore((state) => state.toggleItem);
   const isWishlisted = useWishlistStore((state) => state.hasItem(id));
@@ -60,7 +62,16 @@ export function ProductDetailActions({
         >
           Agregar al carrito
         </Button>
-        <Button variant="secondary">Comprar ahora</Button>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            addItem({ id, slug, name, imageUrl, price, size });
+            toast.success("Producto listo para comprar");
+            router.push("/pago");
+          }}
+        >
+          Comprar ahora
+        </Button>
         <button
           aria-label="Agregar a wishlist"
           className={`rounded-full border p-3 ${
