@@ -65,9 +65,11 @@ export function CartDrawer() {
             <p className="flex justify-between"><span>Subtotal</span><span>{toCurrency(subtotal)}</span></p>
             <p className="flex justify-between"><span>Envio</span><span>{toCurrency(shipping)}</span></p>
             <p className="flex justify-between font-semibold"><span>Total</span><span>{toCurrency(total)}</span></p>
-            <Link href="/pago" className="block pt-2">
-              <Button className="w-full">Finalizar compra</Button>
-            </Link>
+            <Dialog.Close asChild>
+              <Link href="/pago" className="block pt-2">
+                <Button className="w-full">Finalizar compra</Button>
+              </Link>
+            </Dialog.Close>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

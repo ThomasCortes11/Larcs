@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { startTransition, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -97,7 +98,7 @@ export function Hero({ products = [] }: HeroProps) {
       <div className="absolute right-0 top-20 h-48 w-48 rounded-full bg-[color-mix(in_srgb,var(--secondary)_14%,transparent)] blur-3xl sm:h-80 sm:w-80" />
       <div className="absolute bottom-8 left-1/2 hidden h-48 w-48 -translate-x-1/2 rounded-full bg-[color-mix(in_srgb,var(--accent-rose)_12%,transparent)] blur-3xl sm:block sm:h-56 sm:w-56" />
 
-      <div className="mx-auto grid min-h-[88vh] max-w-7xl gap-8 px-4 py-12 md:grid-cols-12 md:px-6 md:py-20">
+      <div className="mx-auto grid max-w-7xl gap-7 px-4 py-8 sm:gap-8 sm:py-12 md:min-h-[88vh] md:grid-cols-12 md:px-6 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
@@ -109,16 +110,16 @@ export function Hero({ products = [] }: HeroProps) {
             LARCS Atelier Digital
           </div>
 
-          <h1 className="brand-display mt-6 max-w-xl text-4xl leading-[0.94] text-[var(--foreground)] sm:text-6xl md:text-7xl">
+          <h1 className="brand-display mt-5 max-w-xl text-[2.35rem] leading-[0.96] text-[var(--foreground)] sm:mt-6 sm:text-6xl md:text-7xl">
             El par que transforma tu presencia empieza aqui.
           </h1>
 
-          <p className="mt-5 max-w-xl text-sm leading-7 text-[var(--muted-foreground)] sm:text-base sm:leading-8 md:text-lg">
+          <p className="mt-4 max-w-xl text-sm leading-6 text-[var(--muted-foreground)] sm:mt-5 sm:text-base sm:leading-8 md:text-lg">
             Calzado femenino premium con una curaduria enfocada en botines, tacones, botas, mocasines y sandalias.
             Compra con envio nacional, pagos seguros y acompanamiento en talla.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
             <Link href="/catalogo" className="w-full sm:w-auto">
               <Button size="lg" className="w-full bg-[linear-gradient(120deg,color-mix(in_srgb,var(--primary)_90%,white),color-mix(in_srgb,var(--secondary)_88%,white))] shadow-[0_16px_30px_-18px_var(--primary)]">
                 Comprar coleccion
@@ -131,14 +132,14 @@ export function Hero({ products = [] }: HeroProps) {
             </Link>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--border)] pt-5 text-sm text-[var(--muted-foreground)]">
+          <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 border-t border-[var(--border)] pt-4 text-xs text-[var(--muted-foreground)] sm:mt-8 sm:gap-x-5 sm:pt-5 sm:text-sm">
             <span>Envio nacional</span>
             <span>Pago seguro</span>
             <span>Cambios faciles</span>
             <span>Asesoria de talla</span>
           </div>
 
-          <div className="mt-8 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:gap-5 sm:overflow-visible sm:px-0">
+          <div className="mt-6 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:mt-8 sm:mx-0 sm:flex-wrap sm:gap-5 sm:overflow-visible sm:px-0">
             {availableCategories.map((category) => {
               const isActive = category === activeCategory;
 
@@ -167,7 +168,7 @@ export function Hero({ products = [] }: HeroProps) {
           transition={{ duration: 0.75, delay: 0.1 }}
           className="relative z-10 md:col-span-7"
         >
-          <div className="relative overflow-hidden rounded-[2rem] border border-[color-mix(in_srgb,var(--primary)_18%,white)] bg-[linear-gradient(160deg,rgba(255,255,255,0.96)_0%,color-mix(in_srgb,var(--muted)_78%,white)_100%)] p-4 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.28)] md:rounded-[2.25rem] md:p-8">
+          <div className="relative overflow-hidden rounded-[1.5rem] border border-[color-mix(in_srgb,var(--primary)_18%,white)] bg-[linear-gradient(160deg,rgba(255,255,255,0.96)_0%,color-mix(in_srgb,var(--muted)_78%,white)_100%)] p-3 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.28)] sm:rounded-[2rem] sm:p-4 md:rounded-[2.25rem] md:p-8">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,color-mix(in_srgb,var(--primary)_14%,transparent),transparent_32%),radial-gradient(circle_at_15%_85%,color-mix(in_srgb,var(--secondary)_12%,transparent),transparent_25%)]" />
 
             <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -178,7 +179,7 @@ export function Hero({ products = [] }: HeroProps) {
               <BrandLogo variant="bw" width={92} height={26} className="h-[26px] w-[92px] shrink-0" />
             </div>
 
-            <div className="relative mt-6 overflow-hidden rounded-[1.6rem] border border-[color-mix(in_srgb,var(--primary)_12%,white)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_34%,white),white)] px-4 py-8 sm:px-6 sm:py-10 md:mt-8 md:rounded-[1.9rem] md:px-10 md:py-12">
+            <div className="relative mt-5 aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-[color-mix(in_srgb,var(--primary)_12%,white)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_34%,white),white)] sm:mt-6 sm:aspect-[5/4] sm:rounded-[1.6rem] md:mt-8 md:aspect-auto md:min-h-[480px] md:rounded-[1.9rem] md:px-10 md:py-12">
               <div
                 className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl md:h-72 md:w-72"
                 style={{ background: `color-mix(in srgb, ${activeStory.accent} 18%, white)` }}
@@ -186,17 +187,24 @@ export function Hero({ products = [] }: HeroProps) {
               <div className="absolute inset-x-[10%] inset-y-[8%] rounded-[5rem] border border-[color-mix(in_srgb,var(--foreground)_8%,white)] sm:inset-x-[14%] sm:rounded-[9rem]" />
 
               <AnimatePresence mode="wait">
-                <motion.img
+                <motion.div
                   key={activeProduct.id}
-                  src={activeProduct.imageUrls[0]}
-                  alt={activeProduct.name}
                   initial={{ opacity: 0, y: 18, scale: 0.96 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.97 }}
                   transition={{ duration: 0.4 }}
                   whileHover={{ scale: 1.03, y: -4 }}
-                  className="relative z-10 mx-auto max-h-[240px] w-auto object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.18)] sm:max-h-[300px] md:max-h-[420px]"
-                />
+                  className="absolute inset-3 z-10 sm:inset-5 md:inset-10"
+                >
+                  <Image
+                    src={activeProduct.imageUrls[0]}
+                    alt={activeProduct.name}
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 60vw, 48vw"
+                    className="object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.18)]"
+                  />
+                </motion.div>
               </AnimatePresence>
             </div>
 
