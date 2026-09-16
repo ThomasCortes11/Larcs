@@ -40,6 +40,10 @@ export function Footer() {
                 <Phone className="h-4 w-4 shrink-0" />
                 <span>301 459 4421</span>
               </a>
+              <a href="tel:+573229521433" className="flex items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
+                <Phone className="h-4 w-4 shrink-0" />
+                <span>322 952 1433</span>
+              </a>
               <a
                 href="https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA=="
                 target="_blank"
