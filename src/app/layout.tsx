@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import { brandBody, brandDisplay, brandHeading } from "@/lib/fonts";
 
 import "./globals.css";
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Header />
           <main>{children}</main>
           <Footer />
+          <WhatsAppButton />
         </Providers>
       </body>
     </html>
