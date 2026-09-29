@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
+import { BrandIdentity } from "@/components/home/brand-identity";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
 
 export function Footer() {
@@ -9,8 +10,9 @@ export function Footer() {
     <footer className="mt-20 border-t border-[var(--border)] bg-[linear-gradient(180deg,#f6f2f0_0%,#f2efed_100%)]">
       <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 lg:py-14">
         <div className="grid justify-items-center gap-8 text-center lg:grid-cols-[1.1fr_0.9fr_0.9fr_1.1fr] lg:items-start">
-          <div className="flex w-full flex-col items-center">
+          <div className="flex w-full flex-col items-center gap-4">
             <BrandLogo variant="purple" className="h-[120px] w-[180px]" width={180} height={120} />
+            <BrandIdentity variant="compact" />
           </div>
 
           <div className="space-y-4">

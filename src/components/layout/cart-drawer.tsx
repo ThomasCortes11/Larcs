@@ -6,6 +6,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { ShoppingBag, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { AddiButton } from "@/components/checkout/addi-button";
+import { CodCheckoutForm } from "@/components/checkout/cod-checkout-form";
 import { SHIPPING_COST } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
 import { getCartSubtotal, useCartStore } from "@/store/cart-store";
@@ -70,6 +72,37 @@ export function CartDrawer() {
                 <Button className="w-full">Finalizar compra</Button>
               </Link>
             </Dialog.Close>
+            {items.length > 0 ? (
+              <div className="space-y-3 border-t border-[var(--border)] pt-4">
+                <p className="text-xs font-semibold uppercase text-[var(--muted-foreground)]">Otras formas de pago</p>
+                <AddiButton
+                  context={{
+                    type: "order",
+                    items: items.map((item) => ({
+                      name: item.name,
+                      quantity: item.quantity,
+                      sku: item.id,
+                      size: item.size
+                    })),
+                    total
+                  }}
+                />
+                <CodCheckoutForm
+                  context={{
+                    type: "order",
+                    items: items.map((item) => ({
+                      name: item.name,
+                      sku: item.id,
+                      size: item.size,
+                      color: item.color,
+                      quantity: item.quantity,
+                      unitPrice: item.price
+                    })),
+                    total
+                  }}
+                />
+              </div>
+            ) : null}
           </div>
         </Dialog.Content>
       </Dialog.Portal>

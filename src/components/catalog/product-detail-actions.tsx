@@ -6,6 +6,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { AddiButton } from "@/components/checkout/addi-button";
+import { CodCheckoutForm } from "@/components/checkout/cod-checkout-form";
 import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
 
@@ -13,7 +15,9 @@ interface ProductDetailActionsProps {
   id: string;
   slug: string;
   name: string;
+  sku: string;
   price: number;
+  color: string;
   imageUrl: string;
   sizes: string[];
 }
@@ -22,7 +26,9 @@ export function ProductDetailActions({
   id,
   slug,
   name,
+  sku,
   price,
+  color,
   imageUrl,
   sizes
 }: ProductDetailActionsProps) {
@@ -56,7 +62,7 @@ export function ProductDetailActions({
       <div className="flex flex-wrap gap-3">
         <Button
           onClick={() => {
-            addItem({ id, slug, name, imageUrl, price, size });
+            addItem({ id, slug, name, imageUrl, price, size, color });
             toast.success("Producto agregado al carrito");
           }}
         >
@@ -65,7 +71,7 @@ export function ProductDetailActions({
         <Button
           variant="secondary"
           onClick={() => {
-            addItem({ id, slug, name, imageUrl, price, size });
+            addItem({ id, slug, name, imageUrl, price, size, color });
             toast.success("Producto listo para comprar");
             router.push("/pago");
           }}
@@ -98,6 +104,14 @@ export function ProductDetailActions({
           <Share2 className="h-4 w-4" />
         </button>
       </div>
+      <AddiButton context={{ type: "product", name, sku, size, price }} />
+      <CodCheckoutForm
+        context={{
+          type: "product",
+          product: { name, sku, size, color, quantity: 1, unitPrice: price },
+          sizes
+        }}
+      />
     </div>
   );
 }

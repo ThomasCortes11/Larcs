@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
+import { AddiButton } from "@/components/checkout/addi-button";
+import { CodCheckoutForm } from "@/components/checkout/cod-checkout-form";
 import { Input } from "@/components/ui/input";
 import { SHIPPING_COST } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
@@ -74,7 +76,7 @@ export function CheckoutForm() {
   });
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-4 rounded-3xl border border-[var(--border)] bg-white p-6">
+    <div className="grid gap-4 rounded-3xl border border-[var(--border)] bg-white p-6">
       <div className="space-y-2">
         <h2 className="text-xl font-semibold">Checkout seguro con Wompi</h2>
         <p className="text-sm text-[var(--muted-foreground)]">
@@ -103,6 +105,7 @@ export function CheckoutForm() {
         </div>
       )}
 
+      <form onSubmit={onSubmit} className="grid gap-4">
       <Input placeholder="Nombre completo" {...form.register("customerName")} />
       <Input placeholder="Email" type="email" {...form.register("email")} />
       <Input placeholder="Telefono" {...form.register("phone")} />
@@ -115,6 +118,53 @@ export function CheckoutForm() {
       <Button type="submit" disabled={isSubmitting || items.length === 0}>
         {isSubmitting ? "Redirigiendo a Wompi..." : "Pagar con Wompi"}
       </Button>
-    </form>
+      </form>
+      <section
+        aria-labelledby="other-payment-methods"
+        className="space-y-3 border-t border-[var(--border)] pt-4"
+      >
+        <div className="space-y-1">
+          <h3 id="other-payment-methods" className="text-sm font-semibold">
+            Otros medios de pago
+          </h3>
+          <p className="text-xs text-[var(--muted-foreground)]">
+            Wompi es nuestra opción principal. También puedes solicitar ADDI o pagar contra entrega.
+          </p>
+        </div>
+        <AddiButton
+          context={{
+            type: "order",
+            items: items.map((item) => ({
+              name: item.name,
+              quantity: item.quantity,
+              sku: item.id,
+              size: item.size
+            })),
+            total
+          }}
+          disabled={items.length === 0}
+        />
+        <CodCheckoutForm
+          context={{
+            type: "order",
+            items: items.map((item) => ({
+              name: item.name,
+              sku: item.id,
+              size: item.size,
+              color: item.color,
+              quantity: item.quantity,
+              unitPrice: item.price
+            })),
+            total
+          }}
+          disabled={items.length === 0}
+        />
+        {items.length === 0 ? (
+          <p className="text-center text-xs text-[var(--muted-foreground)]">
+            Agrega productos al carrito para habilitar estos métodos de pago.
+          </p>
+        ) : null}
+      </section>
+    </div>
   );
 }

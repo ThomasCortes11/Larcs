@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
+
+import { BrandIdentity } from "@/components/home/brand-identity";
+import { BRAND_IDENTITY_CONTENT } from "@/lib/brand-content";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "Sobre nosotros | Más de 30 años creando calzado con historia"
+  },
+  description: BRAND_IDENTITY_CONTENT.paragraphs[0]
+};
+
 export default function NosotrosPage() {
-  return (
-    <section className="mx-auto max-w-4xl space-y-4 px-4 py-10 md:px-6">
-      <h1 className="text-3xl font-bold">Nosotros</h1>
-      <p className="text-[var(--muted-foreground)]">LARCS nace para ofrecer calzado femenino con acabados premium, estilo atemporal y confort real para la mujer contemporanea.</p>
-    </section>
-  );
+  return <BrandIdentity headingLevel="h1" />;
 }

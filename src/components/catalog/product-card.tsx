@@ -91,7 +91,8 @@ export function ProductCard({ product }: ProductCardProps) {
                 imageUrl: product.imageUrls[0],
                 name: product.name,
                 price: product.price,
-                size: product.variant.sizes[0] ?? "37"
+                size: product.variant.sizes[0] ?? "37",
+                color: product.variant.color
               });
               toast.success("Producto agregado al carrito");
             }}

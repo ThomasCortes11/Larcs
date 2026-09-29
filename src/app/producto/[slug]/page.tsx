@@ -122,8 +122,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
             id={product.id}
             slug={product.slug}
             name={product.name}
+            sku={product.id}
             imageUrl={product.imageUrls[0]}
             price={product.price}
+            color={product.variant.color}
             sizes={product.variant.sizes}
           />
         </div>

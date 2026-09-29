@@ -3,6 +3,8 @@ import type { CategoryKey } from "@/types/product";
 export const BRAND_NAME = "LARCS";
 export const BRAND_LOGO_PURPLE = "/api/assets/Logos/LOGO%20LARCS%20MORADO.png";
 export const BRAND_LOGO_BW = "/api/assets/Logos/LOGO%20LARCS%20BYN.png";
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "573014594421";
+export const ADDI_WHATSAPP_MESSAGE_BASE = "Hola, quiero pagar con ADDI";
 
 export const CATEGORY_FOLDER_MAP: Record<CategoryKey, string> = {
   botas: "BOTAS",

@@ -139,6 +139,22 @@ export function Hero({ products = [] }: HeroProps) {
             <span>Asesoria de talla</span>
           </div>
 
+          <div className="mt-4 flex w-fit max-w-full flex-wrap items-center gap-2 rounded-full border border-[var(--border)] bg-white/70 px-3 py-2 text-xs text-[var(--muted-foreground)]">
+            <Image
+              src="/api/assets/Logos/logo-addi.png"
+              width={56}
+              height={28}
+              unoptimized
+              alt="Logo de ADDI"
+              className="h-6 w-12 object-contain"
+            />
+            <span>Paga después con ADDI</span>
+            <span aria-hidden="true">·</span>
+            <Link href="/catalogo" className="font-semibold text-[var(--primary)] hover:underline">
+              Ver catálogo
+            </Link>
+          </div>
+
           <div className="mt-6 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:mt-8 sm:mx-0 sm:flex-wrap sm:gap-5 sm:overflow-visible sm:px-0">
             {availableCategories.map((category) => {
               const isActive = category === activeCategory;

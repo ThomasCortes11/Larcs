@@ -1,4 +1,5 @@
 import { ConversionSections } from "@/components/home/conversion-sections";
+import { BrandIdentity } from "@/components/home/brand-identity";
 import { CategorySections } from "@/components/home/category-sections";
 import { FeaturedSection } from "@/components/home/featured-section";
 import { Hero } from "@/components/home/hero";
@@ -10,6 +11,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero products={products} />
+      <BrandIdentity headingLevel="h2" />
       <FeaturedSection products={products} />
       <CategorySections products={products} />
       <ConversionSections />
