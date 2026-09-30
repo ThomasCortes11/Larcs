@@ -1,12 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ExternalLink, Mail, MapPin, Navigation, Phone, ShieldCheck, Truck, Undo2 } from "lucide-react";
 
 import { InstagramIcon } from "@/components/ui/instagram-icon";
-import { Button } from "@/components/ui/button";
+import { WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
 import mapsImage from "@/Img/Logos/Maps.jpeg";
 
 const locationLinks = {
@@ -60,12 +59,12 @@ export function ConversionSections() {
             <p className="mt-2 text-base font-semibold">larscalzado@gmail.com</p>
           </a>
           <a
-            href="tel:+573014594421"
+              href={`tel:+${WHATSAPP_NUMBER}`}
             className="rounded-3xl border border-[var(--border)] bg-white p-6 transition hover:border-[var(--primary)]"
           >
             <Phone className="mb-3 h-5 w-5 text-[var(--primary)]" />
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">Contacto</p>
-            <p className="mt-2 text-base font-semibold">301 459 4421</p>
+              <p className="mt-2 text-base font-semibold">{WHATSAPP_DISPLAY_NUMBER}</p>
           </a>
           <a
             href="https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA=="

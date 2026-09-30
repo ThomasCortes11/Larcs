@@ -6,6 +6,7 @@ import { buildWompiCheckoutUrl, createWompiReference, resolveCheckoutSummary } f
 const itemSchema = z.object({
   id: z.string().min(1),
   size: z.string().min(1),
+  color: z.string().optional(),
   quantity: z.number().int().positive()
 });
 
@@ -27,9 +28,10 @@ export async function POST(request: NextRequest) {
     const integritySecret = process.env.WOMPI_INTEGRITY_SECRET;
 
     if (!publicKey || !integritySecret) {
+      // TODO: Configure the Wompi keys per environment before enabling this gateway.
       return NextResponse.json(
-        { error: "Falta configurar las llaves de Wompi en el entorno." },
-        { status: 500 }
+        { error: "Wompi está en preparación. Usa ADDI o contra entrega mientras se configura." },
+        { status: 503 }
       );
     }
 

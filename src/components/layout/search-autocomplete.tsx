@@ -6,7 +6,7 @@ import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { BLUR_PLACEHOLDER } from "@/lib/constants";
-import { toCurrency } from "@/lib/utils";
+import { cn, toCurrency } from "@/lib/utils";
 
 type SearchItem = {
   id: string;
@@ -17,7 +17,11 @@ type SearchItem = {
   category: string;
 };
 
-export function SearchAutocomplete() {
+interface SearchAutocompleteProps {
+  className?: string;
+}
+
+export function SearchAutocomplete({ className }: SearchAutocompleteProps) {
   const [query, setQuery] = useState("");
   const [items, setItems] = useState<SearchItem[]>([]);
   const [open, setOpen] = useState(false);
@@ -50,7 +54,7 @@ export function SearchAutocomplete() {
   }, [query]);
 
   return (
-    <div className="relative hidden w-72 md:block">
+    <div className={cn("relative", className ?? "hidden w-72 md:block")}>
       <div className="flex items-center gap-2 rounded-full border border-[var(--border)] bg-white px-3">
         <Search className="h-4 w-4 text-[var(--muted-foreground)]" />
         <input
@@ -59,7 +63,7 @@ export function SearchAutocomplete() {
           onFocus={() => setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 150)}
           placeholder="Buscar por estilo o color"
-          className="h-10 w-full border-none bg-transparent text-sm outline-none"
+          className="h-11 w-full border-none bg-transparent text-sm outline-none"
           aria-label="Buscar productos"
         />
       </div>

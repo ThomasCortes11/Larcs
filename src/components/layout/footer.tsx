@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { BrandIdentity } from "@/components/home/brand-identity";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
+import { WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -18,31 +19,31 @@ export function Footer() {
           <div className="space-y-4">
             <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">Empresa</p>
             <div className="space-y-3 text-base text-[var(--muted-foreground)]">
-              <Link href="/nosotros" className="block transition hover:text-[var(--foreground)]">Nosotros</Link>
-              <Link href="/contacto" className="block transition hover:text-[var(--foreground)]">Contacto</Link>
+              <Link href="/nosotros" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Nosotros</Link>
+              <Link href="/contacto" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Contacto</Link>
             </div>
           </div>
 
           <div className="space-y-4">
             <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">Ayuda</p>
             <div className="space-y-3 text-base text-[var(--muted-foreground)]">
-              <Link href="/politicas" className="block transition hover:text-[var(--foreground)]">Politicas</Link>
-              <Link href="/terminos" className="block transition hover:text-[var(--foreground)]">Terminos</Link>
+              <Link href="/politicas" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Politicas</Link>
+              <Link href="/terminos" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Terminos</Link>
             </div>
           </div>
 
           <div className="w-full max-w-sm rounded-[1.8rem] border border-[var(--border)] bg-white/70 p-5 shadow-[0_18px_40px_-32px_rgba(60,35,35,0.35)] backdrop-blur-sm sm:p-6">
             <p className="mb-5 text-lg font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">Contacto</p>
             <div className="space-y-4 text-sm text-[var(--muted-foreground)] sm:text-base">
-              <a href="mailto:larscalzado@gmail.com" className="flex items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
+              <a href="mailto:larscalzado@gmail.com" className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
                 <Mail className="h-4 w-4 shrink-0" />
                 <span>larscalzado@gmail.com</span>
               </a>
-              <a href="tel:+573014594421" className="flex items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
+              <a href={`tel:+${WHATSAPP_NUMBER}`} className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
                 <Phone className="h-4 w-4 shrink-0" />
-                <span>301 459 4421</span>
+                <span>{WHATSAPP_DISPLAY_NUMBER}</span>
               </a>
-              <a href="tel:+573229521433" className="flex items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
+              <a href="tel:+573229521433" className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
                 <Phone className="h-4 w-4 shrink-0" />
                 <span>322 952 1433</span>
               </a>
@@ -50,7 +51,7 @@ export function Footer() {
                 href="https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA=="
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
+                className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
               >
                 <InstagramIcon className="h-4 w-4 shrink-0" />
                 <span>@calzadolarcs</span>
@@ -59,7 +60,7 @@ export function Footer() {
                 href="https://www.google.com/maps/search/?api=1&query=Calzado+LARCS+Bogota+Colombia"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
+                className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
               >
                 <MapPin className="h-4 w-4 shrink-0" />
                 <span>Ver ubicacion</span>

@@ -1,10 +1,12 @@
 import { CheckoutForm } from "@/components/checkout/checkout-form";
 
-interface PagoPageProps {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}
+export const dynamic = "force-dynamic";
 
-export default async function PagoPage(_: PagoPageProps) {
+export default function PagoPage() {
+  const wompiConfigured = Boolean(
+    process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY &&
+      process.env.WOMPI_INTEGRITY_SECRET
+  );
 
   return (
     <section className="mx-auto max-w-5xl space-y-6 px-4 py-10 md:px-6">
@@ -15,7 +17,7 @@ export default async function PagoPage(_: PagoPageProps) {
           Completa tus datos y el sistema te llevará al checkout oficial de Wompi para cerrar la compra sin base de datos.
         </p>
       </div>
-      <CheckoutForm />
+      <CheckoutForm wompiConfigured={wompiConfigured} />
     </section>
   );
 }

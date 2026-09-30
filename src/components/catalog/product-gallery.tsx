@@ -1,11 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
-import { Expand, X } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useRef, useState } from "react";
+import { Expand } from "lucide-react";
 
 import { BLUR_PLACEHOLDER } from "@/lib/constants";
+
+const ProductZoomDialog = dynamic(
+  () =>
+    import("@/components/catalog/product-zoom-dialog").then(
+      (module) => module.ProductZoomDialog
+    ),
+  { ssr: false }
+);
 
 interface ProductGalleryProps {
   name: string;
@@ -13,57 +21,63 @@ interface ProductGalleryProps {
 }
 
 export function ProductGallery({ name, imageUrls }: ProductGalleryProps) {
-  const [activeImage, setActiveImage] = useState(imageUrls[0]);
+  const hasImages = imageUrls.length > 0;
+  const [activeImage, setActiveImage] = useState(imageUrls[0] ?? BLUR_PLACEHOLDER);
+  const [isZoomOpen, setIsZoomOpen] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+
+  function handleTouchEnd(touchEndX: number) {
+    if (touchStartX.current === null || imageUrls.length < 2) return;
+
+    const delta = touchStartX.current - touchEndX;
+    touchStartX.current = null;
+    if (Math.abs(delta) < 40) return;
+
+    const activeIndex = Math.max(0, imageUrls.indexOf(activeImage));
+    const direction = delta > 0 ? 1 : -1;
+    const nextIndex = (activeIndex + direction + imageUrls.length) % imageUrls.length;
+    setActiveImage(imageUrls[nextIndex]);
+  }
 
   return (
     <div className="grid gap-3">
-      <Dialog.Root>
-        <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-[var(--border)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_35%,white),white)] p-4">
+      <div
+          className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-[var(--border)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_35%,white),white)] p-4"
+          onTouchStart={(event) => {
+            touchStartX.current = event.touches[0]?.clientX ?? null;
+          }}
+          onTouchEnd={(event) => {
+            const touchEndX = event.changedTouches[0]?.clientX;
+            if (touchEndX !== undefined) handleTouchEnd(touchEndX);
+          }}
+        >
           <Image
             src={activeImage}
-            alt={name}
+            alt={hasImages ? name : `Imagen no disponible para ${name}`}
             fill
+            priority={hasImages}
             className="object-contain p-4 transition duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) 50vw, 600px"
             placeholder="blur"
             blurDataURL={BLUR_PLACEHOLDER}
           />
-          <Dialog.Trigger asChild>
-            <button
-              type="button"
-              className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/90 px-3 py-2 text-xs font-semibold text-[var(--foreground)] shadow-sm backdrop-blur transition hover:border-[var(--primary)]"
-            >
-              <Expand className="h-3.5 w-3.5" />
-              Ampliar
-            </button>
-          </Dialog.Trigger>
-        </div>
-        <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 z-50 bg-black/55 backdrop-blur-sm" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(94vw,980px)] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-white/15 bg-white p-4 shadow-2xl md:p-6">
-            <div className="mb-4 flex items-center justify-between">
-              <Dialog.Title className="text-lg font-semibold text-[var(--foreground)]">{name}</Dialog.Title>
-              <Dialog.Close asChild>
-                <button type="button" aria-label="Cerrar imagen" className="rounded-full border border-[var(--border)] p-2 hover:bg-[var(--muted)]">
-                  <X className="h-4 w-4" />
-                </button>
-              </Dialog.Close>
-            </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_42%,white),white)] p-4 md:p-8">
-              <Image
-                src={activeImage}
-                alt={name}
-                fill
-                className="object-contain p-4"
-                sizes="90vw"
-                placeholder="blur"
-                blurDataURL={BLUR_PLACEHOLDER}
-              />
-            </div>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
-      <div className="grid grid-cols-4 gap-2">
+          <button
+            type="button"
+            onClick={() => setIsZoomOpen(true)}
+            className="absolute right-4 top-4 z-10 inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--border)] bg-white/90 px-3 py-2 text-xs font-semibold text-[var(--foreground)] shadow-sm backdrop-blur transition hover:border-[var(--primary)]"
+          >
+            <Expand className="h-3.5 w-3.5" />
+            Ampliar
+          </button>
+      </div>
+      {isZoomOpen ? (
+        <ProductZoomDialog
+          name={name}
+          imageUrl={activeImage}
+          onClose={() => setIsZoomOpen(false)}
+        />
+      ) : null}
+      {hasImages ? <div className="grid grid-cols-4 gap-2">
         {imageUrls.slice(0, 8).map((url, idx) => (
           <button
             key={url + idx}
@@ -76,7 +90,7 @@ export function ProductGallery({ name, imageUrls }: ProductGalleryProps) {
             <Image src={url} alt={`${name} ${idx + 1}`} fill className="object-contain p-1.5" sizes="20vw" />
           </button>
         ))}
-      </div>
+      </div> : null}
     </div>
   );
 }

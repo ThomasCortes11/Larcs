@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BLUR_PLACEHOLDER } from "@/lib/constants";
+import { BLUR_PLACEHOLDER, CATEGORY_LABELS } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
@@ -33,11 +33,11 @@ export function ProductCard({ product }: ProductCardProps) {
       <Link href={`/producto/${product.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_28%,white),white)] p-4">
         <div className="absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-white/15 to-transparent" />
         <Image
-          src={product.imageUrls[0]}
-          alt={product.name}
+          src={product.imageUrls[0] ?? BLUR_PLACEHOLDER}
+          alt={product.imageUrls[0] ? product.name : `Imagen no disponible para ${product.name}`}
           fill
           className="object-contain p-5 transition duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(50vw - 1.5rem), (max-width: 1350px) calc(33vw - 2rem), 400px"
           placeholder="blur"
           blurDataURL={BLUR_PLACEHOLDER}
         />
@@ -46,7 +46,7 @@ export function ProductCard({ product }: ProductCardProps) {
         type="button"
         aria-label="Guardar en favoritos"
         className={[
-          "absolute right-4 top-4 z-20 rounded-full border bg-white/92 p-2 shadow-sm backdrop-blur transition",
+          "absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full border bg-white/92 p-0 shadow-sm backdrop-blur transition",
           isWishlisted
             ? "border-[var(--primary)] text-[var(--primary)]"
             : "border-[var(--border)] text-[var(--foreground)] hover:border-[var(--primary)]"
@@ -55,7 +55,7 @@ export function ProductCard({ product }: ProductCardProps) {
           const added = toggleWishlistItem({
             id: product.id,
             slug: product.slug,
-            imageUrl: product.imageUrls[0],
+            imageUrl: product.imageUrls[0] ?? BLUR_PLACEHOLDER,
             name: product.name,
             price: product.price
           });
@@ -66,10 +66,10 @@ export function ProductCard({ product }: ProductCardProps) {
       </button>
       <div className="space-y-3 p-4">
         <div className="flex items-center justify-between">
-          <Badge>{product.category}</Badge>
+          <Badge>{product.categoryLabel ?? CATEGORY_LABELS[product.category]}</Badge>
           {product.discountPercentage ? <Badge>-{product.discountPercentage}%</Badge> : null}
         </div>
-        <Link href={`/producto/${product.slug}`} className="line-clamp-1 text-lg font-semibold text-[var(--foreground)]">
+        <Link href={`/producto/${product.slug}`} className="flex min-h-11 items-center truncate text-lg font-semibold text-[var(--foreground)]">
           {product.name}
         </Link>
         <div className="flex items-end gap-2">
@@ -88,11 +88,12 @@ export function ProductCard({ product }: ProductCardProps) {
               addItem({
                 id: product.id,
                 slug: product.slug,
-                imageUrl: product.imageUrls[0],
+                imageUrl: product.imageUrls[0] ?? BLUR_PLACEHOLDER,
                 name: product.name,
+                reference: product.reference ?? product.webReference ?? product.id,
                 price: product.price,
                 size: product.variant.sizes[0] ?? "37",
-                color: product.variant.color
+                color: product.variant.colors[0] ?? product.variant.color
               });
               toast.success("Producto agregado al carrito");
             }}

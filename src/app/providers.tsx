@@ -1,20 +1,23 @@
 "use client";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect } from "react";
 import { Toaster } from "sonner";
+
+import { useCartStore } from "@/store/cart-store";
 
 interface ProvidersProps {
   children: ReactNode;
 }
 
 export function Providers({ children }: ProvidersProps) {
-  const [queryClient] = useState(() => new QueryClient());
+  useEffect(() => {
+    void useCartStore.persist.rehydrate();
+  }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       {children}
       <Toaster richColors position="top-right" duration={2200} closeButton />
-    </QueryClientProvider>
+    </>
   );
 }

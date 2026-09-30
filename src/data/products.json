@@ -1,0 +1,3242 @@
+[
+  {
+    "id": "tacones-alessia-002",
+    "slug": "tacones-alessia-002",
+    "reference": "Ref: 02 Beige Pla 10",
+    "webReference": "Alessia",
+    "name": "Alessia",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Beige, Negro\nMaterial: Napa\nTallas: 34-40\nAltura: 8.5cm - T813\nPla: 10 Interna",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-alessia-002/1.webp"
+    ],
+    "variant": {
+      "color": "Beige, Negro",
+      "colors": [
+        "Beige",
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-bianca-003",
+    "slug": "tacones-bianca-003",
+    "reference": "700",
+    "webReference": "Bianca",
+    "name": "Bianca",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149900,
+    "description": "Color: Perla, Plateado, Dorado\nMaterial: Londi\nTallas: 34-40\nAltura: 7.5cm - T1168",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-bianca-003/1.webp",
+      "/products/tacones/tacones-bianca-003/2.webp",
+      "/products/tacones/tacones-bianca-003/3.webp"
+    ],
+    "variant": {
+      "color": "Perla, Plateado, Dorado",
+      "colors": [
+        "Perla",
+        "Plateado",
+        "Dorado"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-amelie-004",
+    "slug": "tacones-amelie-004",
+    "reference": "5808",
+    "webReference": "Amelie",
+    "name": "Amelie",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 179900,
+    "description": "Color: Negro \nMaterial: Travisor\nTallas: 34-40\nAltura: 9cm- ?\nPla: 20 Externa",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-amelie-004/1.webp",
+      "/products/tacones/tacones-amelie-004/2.webp",
+      "/products/tacones/tacones-amelie-004/3.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-camille-005",
+    "slug": "tacones-camille-005",
+    "reference": "700 5/2",
+    "webReference": "Camille",
+    "name": "Camille",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149900,
+    "description": "Color: Beige, Negro, Nude\nMaterial: Boston \nTallas: 34-40\nAltura: 5.5cm- T1036",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-camille-005/1.webp"
+    ],
+    "variant": {
+      "color": "Beige, Negro, Nude",
+      "colors": [
+        "Beige",
+        "Negro",
+        "Nude"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-celeste-006",
+    "slug": "tacones-celeste-006",
+    "reference": "Ref: 02 Sin Pulsera",
+    "webReference": "Celeste",
+    "name": "Celeste",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 169900,
+    "description": "Color: Plateado, Dorado, Negro\nMaterial: Kika\nTallas: 34-40\nAltura: 8.5cm- T813\nPla: 10 Interna",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-celeste-006/1.webp",
+      "/products/tacones/tacones-celeste-006/2.webp",
+      "/products/tacones/tacones-celeste-006/3.webp"
+    ],
+    "variant": {
+      "color": "Plateado, Dorado, Negro",
+      "colors": [
+        "Plateado",
+        "Dorado",
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-antonieta-007",
+    "slug": "tacones-antonieta-007",
+    "reference": "Antonieta",
+    "webReference": "Antonieta",
+    "name": "Antonieta",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149900,
+    "description": "Color: Negro, Vinotinto, Dorado, Plateado, Nude\nMaterial: Charol\nTallas: 34-40\nAltura: 5.5cm- TShakira",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-antonieta-007/1.webp",
+      "/products/tacones/tacones-antonieta-007/2.webp",
+      "/products/tacones/tacones-antonieta-007/3.webp"
+    ],
+    "variant": {
+      "color": "Negro, Vinotinto, Dorado, Plateado, Nude",
+      "colors": [
+        "Negro",
+        "Vinotinto",
+        "Dorado",
+        "Plateado",
+        "Nude"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-dalia-008",
+    "slug": "tacones-dalia-008",
+    "reference": "112",
+    "webReference": "Dalia",
+    "name": "Dalia",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149900,
+    "description": "Color: BeigexRojo, BeigexAzul, NegroxBeige\nMaterial: Charol\nTallas: 34-40\nAltura: 5.5cm- T813",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-dalia-008/1.webp",
+      "/products/tacones/tacones-dalia-008/2.webp"
+    ],
+    "variant": {
+      "color": "BeigexRojo, BeigexAzul, NegroxBeige",
+      "colors": [
+        "BeigexRojo",
+        "BeigexAzul",
+        "NegroxBeige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-chiara-009",
+    "slug": "tacones-chiara-009",
+    "reference": "116",
+    "webReference": "Chiara",
+    "name": "Chiara",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 169900,
+    "description": "Color: Negro, Vinotinto, Beige\nMaterial: Satin\nTallas: 34-40\nAltura: 8.5cm- T599",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-chiara-009/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Vinotinto, Beige",
+      "colors": [
+        "Negro",
+        "Vinotinto",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-emilia-010",
+    "slug": "tacones-emilia-010",
+    "reference": "136",
+    "webReference": "Emilia",
+    "name": "Emilia",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 1599000,
+    "description": "Color: Oro rosa, Perla, Plata, Negro\nMaterial: Satin\nTallas: 34-40\nAltura: 5.5cm- TShakira",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-emilia-010/1.webp",
+      "/products/tacones/tacones-emilia-010/2.webp",
+      "/products/tacones/tacones-emilia-010/3.webp",
+      "/products/tacones/tacones-emilia-010/4.webp"
+    ],
+    "variant": {
+      "color": "Oro rosa, Perla, Plata, Negro",
+      "colors": [
+        "Oro rosa",
+        "Perla",
+        "Plata",
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-elena-011",
+    "slug": "tacones-elena-011",
+    "reference": "Gotcha Cerrado",
+    "webReference": "Elena",
+    "name": "Elena",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negro, Camel\nMaterial: Lona\nTallas: 34-40\nAltura: 7cm- TPlaya",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-elena-011/1.webp",
+      "/products/tacones/tacones-elena-011/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Camel",
+      "colors": [
+        "Negro",
+        "Camel"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-isabella-012",
+    "slug": "tacones-isabella-012",
+    "reference": "44",
+    "webReference": "Isabella",
+    "name": "Isabella",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negro, Beige\nMaterial: Boston\nTallas: 34-40\nAltura: 6.5cm- T499\nPla: 10 Interna",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-isabella-012/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-amara-013",
+    "slug": "tacones-amara-013",
+    "reference": "115",
+    "webReference": "Amara",
+    "name": "Amara",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 169900,
+    "description": "Color: Fucsia, Azul bebe, Amarillo, Blanco, Café, Plata\nDorado, Negro, Mora leche, Camel\nMaterial: Charol\nTallas: 34-40\nAltura: 8.5cm- T599",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-amara-013/1.webp",
+      "/products/tacones/tacones-amara-013/2.webp",
+      "/products/tacones/tacones-amara-013/3.webp",
+      "/products/tacones/tacones-amara-013/4.webp",
+      "/products/tacones/tacones-amara-013/5.webp",
+      "/products/tacones/tacones-amara-013/6.webp",
+      "/products/tacones/tacones-amara-013/7.webp",
+      "/products/tacones/tacones-amara-013/8.webp",
+      "/products/tacones/tacones-amara-013/9.webp",
+      "/products/tacones/tacones-amara-013/10.webp",
+      "/products/tacones/tacones-amara-013/11.webp",
+      "/products/tacones/tacones-amara-013/12.webp",
+      "/products/tacones/tacones-amara-013/13.webp",
+      "/products/tacones/tacones-amara-013/14.webp",
+      "/products/tacones/tacones-amara-013/15.webp"
+    ],
+    "variant": {
+      "color": "Fucsia, Azul bebe, Amarillo, Blanco, Café, Plata",
+      "colors": [
+        "Fucsia",
+        "Azul bebe",
+        "Amarillo",
+        "Blanco",
+        "Café",
+        "Plata"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-sofia-014",
+    "slug": "tacones-sofia-014",
+    "reference": "Mafalda",
+    "webReference": "Sofia",
+    "name": "Sofia",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 179900,
+    "description": "Color: Negro\nMaterial: Charol, Boston\nTallas: 34-40\nAltura: 8cm\nSuela: Dana",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-sofia-014/1.webp",
+      "/products/tacones/tacones-sofia-014/2.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-gabriela-015",
+    "slug": "tacones-gabriela-015",
+    "reference": "700 7/2 Tacon 599",
+    "webReference": "Gabriela",
+    "name": "Gabriela",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 169900,
+    "description": "Color: Negro, Nude, Animal Print\nMaterial: Charol\nTallas: 34-40\nAltura: 7.5cm T424",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-gabriela-015/1.webp",
+      "/products/tacones/tacones-gabriela-015/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Nude, Animal Print",
+      "colors": [
+        "Negro",
+        "Nude",
+        "Animal Print"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-l-juliette-016",
+    "slug": "tacones-l-juliette-016",
+    "reference": "33",
+    "webReference": "L-Juliette",
+    "name": "L-Juliette",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negro\nMaterial: Charol x Brillos\nTallas: 34-40\nAltura: 5.5cm T?",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-l-juliette-016/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-renata-017",
+    "slug": "tacones-renata-017",
+    "reference": "02 Clasica Plantisuela",
+    "webReference": "Renata",
+    "name": "Renata",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149900,
+    "description": "Color: Azul, Negro, Plata\nMaterial: Boston\nTallas: 34-40\nAltura: 4cm T?",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-renata-017/1.webp",
+      "/products/tacones/tacones-renata-017/2.webp"
+    ],
+    "variant": {
+      "color": "Azul, Negro, Plata",
+      "colors": [
+        "Azul",
+        "Negro",
+        "Plata"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-tiana-018",
+    "slug": "tacones-tiana-018",
+    "reference": "Tiana",
+    "webReference": "Tiana",
+    "name": "Tiana",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 179900,
+    "description": "Color: Negro x Brillos\nMaterial: Charol\nTallas: 34-40\nAltura: 7.5cm T424",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-tiana-018/1.webp"
+    ],
+    "variant": {
+      "color": "Negro x Brillos",
+      "colors": [
+        "Negro x Brillos"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-ariela-019",
+    "slug": "tacones-ariela-019",
+    "reference": "103",
+    "webReference": "Ariela",
+    "name": "Ariela",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 169900,
+    "description": "Color: Todos\nMaterial: Charol, Boston\nTallas: 34-40\nAltura: 8.5cm T810\nPla: 10 Interna",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-ariela-019/1.webp",
+      "/products/tacones/tacones-ariela-019/2.webp",
+      "/products/tacones/tacones-ariela-019/3.webp"
+    ],
+    "variant": {
+      "color": "Todos",
+      "colors": [
+        "Todos"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-magali-020",
+    "slug": "tacones-magali-020",
+    "reference": "153",
+    "webReference": "Magali",
+    "name": "Magali",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 169900,
+    "description": "Color: Plata, Negro\nMaterial: Napas\nTallas: 34-40\nAltura: 7.5cm T599\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-magali-020/1.webp",
+      "/products/tacones/tacones-magali-020/2.webp"
+    ],
+    "variant": {
+      "color": "Plata, Negro",
+      "colors": [
+        "Plata",
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-yatra-021",
+    "slug": "tacones-yatra-021",
+    "reference": "Yatra",
+    "webReference": "Yatra",
+    "name": "Yatra",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 169900,
+    "description": "Color: Negro, Rojo, Nude, Negro\nMaterial: Napa, Charol\nTallas: 34-40\nAltura: 8.5cm T599\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-yatra-021/1.webp",
+      "/products/tacones/tacones-yatra-021/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Rojo, Nude, Negro",
+      "colors": [
+        "Negro",
+        "Rojo",
+        "Nude",
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-aurora-022",
+    "slug": "tacones-aurora-022",
+    "reference": "02 Plataforma Pulsera 4.5",
+    "webReference": "Aurora",
+    "name": "Aurora",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149900,
+    "description": "Color: Negro, Rojo, Nude\nMaterial: Charol\nTallas: 34-40\nAltura: 4.5cm TJunior\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-aurora-022/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Rojo, Nude",
+      "colors": [
+        "Negro",
+        "Rojo",
+        "Nude"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-luna-023",
+    "slug": "tacones-luna-023",
+    "reference": "700 5cm",
+    "webReference": "Luna",
+    "name": "Luna",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149900,
+    "description": "Color: Beige, Negro, Nude, Fucsia, Rojo, Blanco\nMaterial: Boston, Charol\nTallas: 34-40\nAltura: 5.5cm- T813",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-luna-023/1.webp",
+      "/products/tacones/tacones-luna-023/2.webp"
+    ],
+    "variant": {
+      "color": "Beige, Negro, Nude, Fucsia, Rojo, Blanco",
+      "colors": [
+        "Beige",
+        "Negro",
+        "Nude",
+        "Fucsia",
+        "Rojo",
+        "Blanco"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-yolanda-024",
+    "slug": "tacones-yolanda-024",
+    "reference": "L055",
+    "webReference": "Yolanda",
+    "name": "Yolanda",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Plata, Dorado\nMaterial: Maya \nTallas: 34-40\nAltura: 6.5cm- T490",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-yolanda-024/1.webp",
+      "/products/tacones/tacones-yolanda-024/2.webp"
+    ],
+    "variant": {
+      "color": "Plata, Dorado",
+      "colors": [
+        "Plata",
+        "Dorado"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-t-capri-025",
+    "slug": "tacones-t-capri-025",
+    "reference": "Suecos Cuero",
+    "webReference": "T-Capri",
+    "name": "T-Capri",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 269900,
+    "description": "Color: Miel, Negro\nMaterial: Cuero\nTallas: 34-40\nAltura: 5.5cm- TMadera\nSuela: Goma",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-t-capri-025/1.webp",
+      "/products/tacones/tacones-t-capri-025/2.webp"
+    ],
+    "variant": {
+      "color": "Miel, Negro",
+      "colors": [
+        "Miel",
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-victoria-026",
+    "slug": "tacones-victoria-026",
+    "reference": "3018",
+    "webReference": "Victoria",
+    "name": "Victoria",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 169900,
+    "description": "Color: Dorado, Plateado\nMaterial: Londi\nTallas: 34-40\nAltura: 9cm- T404\nPla 20",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-victoria-026/1.webp"
+    ],
+    "variant": {
+      "color": "Dorado, Plateado",
+      "colors": [
+        "Dorado",
+        "Plateado"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-emily-027",
+    "slug": "tacones-emily-027",
+    "reference": "Mafalda bajita",
+    "webReference": "Emily",
+    "name": "Emily",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 179900,
+    "description": "Color: Negro\nMaterial: Charol\nTallas: 34-40\nAltura: 5.5cm- T?\nSuela: Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-emily-027/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-serena-028",
+    "slug": "tacones-serena-028",
+    "reference": "J128",
+    "webReference": "Serena",
+    "name": "Serena",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negro, Vinotinto\nMaterial: Satin\nTallas: 34-40\nAltura: 7.5cm- TShakira",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-serena-028/1.webp",
+      "/products/tacones/tacones-serena-028/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Vinotinto",
+      "colors": [
+        "Negro",
+        "Vinotinto"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-aleja-029",
+    "slug": "tacones-aleja-029",
+    "reference": "742 Pla 40 Pulsera",
+    "webReference": "Aleja",
+    "name": "Aleja",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 189900,
+    "description": "Color: Negro, Rojo, Azul\nMaterial: Charol\nTallas: 34-40\nAltura: 14cm- T516\nPla 40 Interna",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-aleja-029/1.webp",
+      "/products/tacones/tacones-aleja-029/2.webp",
+      "/products/tacones/tacones-aleja-029/3.webp"
+    ],
+    "variant": {
+      "color": "Negro, Rojo, Azul",
+      "colors": [
+        "Negro",
+        "Rojo",
+        "Azul"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-eli-030",
+    "slug": "tacones-eli-030",
+    "reference": "742 Pla 40",
+    "webReference": "Eli",
+    "name": "Eli",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 189900,
+    "description": "Color: Negro, Rojo, Azul\nMaterial: Charol\nTallas: 34-40\nAltura: 14cm- T516\nPla 40 Interna\nCon Pulsera",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-eli-030/1.webp",
+      "/products/tacones/tacones-eli-030/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Rojo, Azul",
+      "colors": [
+        "Negro",
+        "Rojo",
+        "Azul"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-linda-031",
+    "slug": "tacones-linda-031",
+    "reference": "Linda",
+    "webReference": "Linda",
+    "name": "Linda",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negro, Beige\nMaterial: Lonas\nTallas: 34-40\nAltura: 5.5cm- TPlaya Yute",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-linda-031/1.webp",
+      "/products/tacones/tacones-linda-031/2.webp",
+      "/products/tacones/tacones-linda-031/3.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-doris-032",
+    "slug": "tacones-doris-032",
+    "reference": "Gotcha 03",
+    "webReference": "Doris",
+    "name": "Doris",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Hueso\nMaterial: Lonas\nTallas: 34-40\nAltura: 5.5cm- TPlaya Yute",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-doris-032/1.webp"
+    ],
+    "variant": {
+      "color": "Hueso",
+      "colors": [
+        "Hueso"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-olivia-033",
+    "slug": "tacones-olivia-033",
+    "reference": "Gotcha 04",
+    "webReference": "Olivia",
+    "name": "Olivia",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Hueso\nMaterial: Lonas\nTallas: 34-40\nAltura: 5.5cm- TPlaya Yute",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-olivia-033/1.webp"
+    ],
+    "variant": {
+      "color": "Hueso",
+      "colors": [
+        "Hueso"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-dolly-034",
+    "slug": "tacones-dolly-034",
+    "reference": "Gotcha 05",
+    "webReference": "Dolly",
+    "name": "Dolly",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Oro Rosa x Perla\nMaterial: Lonas\nTallas: 34-40\nAltura: 5.5cm- TPlaya Yute",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-dolly-034/1.webp"
+    ],
+    "variant": {
+      "color": "Oro Rosa x Perla",
+      "colors": [
+        "Oro Rosa x Perla"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-zafiro-035",
+    "slug": "tacones-zafiro-035",
+    "reference": "Zafiro",
+    "webReference": "Zafiro",
+    "name": "Zafiro",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negro, Azul, Rojo \nMaterial: Lonas\nTallas: 34-40\nAltura: 5.5cm- TPlaya Yute",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-zafiro-035/1.webp",
+      "/products/tacones/tacones-zafiro-035/2.webp",
+      "/products/tacones/tacones-zafiro-035/3.webp"
+    ],
+    "variant": {
+      "color": "Negro, Azul, Rojo",
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-gia-036",
+    "slug": "tacones-gia-036",
+    "reference": "112 7/2",
+    "webReference": "Gia",
+    "name": "Gia",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: BeigexRojo, BeigexAzul, NegroxBeige\nMaterial: Charol\nTallas: 34-40\nAltura: 7.5cm- T813",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-gia-036/1.webp"
+    ],
+    "variant": {
+      "color": "BeigexRojo, BeigexAzul, NegroxBeige",
+      "colors": [
+        "BeigexRojo",
+        "BeigexAzul",
+        "NegroxBeige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-stele-037",
+    "slug": "tacones-stele-037",
+    "reference": "700 Tacon 813 7/2",
+    "webReference": "Stele",
+    "name": "Stele",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Beige, Negro, Nude, Fucsia, Rojo, Blanco\nMaterial: Boston, Charol\nTallas: 34-40\nAltura: 7.5cm- T813",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-stele-037/1.webp"
+    ],
+    "variant": {
+      "color": "Beige, Negro, Nude, Fucsia, Rojo, Blanco",
+      "colors": [
+        "Beige",
+        "Negro",
+        "Nude",
+        "Fucsia",
+        "Rojo",
+        "Blanco"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-luca-038",
+    "slug": "tacones-luca-038",
+    "reference": "J128 Animal",
+    "webReference": "Luca",
+    "name": "Luca",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negor x Animal\nMaterial: Boston x Animal\nTallas: 34-40\nAltura: 7.5cm- T813",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-luca-038/1.webp"
+    ],
+    "variant": {
+      "color": "Negor x Animal",
+      "colors": [
+        "Negor x Animal"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-margot-039",
+    "slug": "tacones-margot-039",
+    "reference": "103 6/2",
+    "webReference": "Margot",
+    "name": "Margot",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149900,
+    "description": "Color: Negro, Plata, Dorado, Nude\nMaterial: Boston, Charol, Kika\nTallas: 34-40\nAltura: 6.5cm- T490",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-margot-039/1.webp",
+      "/products/tacones/tacones-margot-039/2.webp",
+      "/products/tacones/tacones-margot-039/3.webp",
+      "/products/tacones/tacones-margot-039/4.webp",
+      "/products/tacones/tacones-margot-039/5.webp"
+    ],
+    "variant": {
+      "color": "Negro, Plata, Dorado, Nude",
+      "colors": [
+        "Negro",
+        "Plata",
+        "Dorado",
+        "Nude"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-natalia-040",
+    "slug": "tacones-natalia-040",
+    "reference": "103 Junior",
+    "webReference": "Natalia",
+    "name": "Natalia",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149900,
+    "description": "Color: Negro, Rojo, Nude\nMaterial: Charol\nTallas: 34-40\nAltura: 4cm TJunior\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-natalia-040/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Rojo, Nude",
+      "colors": [
+        "Negro",
+        "Rojo",
+        "Nude"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-mila-041",
+    "slug": "tacones-mila-041",
+    "reference": "02 6/2",
+    "webReference": "Mila",
+    "name": "Mila",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negro, Rojo, Nude, Beige\nMaterial: Charol, Napa\nTallas: 34-40\nAltura: 6.5 cm T490\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-mila-041/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Rojo, Nude, Beige",
+      "colors": [
+        "Negro",
+        "Rojo",
+        "Nude",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-nohelia-042",
+    "slug": "tacones-nohelia-042",
+    "reference": "700 5/2",
+    "webReference": "Nohelia",
+    "name": "Nohelia",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negro, Azul\nMaterial: Napa\nTallas: 34-40\nAltura: 5.5cm TShakira\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-nohelia-042/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Azul",
+      "colors": [
+        "Negro",
+        "Azul"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-estela-043",
+    "slug": "tacones-estela-043",
+    "reference": null,
+    "webReference": "Estela",
+    "name": "Estela",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 159900,
+    "description": "Color: Negro, Blanco\nMaterial: Napa, Charol\nTallas: 34-40\nAltura: 7.5cm T490\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-estela-043/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Blanco",
+      "colors": [
+        "Negro",
+        "Blanco"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-ada-044",
+    "slug": "tacones-ada-044",
+    "reference": "02 Pla externa",
+    "webReference": "Ada",
+    "name": "Ada",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 169999,
+    "description": "Color: Dorado\nMaterial: Kiara\nTallas: 34-40\nAltura: 8.5cm T424\nPla 10 Externa ",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-ada-044/1.webp"
+    ],
+    "variant": {
+      "color": "Dorado",
+      "colors": [
+        "Dorado"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "tacones-aisha-045",
+    "slug": "tacones-aisha-045",
+    "reference": "120",
+    "webReference": "Aisha",
+    "name": "Aisha",
+    "category": "tacones",
+    "categoryLabel": "Tacones",
+    "price": 149999,
+    "description": "Color: Negro, Blanco\nMaterial: Gamuza, Charol\nTallas: 34-40\nAltura: 5.5cm, TShakira\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/tacones/tacones-aisha-045/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Blanco",
+      "colors": [
+        "Negro",
+        "Blanco"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-nicole-002",
+    "slug": "sandalias-nicole-002",
+    "reference": "5807 4/2 Junior",
+    "webReference": "Nicole",
+    "name": "Nicole",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 159900,
+    "description": "Color: Negro, Nude, Beige\nMaterial: Travisor, Kika, Charol\nTallas: 34-40\nAltura: 4.5cm - TJunior",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-nicole-002/1.webp",
+      "/products/sandalias/sandalias-nicole-002/2.webp",
+      "/products/sandalias/sandalias-nicole-002/3.webp"
+    ],
+    "variant": {
+      "color": "Negro, Nude, Beige",
+      "colors": [
+        "Negro",
+        "Nude",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-virginia-003",
+    "slug": "sandalias-virginia-003",
+    "reference": "5807 4/2 6.5",
+    "webReference": "Virginia",
+    "name": "Virginia",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 169900,
+    "description": "Color: Negro, Nude, Beige\nMaterial: Travisor, Kika, Charol\nTallas: 34-40\nAltura: 6.5cm - T490",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-virginia-003/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Nude, Beige",
+      "colors": [
+        "Negro",
+        "Nude",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-pau-004",
+    "slug": "sandalias-pau-004",
+    "reference": "5807 Pla 10",
+    "webReference": "Pau",
+    "name": "Pau",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 169900,
+    "description": "Color: Negro, Nude, Beige\nMaterial: Travisor, Kika, Charol\nTallas: 34-40\nAltura: 9.5cm - T490\nPla 10",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-pau-004/1.webp",
+      "/products/sandalias/sandalias-pau-004/2.webp",
+      "/products/sandalias/sandalias-pau-004/3.webp",
+      "/products/sandalias/sandalias-pau-004/4.webp"
+    ],
+    "variant": {
+      "color": "Negro, Nude, Beige",
+      "colors": [
+        "Negro",
+        "Nude",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-vera-005",
+    "slug": "sandalias-vera-005",
+    "reference": "5807 Plata 30",
+    "webReference": "Vera",
+    "name": "Vera",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 179900,
+    "description": "Color: Negro, Nude, Beige\nMaterial: Travisor, Kika, Charol\nTallas: 34-40\nAltura: 9.5cm - T516\nPla 30",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-vera-005/1.webp",
+      "/products/sandalias/sandalias-vera-005/2.webp",
+      "/products/sandalias/sandalias-vera-005/3.webp"
+    ],
+    "variant": {
+      "color": "Negro, Nude, Beige",
+      "colors": [
+        "Negro",
+        "Nude",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-mia-006",
+    "slug": "sandalias-mia-006",
+    "reference": "Calza Mia",
+    "webReference": "Mia",
+    "name": "Mia",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 179900,
+    "description": "Color: Negro\nMaterial: Travisor\nTallas: 34-40\nAltura: 12cm - T516\nPla 30",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-mia-006/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-dayana-007",
+    "slug": "sandalias-dayana-007",
+    "reference": "Dayana",
+    "webReference": "Dayana",
+    "name": "Dayana",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 98900,
+    "description": "Color: Negro, Miel\nMaterial: Travisor\nTallas: 34-40\nAltura: 3.5cm - TPlaya",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-dayana-007/1.webp",
+      "/products/sandalias/sandalias-dayana-007/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Miel",
+      "colors": [
+        "Negro",
+        "Miel"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-lara-008",
+    "slug": "sandalias-lara-008",
+    "reference": "Linda",
+    "webReference": "Lara",
+    "name": "Lara",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 149900,
+    "description": "Color: Blanca\nMaterial: Yute\nTallas: 34-40\nAltura: 5.5cm - TPlaya",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-lara-008/1.webp"
+    ],
+    "variant": {
+      "color": "Blanca",
+      "colors": [
+        "Blanca"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-livia-009",
+    "slug": "sandalias-livia-009",
+    "reference": "Slendy",
+    "webReference": "Livia",
+    "name": "Livia",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 98900,
+    "description": "Color: Beige, Negro Flores\nMaterial: Yute\nTallas: 34-40",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-livia-009/1.webp"
+    ],
+    "variant": {
+      "color": "Beige, Negro Flores",
+      "colors": [
+        "Beige",
+        "Negro Flores"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-dayanara-010",
+    "slug": "sandalias-dayanara-010",
+    "reference": "Dayana",
+    "webReference": "Dayanara",
+    "name": "Dayanara",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 98900,
+    "description": "Color: Negra\nMaterial: Travis\nTallas: 34-40",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-dayanara-010/1.webp"
+    ],
+    "variant": {
+      "color": "Negra",
+      "colors": [
+        "Negra"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-latina-011",
+    "slug": "sandalias-latina-011",
+    "reference": "Latina",
+    "webReference": "Latina",
+    "name": "Latina",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 149900,
+    "description": "Color: Miel, Beige\nMaterial: Yute\nTallas: 34-40\nAltura: 5cm Yute",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-latina-011/1.webp"
+    ],
+    "variant": {
+      "color": "Miel, Beige",
+      "colors": [
+        "Miel",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-maia-012",
+    "slug": "sandalias-maia-012",
+    "reference": "Slendy",
+    "webReference": "Maia",
+    "name": "Maia",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 98900,
+    "description": "Color: Palo de Rosa, Negra\nMaterial: Travis\nTallas: 34-40",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-maia-012/1.webp"
+    ],
+    "variant": {
+      "color": "Palo de Rosa, Negra",
+      "colors": [
+        "Palo de Rosa",
+        "Negra"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-cleo-013",
+    "slug": "sandalias-cleo-013",
+    "reference": "Slendy",
+    "webReference": "Cleo",
+    "name": "Cleo",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 98900,
+    "description": "Color: Roja, Negra, Blanca\nMaterial: Travis\nTallas: 34-40",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-cleo-013/1.webp"
+    ],
+    "variant": {
+      "color": "Roja, Negra, Blanca",
+      "colors": [
+        "Roja",
+        "Negra",
+        "Blanca"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-nativa-014",
+    "slug": "sandalias-nativa-014",
+    "reference": "Nativa",
+    "webReference": "Nativa",
+    "name": "Nativa",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 74999,
+    "description": "Color: Negra, Blanca\nMaterial: Travis\nTallas: 34-40",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-nativa-014/1.webp"
+    ],
+    "variant": {
+      "color": "Negra, Blanca",
+      "colors": [
+        "Negra",
+        "Blanca"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "sandalias-carmen-015",
+    "slug": "sandalias-carmen-015",
+    "reference": "3018 Pla 30",
+    "webReference": "Carmen",
+    "name": "Carmen",
+    "category": "sandalias",
+    "categoryLabel": "Sandalias",
+    "price": 169900,
+    "description": "Color: Negro, Vinotinto\nMaterial: Charol, Kika\nTallas: 34-40\nAltura: 12cm - T424\nPla 30",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/sandalias/sandalias-carmen-015/1.webp",
+      "/products/sandalias/sandalias-carmen-015/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Vinotinto",
+      "colors": [
+        "Negro",
+        "Vinotinto"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-a-clara-002",
+    "slug": "botines-a-clara-002",
+    "reference": "Alvaro",
+    "webReference": "A-Clara",
+    "name": "A-Clara",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 179900,
+    "description": "Color: Negro\nMaterial: Napa, Taches\nTallas: 34-40\nAltura: 7.5cm - T?",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-a-clara-002/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-a-brielle-003",
+    "slug": "botines-a-brielle-003",
+    "reference": "Alvaro",
+    "webReference": "A-Brielle",
+    "name": "A-Brielle",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 159900,
+    "description": "Color: Negro, Cafe\nMaterial: Gamuza\nTallas: 34-40\nAltura: 4.5 cm - T?",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-a-brielle-003/1.webp",
+      "/products/botines/botines-a-brielle-003/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Cafe",
+      "colors": [
+        "Negro",
+        "Cafe"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-fashion-004",
+    "slug": "botines-fashion-004",
+    "reference": "Fashion",
+    "webReference": "Fashion",
+    "name": "Fashion",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 169900,
+    "description": "Color: Negro\nMaterial: Charol\nTallas: 34-40\nAltura: 7.5 cm - T424",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-fashion-004/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-paula-005",
+    "slug": "botines-paula-005",
+    "reference": "Paula",
+    "webReference": "Paula",
+    "name": "Paula",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 189900,
+    "description": "Color: Negro\nMaterial: Gamuza\nTallas: 34-40\nAltura: 13cm \nPla 40 Interna",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-paula-005/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-jade-006",
+    "slug": "botines-jade-006",
+    "reference": "Miu Miu",
+    "webReference": "Jade",
+    "name": "Jade",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 198900,
+    "description": "Color: Negro\nMaterial: Gamuza x Peluche\nTallas: 34-40\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-jade-006/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-martina-007",
+    "slug": "botines-martina-007",
+    "reference": "Doctor Martin",
+    "webReference": "Martina",
+    "name": "Martina",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 179900,
+    "description": "Color: Negro\nMaterial: Charol\nTallas: 34-40\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-martina-007/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-alana-008",
+    "slug": "botines-alana-008",
+    "reference": "Botas Bogota",
+    "webReference": "Alana",
+    "name": "Alana",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 159900,
+    "description": "Color: Negro, Beige\nMaterial: Gamuza\nTallas: 34-40\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-alana-008/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-anahi-009",
+    "slug": "botines-anahi-009",
+    "reference": "Botas Bogota",
+    "webReference": "Anahi",
+    "name": "Anahi",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 179900,
+    "description": "Color: Negro, Miel\nMaterial: Gamuza\nTallas: 34-40\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-anahi-009/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Miel",
+      "colors": [
+        "Negro",
+        "Miel"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-a-naomi-010",
+    "slug": "botines-a-naomi-010",
+    "reference": "Alvaro",
+    "webReference": "A-Naomi",
+    "name": "A-Naomi",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 189900,
+    "description": "Color: Marrón, Miel\nMaterial: Napa x Resorte \nTallas: 34-40\nSuela Prefabricada\nAltura: 6.4cm",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-a-naomi-010/1.webp"
+    ],
+    "variant": {
+      "color": "Marrón, Miel",
+      "colors": [
+        "Marrón",
+        "Miel"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-flora-011",
+    "slug": "botines-flora-011",
+    "reference": "Rigel",
+    "webReference": "Flora",
+    "name": "Flora",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 169900,
+    "description": "Color: Beige, Negro\nMaterial: Gamuza\nTallas: 34-40\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-flora-011/1.webp"
+    ],
+    "variant": {
+      "color": "Beige, Negro",
+      "colors": [
+        "Beige",
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-d-liz-012",
+    "slug": "botines-d-liz-012",
+    "reference": "Fashion 7/2",
+    "webReference": "D-Liz",
+    "name": "D-Liz",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 179900,
+    "description": "Color: Negro, Cafe\nMaterial: Gamuza\nTallas: 34-40\nAltura: 7.5 cm - T490",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-d-liz-012/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Cafe",
+      "colors": [
+        "Negro",
+        "Cafe"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botines-a-marina-013",
+    "slug": "botines-a-marina-013",
+    "reference": "Alvaro Taches",
+    "webReference": "A-Marina",
+    "name": "A-Marina",
+    "category": "botines",
+    "categoryLabel": "Botines",
+    "price": 179900,
+    "description": "Color: Negro\nMaterial: Napa\nTallas: 34-40\nAltura: 6cm\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botines/botines-a-marina-013/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botas-leonora-002",
+    "slug": "botas-leonora-002",
+    "reference": "Bota extralarga\nPrefabricada",
+    "webReference": "Leonora",
+    "name": "Leonora",
+    "category": "botas",
+    "categoryLabel": "Botas",
+    "price": 199900,
+    "description": "Color: Negro, Beige\nMaterial: Gamuza\nTallas: 34-40\nAltura: 6.5\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botas/botas-leonora-002/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botas-f-iris-003",
+    "slug": "botas-f-iris-003",
+    "reference": "Iris",
+    "webReference": "F-Iris",
+    "name": "F-Iris",
+    "category": "botas",
+    "categoryLabel": "Botas",
+    "price": 279999,
+    "description": "Color: Negro, Cafe\nMaterial: Cuero x Resorte\nTallas: 34-40\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botas/botas-f-iris-003/1.webp",
+      "/products/botas/botas-f-iris-003/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Cafe",
+      "colors": [
+        "Negro",
+        "Cafe"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botas-f-selena-004",
+    "slug": "botas-f-selena-004",
+    "reference": "Iris",
+    "webReference": "F-Selena",
+    "name": "F-Selena",
+    "category": "botas",
+    "categoryLabel": "Botas",
+    "price": 279999,
+    "description": "Color: Negro, Cafe\nMaterial: Cuero x Resorte\nTallas: 34-40\nAltura: 6cm\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botas/botas-f-selena-004/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Cafe",
+      "colors": [
+        "Negro",
+        "Cafe"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botas-lola-005",
+    "slug": "botas-lola-005",
+    "reference": "Bratz",
+    "webReference": "Lola",
+    "name": "Lola",
+    "category": "botas",
+    "categoryLabel": "Botas",
+    "price": 194999,
+    "description": "Color: Negro, Cafe\nMaterial: Cuero x Resorte\nTallas: 34-40\nAltura: 9cm\nSuela Dana Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botas/botas-lola-005/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Cafe",
+      "colors": [
+        "Negro",
+        "Cafe"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botas-adeline-006",
+    "slug": "botas-adeline-006",
+    "reference": "2 en uno",
+    "webReference": "Adeline",
+    "name": "Adeline",
+    "category": "botas",
+    "categoryLabel": "Botas",
+    "price": 229999,
+    "description": "Color: Negro, Beige\nMaterial: Stretch\nTallas: 34-40\nAltura: 7.5cm",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botas/botas-adeline-006/1.webp",
+      "/products/botas/botas-adeline-006/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botas-aitana-007",
+    "slug": "botas-aitana-007",
+    "reference": "Corrugada",
+    "webReference": "Aitana",
+    "name": "Aitana",
+    "category": "botas",
+    "categoryLabel": "Botas",
+    "price": 229999,
+    "description": "Color: Cafe, Negro\nMaterial: Stretch\nTallas: 34-40\nAltura: 6.5cm",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botas/botas-aitana-007/1.webp",
+      "/products/botas/botas-aitana-007/2.webp"
+    ],
+    "variant": {
+      "color": "Cafe, Negro",
+      "colors": [
+        "Cafe",
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botas-paloma-008",
+    "slug": "botas-paloma-008",
+    "reference": "Bota Perforada",
+    "webReference": "Paloma",
+    "name": "Paloma",
+    "category": "botas",
+    "categoryLabel": "Botas",
+    "price": 239999,
+    "description": "Color: Negro, Beige\nMaterial: Stretch\nTallas: 34-40\nAltura: 6.5cm",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botas/botas-paloma-008/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botas-alba-009",
+    "slug": "botas-alba-009",
+    "reference": "Extralarga Puntuda",
+    "webReference": "Alba",
+    "name": "Alba",
+    "category": "botas",
+    "categoryLabel": "Botas",
+    "price": 239999,
+    "description": "Color: Negro, Beige\nMaterial: Licra\nTallas: 34-40\nAltura: 7.5cm",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botas/botas-alba-009/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "botas-antonella-010",
+    "slug": "botas-antonella-010",
+    "reference": "Bota puntuda stretch",
+    "webReference": "Antonella",
+    "name": "Antonella",
+    "category": "botas",
+    "categoryLabel": "Botas",
+    "price": 189999,
+    "description": "Color: Negro, Beige\nMaterial: Stretch\nTallas: 34-40\nAltura: 7.5cm",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/botas/botas-antonella-010/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-bruna-002",
+    "slug": "flats-bruna-002",
+    "reference": "Diseños",
+    "webReference": "Bruna",
+    "name": "Bruna",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 94999,
+    "description": "Color: Negro, Amaretto, Verde Oliva\nMaterial: Napa\nTallas: 34-40\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-bruna-002/1.webp",
+      "/products/flats/flats-bruna-002/2.webp",
+      "/products/flats/flats-bruna-002/3.webp"
+    ],
+    "variant": {
+      "color": "Negro, Amaretto, Verde Oliva",
+      "colors": [
+        "Negro",
+        "Amaretto",
+        "Verde Oliva"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-celine-003",
+    "slug": "flats-celine-003",
+    "reference": "Diseños",
+    "webReference": "Celine",
+    "name": "Celine",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 94999,
+    "description": "Color: Negro, VinoxNegro, BlancoxBeige\nMaterial: Charol\nTallas: 34-40\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-celine-003/1.webp",
+      "/products/flats/flats-celine-003/2.webp",
+      "/products/flats/flats-celine-003/3.webp"
+    ],
+    "variant": {
+      "color": "Negro, VinoxNegro, BlancoxBeige",
+      "colors": [
+        "Negro",
+        "VinoxNegro",
+        "BlancoxBeige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-dafne-004",
+    "slug": "flats-dafne-004",
+    "reference": "Olguin",
+    "webReference": "Dafne",
+    "name": "Dafne",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 139999,
+    "description": "Color: Negro\nMaterial: Gamuza\nTallas: 34-40\n",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-dafne-004/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-fiorella-005",
+    "slug": "flats-fiorella-005",
+    "reference": "Diseños",
+    "webReference": "Fiorella",
+    "name": "Fiorella",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 94999,
+    "description": "Color: Negro\nMaterial: Charol\nTallas: 34-40",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-fiorella-005/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-frida-006",
+    "slug": "flats-frida-006",
+    "reference": "Camilo",
+    "webReference": "Frida",
+    "name": "Frida",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 159999,
+    "description": "Color: Negro, Beige\nMaterial: Charol\nTallas: 34-40\nAltura: 3.5cm\nSuela Prefabricada",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-frida-006/1.webp",
+      "/products/flats/flats-frida-006/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-malia-007",
+    "slug": "flats-malia-007",
+    "reference": "Olguin",
+    "webReference": "Malia",
+    "name": "Malia",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 139999,
+    "description": "Color: Cafe, Negro\nMaterial: Charol\nTallas: 34-40",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-malia-007/1.webp"
+    ],
+    "variant": {
+      "color": "Cafe, Negro",
+      "colors": [
+        "Cafe",
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-oriana-008",
+    "slug": "flats-oriana-008",
+    "reference": "Ceballos",
+    "webReference": "Oriana",
+    "name": "Oriana",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 134999,
+    "description": "Color: Negro, Azul, Nude\nMaterial: Charol\nTallas: 34-40\nAltura: 3.5cm",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-oriana-008/1.webp",
+      "/products/flats/flats-oriana-008/2.webp",
+      "/products/flats/flats-oriana-008/3.webp"
+    ],
+    "variant": {
+      "color": "Negro, Azul, Nude",
+      "colors": [
+        "Negro",
+        "Azul",
+        "Nude"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-samara-009",
+    "slug": "flats-samara-009",
+    "reference": null,
+    "webReference": "Samara",
+    "name": "Samara",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 134999,
+    "description": "Color: Negro, Miel\nMaterial: Napa\nTallas: 34-40",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-samara-009/1.webp",
+      "/products/flats/flats-samara-009/2.webp"
+    ],
+    "variant": {
+      "color": "Negro, Miel",
+      "colors": [
+        "Negro",
+        "Miel"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-talia-010",
+    "slug": "flats-talia-010",
+    "reference": null,
+    "webReference": "Talia",
+    "name": "Talia",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 269999,
+    "description": "Color: Negro, Beige\nMaterial: Cuero\nTallas: 34-40\nAltura:",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-talia-010/1.webp"
+    ],
+    "variant": {
+      "color": "Negro, Beige",
+      "colors": [
+        "Negro",
+        "Beige"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-violeta-011",
+    "slug": "flats-violeta-011",
+    "reference": "Mafalda Dayana",
+    "webReference": "Violeta",
+    "name": "Violeta",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 149999,
+    "description": "Color: Negro\nMaterial: Gamuza\nTallas: 34-40\nAltura: 3.5",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-violeta-011/1.webp"
+    ],
+    "variant": {
+      "color": "Negro",
+      "colors": [
+        "Negro"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  },
+  {
+    "id": "flats-abril-012",
+    "slug": "flats-abril-012",
+    "reference": null,
+    "webReference": "Abril",
+    "name": "Abril",
+    "category": "flats",
+    "categoryLabel": "Flats",
+    "price": 159999,
+    "description": "Color: Nude\nMaterial: Charol\nTallas: 34-40\nAltura: 5.5cm",
+    "features": [],
+    "popularity": 0,
+    "isNew": false,
+    "isPromo": false,
+    "imageUrls": [
+      "/products/flats/flats-abril-012/1.webp"
+    ],
+    "variant": {
+      "color": "Nude",
+      "colors": [
+        "Nude"
+      ],
+      "sizes": [
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ],
+      "stock": null
+    }
+  }
+]

@@ -1,6 +1,8 @@
 import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 
+import { ContactForm } from "@/components/contact/contact-form";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
+import { WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
 
 export default function ContactoPage() {
   return (
@@ -18,12 +20,12 @@ export default function ContactoPage() {
           <p className="mt-2 font-semibold">larscalzado@gmail.com</p>
         </a>
         <a
-          href="tel:+573014594421"
+          href={`tel:+${WHATSAPP_NUMBER}`}
           className="rounded-2xl border border-[var(--border)] bg-white p-5 transition hover:border-[var(--primary)]"
         >
           <Phone className="mb-2 h-5 w-5 text-[var(--primary)]" />
           <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">Telefono</p>
-          <p className="mt-2 font-semibold">301 459 4421</p>
+          <p className="mt-2 font-semibold">{WHATSAPP_DISPLAY_NUMBER}</p>
         </a>
         <a
           href="tel:+573229521433"
@@ -64,6 +66,8 @@ export default function ContactoPage() {
           </p>
         </a>
       </div>
+
+      <ContactForm />
     </section>
   );
 }

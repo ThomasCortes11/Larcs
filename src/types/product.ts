@@ -1,16 +1,20 @@
-export type CategoryKey = "botas" | "botines" | "mocasines" | "sandalias" | "tacones";
+export type CategoryKey = "botas" | "botines" | "flats" | "sandalias" | "tacones";
 
 export interface ProductVariant {
   color: string;
+  colors: string[];
   sizes: string[];
-  stock: number;
+  stock?: number | null;
 }
 
 export interface Product {
   id: string;
   slug: string;
+  reference: string | null;
+  webReference: string;
   name: string;
   category: CategoryKey;
+  categoryLabel: string;
   price: number;
   previousPrice?: number;
   discountPercentage?: number;

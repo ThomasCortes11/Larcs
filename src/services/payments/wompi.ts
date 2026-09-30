@@ -16,6 +16,7 @@ export interface WompiCartItemInput {
   id: string;
   quantity: number;
   size: string;
+  color?: string;
 }
 
 export interface WompiCheckoutRequest extends WompiCustomerData {
@@ -27,6 +28,7 @@ export interface WompiCheckoutSummary {
     id: string;
     name: string;
     size: string;
+    color?: string;
     quantity: number;
     unitPrice: number;
     lineTotal: number;
@@ -70,6 +72,14 @@ export async function resolveCheckoutSummary(items: WompiCartItemInput[]): Promi
       throw new Error(`No se encontro el producto ${item.id}.`);
     }
 
+    if (!product.variant.sizes.includes(item.size)) {
+      throw new Error(`La talla ${item.size} no está disponible para ${product.name}.`);
+    }
+
+    if (item.color && !product.variant.colors.includes(item.color)) {
+      throw new Error(`El color ${item.color} no está disponible para ${product.name}.`);
+    }
+
     const quantity = Math.max(1, item.quantity);
     const lineTotal = product.price * quantity;
 
@@ -77,6 +87,7 @@ export async function resolveCheckoutSummary(items: WompiCartItemInput[]): Promi
       id: product.id,
       name: product.name,
       size: item.size,
+      color: item.color,
       quantity,
       unitPrice: product.price,
       lineTotal

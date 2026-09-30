@@ -1,0 +1,377 @@
+{
+  "source": "C:\\Users\\soporte\\Desktop\\Larcs-Store\\Larcs\\src\\components\\Excel\\archivo excel.xlsx",
+  "generatedAt": "2026-09-29T23:30:19.174539+00:00",
+  "sheets": [
+    {
+      "name": "Tacones ",
+      "category": "Tacones",
+      "productsFound": 44,
+      "imagesFound": 93,
+      "imagesAssociated": 93,
+      "rowsWithImages": 44,
+      "imageRowsWithoutProducts": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    {
+      "name": "Sandalias",
+      "category": "Sandalias",
+      "productsFound": 14,
+      "imagesFound": 23,
+      "imagesAssociated": 23,
+      "rowsWithImages": 14,
+      "imageRowsWithoutProducts": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "name": "Botines",
+      "category": "Botines",
+      "productsFound": 12,
+      "imagesFound": 13,
+      "imagesAssociated": 13,
+      "rowsWithImages": 12,
+      "imageRowsWithoutProducts": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "name": "Botas",
+      "category": "Botas",
+      "productsFound": 9,
+      "imagesFound": 12,
+      "imagesAssociated": 12,
+      "rowsWithImages": 9,
+      "imageRowsWithoutProducts": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "Flats",
+      "category": "Flats",
+      "productsFound": 11,
+      "imagesFound": 19,
+      "imagesAssociated": 19,
+      "rowsWithImages": 11,
+      "imageRowsWithoutProducts": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "totals": {
+    "productsFound": 90,
+    "productsImported": 90,
+    "imagesFound": 160,
+    "imagesExported": 160,
+    "productsWithoutImages": 0,
+    "productsWithoutPrice": 0,
+    "productsWithIncompleteInformation": 4,
+    "productsByCategory": {
+      "Tacones": 44,
+      "Sandalias": 14,
+      "Botines": 12,
+      "Botas": 9,
+      "Flats": 11
+    },
+    "imagesByCategory": {
+      "Tacones": 93,
+      "Sandalias": 23,
+      "Botines": 13,
+      "Botas": 12,
+      "Flats": 19
+    }
+  },
+  "productsWithoutImages": [],
+  "productsWithoutPrice": [],
+  "productsWithIncompleteInformation": [
+    {
+      "sheet": "Tacones",
+      "row": 43,
+      "name": "Estela",
+      "missingFields": [
+        "Referencia Larcs"
+      ]
+    },
+    {
+      "sheet": "Flats",
+      "row": 9,
+      "name": "Samara",
+      "missingFields": [
+        "Referencia Larcs"
+      ]
+    },
+    {
+      "sheet": "Flats",
+      "row": 10,
+      "name": "Talia",
+      "missingFields": [
+        "Referencia Larcs"
+      ]
+    },
+    {
+      "sheet": "Flats",
+      "row": 12,
+      "name": "Abril",
+      "missingFields": [
+        "Referencia Larcs"
+      ]
+    }
+  ],
+  "duplicateLarcsReferences": [
+    {
+      "category": "Tacones",
+      "reference": "700 5/2",
+      "rows": [
+        5,
+        42
+      ]
+    },
+    {
+      "category": "Sandalias",
+      "reference": "dayana",
+      "rows": [
+        7,
+        10
+      ]
+    },
+    {
+      "category": "Sandalias",
+      "reference": "slendy",
+      "rows": [
+        9,
+        12,
+        13
+      ]
+    },
+    {
+      "category": "Botines",
+      "reference": "alvaro",
+      "rows": [
+        2,
+        3,
+        10
+      ]
+    },
+    {
+      "category": "Botines",
+      "reference": "botas bogota",
+      "rows": [
+        8,
+        9
+      ]
+    },
+    {
+      "category": "Botas",
+      "reference": "iris",
+      "rows": [
+        3,
+        4
+      ]
+    },
+    {
+      "category": "Flats",
+      "reference": "diseños",
+      "rows": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "category": "Flats",
+      "reference": "olguin",
+      "rows": [
+        4,
+        7
+      ]
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 2.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 3.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 4.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 5.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 6.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 7.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 8.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 9.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 10.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 11.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 12.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 13.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 14.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 15.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 16.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 17.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 18.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 19.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 20.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 21.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 22.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 23.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 24.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 25.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 26.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 27.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 28.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 29.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 30.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 31.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 32.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 33.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 34.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 35.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 36.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 37.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 38.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 39.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 40.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 41.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 42.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 43.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 44.",
+    "Hay imágenes ancladas a una fila sin producto en 'Tacones ', fila 45.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 2.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 3.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 4.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 5.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 6.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 7.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 8.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 9.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 10.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 11.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 12.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 13.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 14.",
+    "Hay imágenes ancladas a una fila sin producto en 'Sandalias', fila 15.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 2.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 3.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 4.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 5.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 6.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 7.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 8.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 9.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 10.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 11.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 12.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botines', fila 13.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botas', fila 2.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botas', fila 3.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botas', fila 4.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botas', fila 5.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botas', fila 6.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botas', fila 7.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botas', fila 8.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botas', fila 9.",
+    "Hay imágenes ancladas a una fila sin producto en 'Botas', fila 10.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 2.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 3.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 4.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 5.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 6.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 7.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 8.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 9.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 10.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 11.",
+    "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 12."
+  ],
+  "legacyProductPhotosRemoved": 0,
+  "backupPath": "backups\\catalog\\20260929T233106075271Z",
+  "imageOptimization": {
+    "format": "WebP",
+    "maximumEdgePixels": 2000,
+    "quality": 84,
+    "sourceBytes": 366116283,
+    "optimizedBytes": 18900300,
+    "reductionPercent": 94.8
+  }
+}

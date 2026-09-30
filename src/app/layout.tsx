@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
+import { BRAND_LOGO_PURPLE } from "@/lib/constants";
 import { brandBody, brandDisplay, brandHeading } from "@/lib/fonts";
 
 import "./globals.css";
@@ -10,6 +11,9 @@ import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.larcs.co"),
+  icons: {
+    icon: BRAND_LOGO_PURPLE
+  },
   alternates: {
     canonical: "/"
   },
@@ -18,13 +22,13 @@ export const metadata: Metadata = {
     template: "%s | LARCS"
   },
   description:
-    "LARCS ofrece calzado femenino premium con botas, botines, mocasines, sandalias y tacones. Compra online con estilo, comodidad y atención personalizada.",
+    "LARCS ofrece calzado femenino premium con botas, botines, sandalias, tacones y flats. Compra online con estilo, comodidad y atención personalizada.",
   keywords: [
     "LARCS",
     "calzado femenino",
     "botines premium",
     "botas mujer",
-    "mocasines",
+    "flats",
     "sandalias",
     "tacones",
     "zapatos premium Colombia",

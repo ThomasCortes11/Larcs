@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ProductDetailActions } from "@/components/catalog/product-detail-actions";
 import { ProductGallery } from "@/components/catalog/product-gallery";
 import { ProductGrid } from "@/components/catalog/product-grid";
+import { BLUR_PLACEHOLDER, CATEGORY_LABELS } from "@/lib/constants";
 import { getAllProducts, getProductBySlug } from "@/lib/products";
 import { toCurrency } from "@/lib/utils";
 
@@ -29,7 +30,9 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     openGraph: {
       title: product.name,
       description: product.description,
-      images: [{ url: product.imageUrls[0] }]
+      ...(product.imageUrls[0]
+        ? { images: [{ url: product.imageUrls[0] }] }
+        : {})
     }
   };
 }
@@ -56,7 +59,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     name: product.name,
     description: product.description,
     image: product.imageUrls,
-    sku: product.id,
+    sku: product.reference ?? product.webReference ?? product.id,
     brand: {
       "@type": "Brand",
       name: "LARCS"
@@ -65,8 +68,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
       "@type": "Offer",
       priceCurrency: "COP",
       price: String(product.price),
-      availability:
-        product.variant.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+        ...(product.variant.stock == null
+          ? {}
+          : {
+              availability:
+                product.variant.stock > 0
+                  ? "https://schema.org/InStock"
+                  : "https://schema.org/OutOfStock"
+            })
     }
   };
 
@@ -81,11 +90,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <nav aria-label="Breadcrumb" className="text-sm text-[var(--muted-foreground)]">
         <ol className="flex items-center gap-2">
           <li>
-            <Link href="/">Inicio</Link>
+            <Link href="/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2">Inicio</Link>
           </li>
           <li>/</li>
           <li>
-            <Link href="/catalogo">Catalogo</Link>
+            <Link href="/catalogo" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2">Catalogo</Link>
           </li>
           <li>/</li>
           <li className="line-clamp-1 text-[var(--foreground)]">{product.name}</li>
@@ -95,7 +104,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="grid gap-8 md:grid-cols-2">
         <ProductGallery name={product.name} imageUrls={product.imageUrls} />
         <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.2em] text-[var(--primary)]">{product.category}</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-[var(--primary)]">
+            {product.categoryLabel ?? CATEGORY_LABELS[product.category]}
+          </p>
           <h1 className="text-3xl font-bold">{product.name}</h1>
           <div className="flex items-end gap-3">
             <p className="text-2xl font-bold">{toCurrency(product.price)}</p>
@@ -110,7 +121,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <span className="text-[var(--muted-foreground)]">Color:</span> {product.variant.color}
             </p>
             <p>
-              <span className="text-[var(--muted-foreground)]">Stock:</span> {product.variant.stock} unidades
+              <span className="text-[var(--muted-foreground)]">
+                {product.variant.stock == null ? "Disponibilidad:" : "Stock:"}
+              </span>{" "}
+              {product.variant.stock == null
+                ? "Consultar con asesor"
+                : `${product.variant.stock} unidades`}
             </p>
           </div>
           <ul className="space-y-2 text-sm">
@@ -122,10 +138,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
             id={product.id}
             slug={product.slug}
             name={product.name}
-            sku={product.id}
-            imageUrl={product.imageUrls[0]}
+            sku={product.reference ?? product.webReference ?? product.id}
+            reference={product.reference ?? product.webReference ?? product.id}
+            imageUrl={product.imageUrls[0] ?? BLUR_PLACEHOLDER}
             price={product.price}
             color={product.variant.color}
+            colors={product.variant.colors}
             sizes={product.variant.sizes}
           />
         </div>

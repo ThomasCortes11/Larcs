@@ -1,21 +1,35 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import * as Dialog from "@radix-ui/react-dialog";
-import { MapPin, Menu, X } from "lucide-react";
+import { Heart, MapPin, Menu, ShoppingBag, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
-import { CartDrawer } from "@/components/layout/cart-drawer";
 import { SearchAutocomplete } from "@/components/layout/search-autocomplete";
-import { WishlistDrawer } from "@/components/layout/wishlist-drawer";
 import { Button } from "@/components/ui/button";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
+import { useCartStore } from "@/store/cart-store";
 
-const categories = ["botas", "botines", "tacones", "sandalias", "mocasines"];
+const CartDrawer = dynamic(
+  () => import("@/components/layout/cart-drawer").then((module) => module.CartDrawer),
+  { ssr: false }
+);
+const WishlistDrawer = dynamic(
+  () => import("@/components/layout/wishlist-drawer").then((module) => module.WishlistDrawer),
+  { ssr: false }
+);
+
+const categories = ["botas", "botines", "tacones", "sandalias", "flats"];
 
 export function Header() {
   const [collectionsOpen, setCollectionsOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [wishlistOpen, setWishlistOpen] = useState(false);
+  const cartItemCount = useCartStore((state) =>
+    state.items.reduce((count, item) => count + item.quantity, 0)
+  );
   const collectionsRef = useRef<HTMLDivElement>(null);
   const collectionsCloseTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -63,7 +77,7 @@ export function Header() {
         <Dialog.Root>
           <Dialog.Trigger asChild>
             <button
-              className="shrink-0 rounded-full border border-[var(--border)] bg-white p-2 shadow-sm transition hover:bg-[var(--muted)] md:hidden"
+              className="inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white p-0 shadow-sm transition hover:bg-[var(--muted)] md:hidden"
               aria-label="Abrir menu"
             >
               <Menu className="h-5 w-5" />
@@ -75,7 +89,7 @@ export function Header() {
               <div className="flex items-center justify-between">
                 <Dialog.Title className="text-lg font-semibold text-[var(--foreground)]">Colecciones</Dialog.Title>
                 <Dialog.Close asChild>
-                  <button aria-label="Cerrar menu" className="rounded-full border border-[var(--border)] bg-white p-2 transition hover:bg-[var(--muted)]">
+                  <button aria-label="Cerrar menu" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-white p-0 transition hover:bg-[var(--muted)]">
                     <X className="h-4 w-4" />
                   </button>
                 </Dialog.Close>
@@ -92,6 +106,13 @@ export function Header() {
                     </Link>
                   </Dialog.Close>
                 ))}
+              </div>
+
+              <div className="mt-5">
+                <p className="mb-2 text-xs uppercase tracking-wide text-[var(--muted-foreground)]">
+                  Buscar productos
+                </p>
+                <SearchAutocomplete className="w-full" />
               </div>
 
               <div className="mt-6 grid gap-2.5 border-t border-[var(--border)] pt-5">
@@ -115,7 +136,7 @@ export function Header() {
             </Dialog.Content>
           </Dialog.Portal>
         </Dialog.Root>
-        <BrandLogo priority className="h-[40px] w-[82px] sm:h-[42px] sm:w-[96px]" />
+        <BrandLogo className="h-[44px] min-h-[44px] w-16 sm:h-[42px] sm:min-h-[42px] sm:w-[96px]" />
         <nav className="hidden flex-1 items-center gap-2 md:flex">
           <div
             ref={collectionsRef}
@@ -133,7 +154,7 @@ export function Header() {
                   openCollections();
                 }
               }}
-              className="rounded-full px-4 py-2 text-sm uppercase tracking-wide text-[var(--foreground)] transition hover:bg-white hover:text-[var(--primary)]"
+              className="min-h-11 rounded-full px-4 py-2 text-sm uppercase tracking-wide text-[var(--foreground)] transition hover:bg-white hover:text-[var(--primary)]"
             >
               Colecciones
             </button>
@@ -160,7 +181,7 @@ export function Header() {
           target="_blank"
           rel="noreferrer"
           aria-label="Instagram LARCS"
-          className="shrink-0 rounded-full border border-[var(--border)] bg-white p-2 hover:bg-[var(--muted)]"
+          className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white p-0 hover:bg-[var(--muted)] sm:inline-flex"
         >
           <InstagramIcon className="h-5 w-5" />
         </a>
@@ -169,14 +190,35 @@ export function Header() {
           target="_blank"
           rel="noreferrer"
           aria-label="Ver ubicacion en Google Maps"
-          className="hidden shrink-0 rounded-full border border-[var(--border)] bg-white p-2 hover:bg-[var(--muted)] sm:block"
+          className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white p-0 hover:bg-[var(--muted)] md:inline-flex"
         >
           <MapPin className="h-5 w-5" />
         </a>
-        <WishlistDrawer />
-        <CartDrawer />
+        <button
+          type="button"
+          aria-label="Abrir favoritos"
+          className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white p-0 hover:bg-[var(--muted)]"
+          onClick={() => setWishlistOpen(true)}
+        >
+          <Heart className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          aria-label="Abrir carrito"
+          className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full p-0 hover:bg-[var(--muted)]"
+          onClick={() => setCartOpen(true)}
+        >
+          <ShoppingBag className="h-5 w-5" />
+          {cartItemCount > 0 ? (
+            <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--primary)] text-xs text-white">
+              {cartItemCount}
+            </span>
+          ) : null}
+        </button>
+        {wishlistOpen ? <WishlistDrawer open={wishlistOpen} onOpenChange={setWishlistOpen} /> : null}
+        {cartOpen ? <CartDrawer open={cartOpen} onOpenChange={setCartOpen} /> : null}
         <Link href="/pago" className="ml-auto shrink-0">
-          <Button size="md" className="brand-display px-4 text-sm sm:px-5">
+          <Button size="md" className="brand-display px-3 text-sm sm:px-5">
             Comprar
           </Button>
         </Link>

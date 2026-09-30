@@ -3,35 +3,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Heart, X } from "lucide-react";
+import { X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { toCurrency } from "@/lib/utils";
 import { useWishlistStore } from "@/store/wishlist-store";
 
-export function WishlistDrawer() {
+interface WishlistDrawerProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export function WishlistDrawer({ open, onOpenChange }: WishlistDrawerProps) {
   const items = useWishlistStore((state) => state.items);
   const removeItem = useWishlistStore((state) => state.removeItem);
 
   return (
-    <Dialog.Root>
-      <Dialog.Trigger asChild>
-        <button aria-label="Abrir favoritos" className="relative rounded-full border border-[var(--border)] bg-white p-2 hover:bg-[var(--muted)]">
-          <Heart className="h-5 w-5" />
-          {items.length > 0 ? (
-            <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--primary)] text-xs text-white">
-              {items.length}
-            </span>
-          ) : null}
-        </button>
-      </Dialog.Trigger>
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/45" />
         <Dialog.Content className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-white p-5 shadow-2xl">
           <div className="mb-4 flex items-center justify-between">
             <Dialog.Title className="text-lg font-semibold">Tus favoritos</Dialog.Title>
             <Dialog.Close asChild>
-              <button aria-label="Cerrar favoritos" className="rounded-full p-2 hover:bg-[var(--muted)]">
+              <button aria-label="Cerrar favoritos" className="inline-flex h-11 w-11 items-center justify-center rounded-full p-0 hover:bg-[var(--muted)]">
                 <X className="h-4 w-4" />
               </button>
             </Dialog.Close>
@@ -56,7 +51,7 @@ export function WishlistDrawer() {
                     Ver producto
                   </Link>
                 </div>
-                <button className="text-xs text-[var(--primary)]" onClick={() => removeItem(item.id)}>
+                <button className="inline-flex min-h-11 items-center px-2 text-xs text-[var(--primary)]" onClick={() => removeItem(item.id)}>
                   Eliminar
                 </button>
               </article>

@@ -8,7 +8,7 @@ import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { AddiButton } from "@/components/checkout/addi-button";
-import { CodCheckoutForm } from "@/components/checkout/cod-checkout-form";
+import { CodCheckoutForm } from "@/components/checkout/cod-checkout-trigger";
 import { Input } from "@/components/ui/input";
 import { SHIPPING_COST } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
@@ -17,7 +17,7 @@ import { getCartSubtotal, useCartStore } from "@/store/cart-store";
 const checkoutSchema = z.object({
   customerName: z.string().min(3, "Nombre requerido"),
   email: z.string().email("Email invalido"),
-  phone: z.string().min(7, "Telefono invalido"),
+  phone: z.string().regex(/^3\d{9}$/, "Ingresa un celular colombiano de 10 dígitos."),
   address: z.string().min(8, "Direccion requerida"),
   city: z.string().min(2, "Ciudad requerida"),
   department: z.string().min(2, "Departamento requerido")
@@ -25,7 +25,11 @@ const checkoutSchema = z.object({
 
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
-export function CheckoutForm() {
+interface CheckoutFormProps {
+  wompiConfigured: boolean;
+}
+
+export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const items = useCartStore((state) => state.items);
@@ -33,7 +37,8 @@ export function CheckoutForm() {
   const shipping = items.length ? SHIPPING_COST : 0;
   const total = subtotal + shipping;
   const form = useForm<CheckoutFormValues>({
-    resolver: zodResolver(checkoutSchema)
+    resolver: zodResolver(checkoutSchema),
+    mode: "onChange"
   });
 
   const onSubmit = form.handleSubmit(async (values) => {
@@ -56,6 +61,7 @@ export function CheckoutForm() {
           items: items.map((item) => ({
             id: item.id,
             size: item.size,
+            color: item.color,
             quantity: item.quantity
           }))
         })
@@ -78,9 +84,13 @@ export function CheckoutForm() {
   return (
     <div className="grid gap-4 rounded-3xl border border-[var(--border)] bg-white p-6">
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold">Checkout seguro con Wompi</h2>
+        <h2 className="text-xl font-semibold">
+          {wompiConfigured ? "Checkout seguro con Wompi" : "Checkout con Wompi en preparación"}
+        </h2>
         <p className="text-sm text-[var(--muted-foreground)]">
-          El pago se abre en el checkout oficial de Wompi y te regresa a una pantalla de resultado al terminar.
+          {wompiConfigured
+            ? "El pago se abre en el checkout oficial de Wompi y te regresa a una pantalla de resultado al terminar."
+            : "Wompi estará disponible cuando se configuren sus variables de entorno. Puedes usar ADDI o contra entrega mientras tanto."}
         </p>
       </div>
 
@@ -101,23 +111,48 @@ export function CheckoutForm() {
         </div>
       ) : (
         <div className="rounded-2xl border border-dashed border-[var(--border)] bg-[var(--muted)]/50 p-4 text-sm text-[var(--muted-foreground)]">
-          Tu carrito esta vacio. <Link href="/catalogo" className="underline">Volver al catálogo</Link> para agregar productos.
+          Tu carrito esta vacio. <Link href="/catalogo" className="inline-flex min-h-[44px] items-center underline">Volver al catálogo</Link> para agregar productos.
         </div>
       )}
 
       <form onSubmit={onSubmit} className="grid gap-4">
-      <Input placeholder="Nombre completo" {...form.register("customerName")} />
-      <Input placeholder="Email" type="email" {...form.register("email")} />
-      <Input placeholder="Telefono" {...form.register("phone")} />
-      <Input placeholder="Direccion" {...form.register("address")} />
-      <div className="grid gap-4 md:grid-cols-2">
-        <Input placeholder="Ciudad" {...form.register("city")} />
-        <Input placeholder="Departamento" {...form.register("department")} />
-      </div>
-      {errorMessage ? <p className="text-sm text-red-600">{errorMessage}</p> : null}
-      <Button type="submit" disabled={isSubmitting || items.length === 0}>
-        {isSubmitting ? "Redirigiendo a Wompi..." : "Pagar con Wompi"}
-      </Button>
+        <div className="space-y-1">
+          <label htmlFor="wompi-name" className="text-sm font-medium">Nombre completo</label>
+          <Input id="wompi-name" autoComplete="name" aria-invalid={Boolean(form.formState.errors.customerName)} aria-describedby={form.formState.errors.customerName ? "wompi-name-error" : undefined} {...form.register("customerName")} />
+          {form.formState.errors.customerName ? <p id="wompi-name-error" className="text-xs text-red-600">{form.formState.errors.customerName.message}</p> : null}
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="wompi-email" className="text-sm font-medium">Correo electrónico</label>
+          <Input id="wompi-email" type="email" autoComplete="email" aria-invalid={Boolean(form.formState.errors.email)} aria-describedby={form.formState.errors.email ? "wompi-email-error" : undefined} {...form.register("email")} />
+          {form.formState.errors.email ? <p id="wompi-email-error" className="text-xs text-red-600">{form.formState.errors.email.message}</p> : null}
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="wompi-phone" className="text-sm font-medium">Teléfono / celular</label>
+          <Input id="wompi-phone" type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={10} aria-invalid={Boolean(form.formState.errors.phone)} aria-describedby={form.formState.errors.phone ? "wompi-phone-error" : "wompi-phone-hint"} {...form.register("phone")} />
+          <p id="wompi-phone-hint" className="text-xs text-[var(--muted-foreground)]">10 dígitos, sin indicativo ni espacios.</p>
+          {form.formState.errors.phone ? <p id="wompi-phone-error" className="text-xs text-red-600">{form.formState.errors.phone.message}</p> : null}
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="wompi-address" className="text-sm font-medium">Dirección completa</label>
+          <Input id="wompi-address" autoComplete="street-address" aria-invalid={Boolean(form.formState.errors.address)} aria-describedby={form.formState.errors.address ? "wompi-address-error" : undefined} {...form.register("address")} />
+          {form.formState.errors.address ? <p id="wompi-address-error" className="text-xs text-red-600">{form.formState.errors.address.message}</p> : null}
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="space-y-1">
+            <label htmlFor="wompi-city" className="text-sm font-medium">Ciudad</label>
+            <Input id="wompi-city" autoComplete="address-level2" aria-invalid={Boolean(form.formState.errors.city)} aria-describedby={form.formState.errors.city ? "wompi-city-error" : undefined} {...form.register("city")} />
+            {form.formState.errors.city ? <p id="wompi-city-error" className="text-xs text-red-600">{form.formState.errors.city.message}</p> : null}
+          </div>
+          <div className="space-y-1">
+            <label htmlFor="wompi-department" className="text-sm font-medium">Departamento</label>
+            <Input id="wompi-department" autoComplete="address-level1" aria-invalid={Boolean(form.formState.errors.department)} aria-describedby={form.formState.errors.department ? "wompi-department-error" : undefined} {...form.register("department")} />
+            {form.formState.errors.department ? <p id="wompi-department-error" className="text-xs text-red-600">{form.formState.errors.department.message}</p> : null}
+          </div>
+        </div>
+        {errorMessage ? <p role="alert" className="text-sm text-red-600">{errorMessage}</p> : null}
+        <Button type="submit" disabled={isSubmitting || items.length === 0 || !wompiConfigured || !form.formState.isValid}>
+          {isSubmitting ? "Redirigiendo a Wompi..." : wompiConfigured ? "Pagar con Wompi" : "Wompi en preparación"}
+        </Button>
       </form>
       <section
         aria-labelledby="other-payment-methods"
@@ -137,8 +172,9 @@ export function CheckoutForm() {
             items: items.map((item) => ({
               name: item.name,
               quantity: item.quantity,
-              sku: item.id,
-              size: item.size
+              sku: item.reference ?? item.id,
+              size: item.size,
+              color: item.color
             })),
             total
           }}
@@ -149,7 +185,7 @@ export function CheckoutForm() {
             type: "order",
             items: items.map((item) => ({
               name: item.name,
-              sku: item.id,
+              sku: item.reference ?? item.id,
               size: item.size,
               color: item.color,
               quantity: item.quantity,

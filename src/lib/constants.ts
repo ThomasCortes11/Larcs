@@ -3,21 +3,20 @@ import type { CategoryKey } from "@/types/product";
 export const BRAND_NAME = "LARCS";
 export const BRAND_LOGO_PURPLE = "/api/assets/Logos/LOGO%20LARCS%20MORADO.png";
 export const BRAND_LOGO_BW = "/api/assets/Logos/LOGO%20LARCS%20BYN.png";
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "573014594421";
+export const WHATSAPP_NUMBER = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "573014594421").replace(/\D/g, "");
+const nationalWhatsAppNumber = WHATSAPP_NUMBER.startsWith("57")
+  ? WHATSAPP_NUMBER.slice(2)
+  : WHATSAPP_NUMBER;
+export const WHATSAPP_DISPLAY_NUMBER = nationalWhatsAppNumber.replace(
+  /^(\d{3})(\d{3})(\d{4})$/,
+  "$1 $2 $3"
+);
 export const ADDI_WHATSAPP_MESSAGE_BASE = "Hola, quiero pagar con ADDI";
-
-export const CATEGORY_FOLDER_MAP: Record<CategoryKey, string> = {
-  botas: "BOTAS",
-  botines: "BOTINES",
-  mocasines: "MOCASINES",
-  sandalias: "SANDALIAS",
-  tacones: "TACONES"
-};
 
 export const CATEGORY_LABELS: Record<CategoryKey, string> = {
   botas: "Botas",
   botines: "Botines",
-  mocasines: "Mocasines",
+  flats: "Flats",
   sandalias: "Sandalias",
   tacones: "Tacones"
 };

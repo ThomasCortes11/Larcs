@@ -130,21 +130,21 @@ export function CatalogFilters({
         />
       </div>
 
-      <label className="flex items-center gap-2 rounded-xl border border-transparent bg-white/70 px-3 text-sm">
+      <label className="flex min-h-11 items-center gap-2 rounded-xl border border-transparent bg-white/70 px-3 text-sm">
         <input type="checkbox" name="promo" defaultChecked={onlyPromo} className="h-4 w-4" />
         Solo promocion
       </label>
 
-      <label className="flex items-center gap-2 rounded-xl border border-transparent bg-white/70 px-3 text-sm">
+      <label className="flex min-h-11 items-center gap-2 rounded-xl border border-transparent bg-white/70 px-3 text-sm">
         <input type="checkbox" name="nuevo" defaultChecked={onlyNew} className="h-4 w-4" />
         Solo nuevos
       </label>
 
       <div className="flex items-end gap-2">
-        <button type="submit" className="h-11 rounded-full bg-[var(--primary)] px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:opacity-90">
+        <button type="submit" className="h-11 rounded-full bg-[color-mix(in_srgb,var(--primary)_82%,black)] px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:opacity-90">
           Aplicar
         </button>
-        <a href="/catalogo" className="h-11 rounded-full border border-[var(--border)] bg-white px-5 text-sm font-semibold leading-[44px] transition hover:bg-[var(--muted)]">
+        <a href="/catalogo" className="inline-flex min-h-11 items-center rounded-full border border-[var(--border)] bg-white px-5 text-sm font-semibold transition hover:bg-[var(--muted)]">
           Limpiar
         </a>
       </div>

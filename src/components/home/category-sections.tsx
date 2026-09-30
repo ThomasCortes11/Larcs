@@ -9,7 +9,7 @@ interface CategorySectionsProps {
   products: Product[];
 }
 
-const orderedCategories: CategoryKey[] = ["botas", "botines", "tacones", "sandalias", "mocasines"];
+const orderedCategories: CategoryKey[] = ["botas", "botines", "tacones", "sandalias", "flats"];
 
 export function CategorySections({ products }: CategorySectionsProps) {
   return (

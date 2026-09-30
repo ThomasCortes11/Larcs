@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { BLUR_PLACEHOLDER } from "@/lib/constants";
 import { searchProducts } from "@/lib/products";
 
 export async function GET(request: NextRequest) {
@@ -12,8 +13,8 @@ export async function GET(request: NextRequest) {
       slug: item.slug,
       name: item.name,
       price: item.price,
-      imageUrl: item.imageUrls[0],
-      category: item.category
+      imageUrl: item.imageUrls[0] ?? BLUR_PLACEHOLDER,
+      category: item.categoryLabel
     }))
   );
 }

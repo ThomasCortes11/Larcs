@@ -8,7 +8,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { Button } from "@/components/ui/button";
-import { CATEGORY_LABELS } from "@/lib/constants";
+import { BLUR_PLACEHOLDER, CATEGORY_LABELS } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
 import type { CategoryKey, Product } from "@/types/product";
 
@@ -16,9 +16,9 @@ interface HeroProps {
   products?: Product[];
 }
 
-const orderedCategories: CategoryKey[] = ["botines", "tacones", "mocasines", "botas", "sandalias"];
+const orderedCategories: CategoryKey[] = ["botines", "tacones", "flats", "botas", "sandalias"];
 
-const categoryStories: Record<
+const categoryStories: Partial<Record<
   CategoryKey,
   {
     label: string;
@@ -27,7 +27,7 @@ const categoryStories: Record<
     accent: string;
     note: string;
   }
-> = {
+>> = {
   botas: {
     label: "Statement winter",
     title: "Botas con presencia editorial y estructura femenina.",
@@ -41,13 +41,6 @@ const categoryStories: Record<
     description: "La linea mas versatil de LARCS, pensada para combinar comodidad real con una lectura sofisticada.",
     accent: "var(--primary)",
     note: "Best sellers con rotacion continua"
-  },
-  mocasines: {
-    label: "Soft tailoring",
-    title: "Mocasines que equilibran comodidad, elegancia y ritmo urbano.",
-    description: "Ideales para jornadas largas, oficina o looks sobrios con un gesto contemporaneo.",
-    accent: "var(--accent-green)",
-    note: "Linea comoda para uso diario"
   },
   sandalias: {
     label: "Light season",
@@ -85,11 +78,18 @@ export function Hero({ products = [] }: HeroProps) {
   const [activeCategory, setActiveCategory] = useState<CategoryKey>(availableCategories[0] ?? "botines");
 
   const activeProduct = featuredByCategory[activeCategory] ?? featuredByCategory[availableCategories[0] ?? "botines"];
-  const activeStory = categoryStories[activeCategory];
 
   if (!activeProduct) {
     return null;
   }
+
+  const activeStory = categoryStories[activeCategory] ?? {
+    label: CATEGORY_LABELS[activeCategory],
+    title: activeProduct.name,
+    description: activeProduct.description,
+    accent: "var(--primary)",
+    note: ""
+  };
 
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fff9fb_0%,color-mix(in_srgb,var(--background)_86%,white)_38%,#f7f0f4_100%)]">
@@ -100,7 +100,7 @@ export function Hero({ products = [] }: HeroProps) {
 
       <div className="mx-auto grid min-w-0 max-w-7xl gap-6 px-4 py-6 sm:gap-8 sm:py-12 md:min-h-[88vh] md:grid-cols-12 md:px-6 md:py-20">
         <motion.div
-          initial={{ opacity: 0, y: 26 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="relative z-10 flex min-w-0 flex-col justify-center md:col-span-5"
@@ -115,7 +115,7 @@ export function Hero({ products = [] }: HeroProps) {
           </h1>
 
           <p className="mt-4 max-w-xl text-sm leading-6 text-[var(--muted-foreground)] sm:mt-5 sm:text-base sm:leading-8 md:text-lg">
-            Calzado femenino premium con una curaduria enfocada en botines, tacones, botas, mocasines y sandalias.
+            Calzado femenino premium con una curaduria enfocada en botines, tacones, botas, sandalias y flats.
             Compra con envio nacional, pagos seguros y acompanamiento en talla.
           </p>
 
@@ -150,7 +150,7 @@ export function Hero({ products = [] }: HeroProps) {
             />
             <span>Paga después con ADDI</span>
             <span aria-hidden="true">·</span>
-            <Link href="/catalogo" className="font-semibold text-[var(--primary)] hover:underline">
+            <Link href="/catalogo" className="inline-flex min-h-[44px] items-center font-semibold text-[var(--primary)] hover:underline">
               Ver catálogo
             </Link>
           </div>
@@ -165,7 +165,7 @@ export function Hero({ products = [] }: HeroProps) {
                   type="button"
                   onClick={() => startTransition(() => setActiveCategory(category))}
                   className={[
-                    "shrink-0 rounded-full px-3 py-2 text-left text-xs uppercase tracking-[0.2em] transition-all duration-300 sm:rounded-none sm:px-0 sm:py-0 sm:pb-2 sm:text-sm",
+                    "min-h-[44px] shrink-0 rounded-full px-3 py-2 text-left text-xs uppercase tracking-[0.2em] transition-all duration-300 sm:rounded-none sm:px-0 sm:py-0 sm:pb-2 sm:text-sm",
                     isActive
                       ? "border border-[color-mix(in_srgb,var(--primary)_26%,white)] bg-[color-mix(in_srgb,var(--primary)_12%,white)] text-[var(--foreground)] sm:border-b sm:border-x-0 sm:border-t-0 sm:bg-transparent"
                       : "border border-transparent bg-white/60 text-[var(--muted-foreground)] hover:text-[var(--foreground)] sm:border-b sm:border-x-0 sm:border-t-0 sm:bg-transparent"
@@ -192,7 +192,7 @@ export function Hero({ products = [] }: HeroProps) {
                 <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--primary)]">{activeStory.label}</p>
                 <p className="mt-3 hidden max-w-sm text-sm leading-7 text-[var(--muted-foreground)] sm:block">{activeStory.description}</p>
               </div>
-              <BrandLogo variant="bw" width={92} height={26} className="h-[26px] w-[92px] shrink-0" />
+              <BrandLogo variant="bw" width={92} height={26} className="h-[44px] min-h-[44px] w-[92px] shrink-0" />
             </div>
 
             <div className="relative mt-5 aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-[color-mix(in_srgb,var(--primary)_12%,white)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_34%,white),white)] sm:mt-6 sm:aspect-[5/4] sm:rounded-[1.6rem] md:mt-8 md:aspect-auto md:min-h-[480px] md:rounded-[1.9rem] md:px-10 md:py-12">
@@ -213,10 +213,9 @@ export function Hero({ products = [] }: HeroProps) {
                   className="absolute inset-3 z-10 sm:inset-5 md:inset-10"
                 >
                   <Image
-                    src={activeProduct.imageUrls[0]}
-                    alt={activeProduct.name}
+                    src={activeProduct.imageUrls[0] ?? BLUR_PLACEHOLDER}
+                    alt={activeProduct.imageUrls[0] ? activeProduct.name : `Imagen no disponible para ${activeProduct.name}`}
                     fill
-                    priority
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 60vw, 48vw"
                     className="object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.18)]"
                   />

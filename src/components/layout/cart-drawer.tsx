@@ -3,42 +3,38 @@
 import Image from "next/image";
 import Link from "next/link";
 import * as Dialog from "@radix-ui/react-dialog";
-import { ShoppingBag, X } from "lucide-react";
+import { Minus, Plus, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { AddiButton } from "@/components/checkout/addi-button";
-import { CodCheckoutForm } from "@/components/checkout/cod-checkout-form";
+import { CodCheckoutForm } from "@/components/checkout/cod-checkout-trigger";
 import { SHIPPING_COST } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
 import { getCartSubtotal, useCartStore } from "@/store/cart-store";
 
-export function CartDrawer() {
+interface CartDrawerProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
   const items = useCartStore((state) => state.items);
   const removeItem = useCartStore((state) => state.removeItem);
+  const updateQuantity = useCartStore((state) => state.updateQuantity);
 
   const subtotal = getCartSubtotal(items);
   const shipping = items.length ? SHIPPING_COST : 0;
   const total = subtotal + shipping;
 
   return (
-    <Dialog.Root>
-      <Dialog.Trigger asChild>
-        <button aria-label="Abrir carrito" className="relative rounded-full p-2 hover:bg-[var(--muted)]">
-          <ShoppingBag className="h-5 w-5" />
-          {items.length > 0 ? (
-            <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--primary)] text-xs text-white">
-              {items.length}
-            </span>
-          ) : null}
-        </button>
-      </Dialog.Trigger>
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/45" />
         <Dialog.Content className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-white p-5 shadow-2xl">
           <div className="mb-4 flex items-center justify-between">
             <Dialog.Title className="text-lg font-semibold">Tu carrito</Dialog.Title>
             <Dialog.Close asChild>
-              <button aria-label="Cerrar carrito" className="rounded-full p-2 hover:bg-[var(--muted)]">
+              <button aria-label="Cerrar carrito" className="inline-flex h-11 w-11 items-center justify-center rounded-full p-0 hover:bg-[var(--muted)]">
                 <X className="h-4 w-4" />
               </button>
             </Dialog.Close>
@@ -47,16 +43,38 @@ export function CartDrawer() {
           <div className="flex-1 space-y-3 overflow-y-auto">
             {items.length === 0 ? <p className="text-sm text-[var(--muted-foreground)]">Aun no agregas productos.</p> : null}
             {items.map((item) => (
-              <article key={`${item.id}-${item.size}`} className="flex gap-3 rounded-2xl border border-[var(--border)] p-3">
+              <article key={`${item.id}-${item.size}-${item.color ?? ""}`} className="flex gap-3 rounded-2xl border border-[var(--border)] p-3">
                 <div className="relative h-20 w-16 overflow-hidden rounded-lg">
                   <Image src={item.imageUrl} alt={item.name} fill className="object-cover" sizes="64px" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="line-clamp-1 text-sm font-semibold">{item.name}</p>
+                  {item.reference ? <p className="text-xs text-[var(--muted-foreground)]">Ref. {item.reference}</p> : null}
                   <p className="text-xs text-[var(--muted-foreground)]">Talla {item.size}</p>
-                  <p className="text-sm">{toCurrency(item.price)} x {item.quantity}</p>
+                  {item.color ? <p className="text-xs text-[var(--muted-foreground)]">Color {item.color}</p> : null}
+                  <p className="text-sm">{toCurrency(item.price)} c/u</p>
+                  <div className="mt-2 flex items-center gap-2">
+                    <button
+                      type="button"
+                      aria-label={`Reducir cantidad de ${item.name}`}
+                      disabled={item.quantity <= 1}
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] disabled:opacity-40"
+                      onClick={() => updateQuantity(item.id, item.size, item.quantity - 1, item.color)}
+                    >
+                      <Minus className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                    <span className="min-w-6 text-center" aria-live="polite">{item.quantity}</span>
+                    <button
+                      type="button"
+                      aria-label={`Aumentar cantidad de ${item.name}`}
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)]"
+                      onClick={() => updateQuantity(item.id, item.size, item.quantity + 1, item.color)}
+                    >
+                      <Plus className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                  </div>
                 </div>
-                <button className="text-xs text-[var(--primary)]" onClick={() => removeItem(item.id, item.size)}>
+                <button className="inline-flex min-h-11 items-center px-2 text-xs text-[var(--primary)]" onClick={() => removeItem(item.id, item.size, item.color)}>
                   Eliminar
                 </button>
               </article>
@@ -81,8 +99,9 @@ export function CartDrawer() {
                     items: items.map((item) => ({
                       name: item.name,
                       quantity: item.quantity,
-                      sku: item.id,
-                      size: item.size
+                      sku: item.reference ?? item.id,
+                      size: item.size,
+                      color: item.color
                     })),
                     total
                   }}
@@ -92,7 +111,7 @@ export function CartDrawer() {
                     type: "order",
                     items: items.map((item) => ({
                       name: item.name,
-                      sku: item.id,
+                      sku: item.reference ?? item.id,
                       size: item.size,
                       color: item.color,
                       quantity: item.quantity,

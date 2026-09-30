@@ -3,14 +3,7 @@ import path from "node:path";
 
 import { NextRequest, NextResponse } from "next/server";
 
-const ALLOWED_FOLDERS = new Set([
-  "BOTAS",
-  "BOTINES",
-  "MOCASINES",
-  "SANDALIAS",
-  "TACONES",
-  "Logos"
-]);
+const ALLOWED_FOLDERS = new Set(["Logos"]);
 
 function contentType(filePath: string) {
   if (filePath.endsWith(".png")) return "image/png";
