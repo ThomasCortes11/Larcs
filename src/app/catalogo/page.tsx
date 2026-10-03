@@ -8,8 +8,11 @@ interface CatalogoPageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function CatalogoPage({ searchParams }: CatalogoPageProps) {
   const params = await searchParams;
+  const query = typeof params.q === "string" ? params.q : undefined;
   const category = typeof params.categoria === "string" ? (params.categoria as CategoryKey) : undefined;
   const color = typeof params.color === "string" ? params.color : undefined;
   const size = typeof params.size === "string" ? params.size : undefined;
@@ -27,6 +30,7 @@ export default async function CatalogoPage({ searchParams }: CatalogoPageProps) 
   const facets = getCatalogFacets(products);
 
   const filtered = applyCatalogFilters(products, {
+    query,
     category,
     color,
     size,
@@ -41,6 +45,7 @@ export default async function CatalogoPage({ searchParams }: CatalogoPageProps) 
     <section className="mx-auto max-w-7xl space-y-6 px-4 py-10 md:px-6">
       <h1 className="text-3xl font-bold">Catalogo</h1>
       <CatalogFilters
+        searchQuery={query}
         selectedCategory={category}
         selectedColor={color}
         selectedSize={size}

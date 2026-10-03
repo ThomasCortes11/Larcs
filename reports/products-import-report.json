@@ -1,6 +1,6 @@
 {
-  "source": "C:\\Users\\soporte\\Desktop\\Larcs-Store\\Larcs\\src\\components\\Excel\\archivo excel.xlsx",
-  "generatedAt": "2026-09-29T23:30:19.174539+00:00",
+  "source": "C:\\Users\\PERSONAL\\Desktop\\Larcs\\Larcs\\src\\components\\Excel\\archivo excel.xlsx",
+  "generatedAt": "2026-10-03T21:37:59.838051+00:00",
   "sheets": [
     {
       "name": "Tacones ",
@@ -365,7 +365,7 @@
     "Hay imágenes ancladas a una fila sin producto en 'Flats', fila 12."
   ],
   "legacyProductPhotosRemoved": 0,
-  "backupPath": "backups\\catalog\\20260929T233106075271Z",
+  "backupPath": "backups\\catalog\\20261003T213917753526Z",
   "imageOptimization": {
     "format": "WebP",
     "maximumEdgePixels": 2000,

@@ -22,6 +22,7 @@ interface ProductDetailActionsProps {
   colors: string[];
   imageUrl: string;
   sizes: string[];
+  stock?: number | null;
 }
 
 export function ProductDetailActions({
@@ -34,7 +35,8 @@ export function ProductDetailActions({
   color,
   colors,
   imageUrl,
-  sizes
+  sizes,
+  stock
 }: ProductDetailActionsProps) {
   const router = useRouter();
   const addItem = useCartStore((state) => state.addItem);
@@ -43,9 +45,22 @@ export function ProductDetailActions({
   const [size, setSize] = useState(sizes[0] ?? "37");
   const [selectedColor, setSelectedColor] = useState(colors[0] ?? color);
   const [quantity, setQuantity] = useState(1);
+  const hasManagedStock = stock != null;
+  const isOutOfStock = hasManagedStock && stock <= 0;
+  const maxQuantity = hasManagedStock ? Math.max(1, stock) : Number.POSITIVE_INFINITY;
+
+  const increaseQuantity = () => {
+    setQuantity((current) => Math.min(maxQuantity, current + 1));
+  };
 
   return (
     <div className="space-y-4">
+      {isOutOfStock ? (
+        <p className="rounded-xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--danger)_10%,white)] px-3 py-2 text-sm font-semibold text-[var(--danger)]">
+          Producto agotado temporalmente.
+        </p>
+      ) : null}
+
       <div>
         <p className="mb-2 text-sm font-semibold">Talla</p>
         <div className="flex flex-wrap gap-2">
@@ -106,8 +121,9 @@ export function ProductDetailActions({
           <button
             type="button"
             aria-label="Aumentar cantidad"
+            disabled={hasManagedStock && quantity >= maxQuantity}
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)]"
-            onClick={() => setQuantity((current) => current + 1)}
+            onClick={increaseQuantity}
           >
             <Plus className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -116,6 +132,7 @@ export function ProductDetailActions({
 
       <div className="flex flex-wrap gap-3">
         <Button
+          disabled={isOutOfStock}
           onClick={() => {
             addItem({ id, slug, name, reference, imageUrl, price, size, color: selectedColor }, quantity);
             toast.success(`${quantity} producto${quantity === 1 ? "" : "s"} agregado${quantity === 1 ? "" : "s"} al carrito`);
@@ -125,6 +142,7 @@ export function ProductDetailActions({
         </Button>
         <Button
           variant="secondary"
+          disabled={isOutOfStock}
           onClick={() => {
             addItem({ id, slug, name, reference, imageUrl, price, size, color: selectedColor }, quantity);
             toast.success("Producto listo para comprar");
@@ -159,8 +177,9 @@ export function ProductDetailActions({
           <Share2 className="h-4 w-4" />
         </button>
       </div>
-      <AddiButton context={{ type: "product", name, sku, size, color: selectedColor, quantity, price }} />
+      <AddiButton context={{ type: "product", name, sku, size, color: selectedColor, quantity, price }} disabled={isOutOfStock} />
       <CodCheckoutForm
+        disabled={isOutOfStock}
         context={{
           type: "product",
           product: { name, sku, size, color: selectedColor, quantity, unitPrice: price },

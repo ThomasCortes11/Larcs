@@ -5,6 +5,8 @@ import { FeaturedSection } from "@/components/home/featured-section";
 import { Hero } from "@/components/home/hero";
 import { getAllProducts } from "@/lib/products";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const products = await getAllProducts();
 

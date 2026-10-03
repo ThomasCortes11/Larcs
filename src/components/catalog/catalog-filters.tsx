@@ -1,6 +1,7 @@
 import { CATEGORY_LABELS } from "@/lib/constants";
 
 interface CatalogFiltersProps {
+  searchQuery?: string;
   selectedCategory?: string;
   selectedColor?: string;
   selectedSize?: string;
@@ -14,6 +15,7 @@ interface CatalogFiltersProps {
 }
 
 export function CatalogFilters({
+  searchQuery,
   selectedCategory,
   selectedColor,
   selectedSize,
@@ -30,6 +32,7 @@ export function CatalogFilters({
 
   return (
     <form className="grid gap-4 rounded-3xl border border-[var(--border)] bg-[linear-gradient(150deg,white,color-mix(in_srgb,var(--muted)_30%,white))] p-5 shadow-[0_16px_38px_-34px_var(--ink-black)] lg:grid-cols-4">
+      {searchQuery ? <input type="hidden" name="q" value={searchQuery} /> : null}
       <div>
         <label htmlFor="categoria" className="mb-1 block text-xs uppercase tracking-wide text-[var(--muted-foreground)]">
           Categoria

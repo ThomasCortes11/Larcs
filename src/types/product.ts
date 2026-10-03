@@ -28,6 +28,7 @@ export interface Product {
 }
 
 export interface CatalogFilters {
+  query?: string;
   category?: CategoryKey;
   minPrice?: number;
   maxPrice?: number;

@@ -14,6 +14,8 @@ interface ProductPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
@@ -35,11 +37,6 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
         : {})
     }
   };
-}
-
-export async function generateStaticParams() {
-  const products = await getAllProducts();
-  return products.map((product) => ({ slug: product.slug }));
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
@@ -145,6 +142,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             color={product.variant.color}
             colors={product.variant.colors}
             sizes={product.variant.sizes}
+            stock={product.variant.stock}
           />
         </div>
       </div>

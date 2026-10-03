@@ -22,6 +22,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem);
   const toggleWishlistItem = useWishlistStore((state) => state.toggleItem);
   const isWishlisted = useWishlistStore((state) => state.hasItem(product.id));
+  const isOutOfStock = product.variant.stock != null && product.variant.stock <= 0;
 
   return (
     <motion.article
@@ -67,7 +68,11 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="space-y-3 p-4">
         <div className="flex items-center justify-between">
           <Badge>{product.categoryLabel ?? CATEGORY_LABELS[product.category]}</Badge>
-          {product.discountPercentage ? <Badge>-{product.discountPercentage}%</Badge> : null}
+          {isOutOfStock ? (
+            <Badge>Agotado</Badge>
+          ) : product.discountPercentage ? (
+            <Badge>-{product.discountPercentage}%</Badge>
+          ) : null}
         </div>
         <Link href={`/producto/${product.slug}`} className="flex min-h-11 items-center truncate text-lg font-semibold text-[var(--foreground)]">
           {product.name}
@@ -84,6 +89,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <Button
             variant="secondary"
             className="flex-1"
+            disabled={isOutOfStock}
             onClick={() => {
               addItem({
                 id: product.id,
@@ -98,7 +104,7 @@ export function ProductCard({ product }: ProductCardProps) {
               toast.success("Producto agregado al carrito");
             }}
           >
-            Anadir al carrito
+            {isOutOfStock ? "Agotado" : "Anadir al carrito"}
           </Button>
 
           <Link href={`/producto/${product.slug}`} className="flex-1">

@@ -81,6 +81,19 @@ export async function resolveCheckoutSummary(items: WompiCartItemInput[]): Promi
     }
 
     const quantity = Math.max(1, item.quantity);
+
+    if (product.variant.stock != null) {
+      if (product.variant.stock <= 0) {
+        throw new Error(`${product.name} está agotado.`);
+      }
+
+      if (quantity > product.variant.stock) {
+        throw new Error(
+          `Solo hay ${product.variant.stock} unidad(es) disponibles para ${product.name}.`
+        );
+      }
+    }
+
     const lineTotal = product.price * quantity;
 
     return {
