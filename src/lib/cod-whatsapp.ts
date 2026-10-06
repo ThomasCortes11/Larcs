@@ -29,7 +29,7 @@ const copFormatter = new Intl.NumberFormat("es-CO", {
   maximumFractionDigits: 0
 });
 
-function sanitizeText(value: string) {
+export function sanitizeText(value: string) {
   return value
     .replace(/[\u0000-\u001f\u007f]/g, " ")
     .replace(/\s+/g, " ")
@@ -40,6 +40,43 @@ function formatItemName(item: CodOrderItem) {
   const name = sanitizeText(item.name);
   const sku = sanitizeText(item.sku);
   return `${name}${sku ? ` (Ref: ${sku})` : ""}`;
+}
+
+// WhatsApp de escritorio muestra los emojis de la URL como "�"; en celular se conservan.
+export function adaptWhatsAppMessageForDevice(message: string) {
+  const isMobile = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  if (isMobile) return message;
+
+  return message
+    .replace(/[\p{Extended_Pictographic}\uFE0F\u200D]/gu, "")
+    .replace(/ {2,}/g, " ")
+    .replace(/^ /gm, "");
+}
+
+export function buildOrderSection(items: CodOrderItem[], total: number) {
+  const orderLines = items.map((item) => {
+    const size = sanitizeText(item.size ?? "") || "No especificada";
+    const color = sanitizeText(item.color ?? "") || "No aplica";
+    const itemName = formatItemName(item);
+
+    if (items.length === 1) {
+      return [
+        `👟 Producto: ${itemName}`,
+        `📏 Talla: ${size}`,
+        `🎨 Color: ${color}`,
+        `🔢 Cantidad: ${item.quantity}`,
+        `💰 Precio unitario: ${copFormatter.format(item.unitPrice)}`
+      ].join("\n");
+    }
+
+    return [
+      `👟 ${item.quantity} x ${itemName}`,
+      `   📏 Talla: ${size} · 🎨 Color: ${color}`,
+      `   💰 Subtotal: ${copFormatter.format(item.unitPrice * item.quantity)}`
+    ].join("\n");
+  });
+
+  return ["*Pedido*", ...orderLines, `💵 *Total: ${copFormatter.format(total)}*`].join("\n");
 }
 
 export function buildCodWhatsAppMessage({
@@ -66,33 +103,7 @@ export function buildCodWhatsAppMessage({
     `📌 Referencia: ${cleanCustomer.reference}`
   ].join("\n");
 
-  const orderLines = items.map((item) => {
-    const size = sanitizeText(item.size ?? "") || "No especificada";
-    const color = sanitizeText(item.color ?? "") || "No aplica";
-    const itemName = formatItemName(item);
-
-    if (items.length === 1) {
-      return [
-        `👟 Producto: ${itemName}`,
-        `📏 Talla: ${size}`,
-        `🎨 Color: ${color}`,
-        `🔢 Cantidad: ${item.quantity}`,
-        `💰 Precio unitario: ${copFormatter.format(item.unitPrice)}`
-      ].join("\n");
-    }
-
-    return [
-      `👟 ${item.quantity} x ${itemName}`,
-      `   📏 Talla: ${size} · 🎨 Color: ${color}`,
-      `   💰 Subtotal: ${copFormatter.format(item.unitPrice * item.quantity)}`
-    ].join("\n");
-  });
-
-  const orderSection = [
-    "*Pedido*",
-    ...orderLines,
-    `💵 *Total: ${copFormatter.format(total)}*`
-  ].join("\n");
+  const orderSection = buildOrderSection(items, total);
 
   return [
     "🛒 *NUEVO PEDIDO - PAGO CONTRA ENTREGA*",

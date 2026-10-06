@@ -19,7 +19,7 @@ export default async function AdminPage() {
       <h1 className="text-3xl font-bold">Panel de stock</h1>
       <p className="text-sm text-[var(--muted-foreground)]">
         Define stock por producto. Si el valor es 0, el producto aparece agotado y se bloquea la compra.
-        Si lo dejas vacio, queda como "sin control de stock".
+        Si lo dejas vacio, queda como &quot;sin control de stock&quot;.
       </p>
       {requiresToken ? (
         <p className="text-sm text-[var(--muted-foreground)]">

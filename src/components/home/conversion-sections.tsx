@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { ExternalLink, Mail, MapPin, Navigation, Phone, ShieldCheck, Truck, Undo2 } from "lucide-react";
 
 import { InstagramIcon } from "@/components/ui/instagram-icon";
-import { WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
+import { TikTokIcon } from "@/components/icons/TikTokIcon";
+import { INSTAGRAM_URL, TIKTOK_URL, WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
 import mapsImage from "@/Img/Logos/Maps.jpeg";
 
 const locationLinks = {
@@ -49,7 +50,7 @@ export function ConversionSections() {
 
       <section className="mx-auto max-w-7xl space-y-5 px-4 py-8 md:px-6">
         <h2 className="text-2xl font-bold">Contacto directo</h2>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <a
             href="mailto:larscalzado@gmail.com"
             className="rounded-3xl border border-[var(--border)] bg-white p-6 transition hover:border-[var(--primary)]"
@@ -67,13 +68,24 @@ export function ConversionSections() {
               <p className="mt-2 text-base font-semibold">{WHATSAPP_DISPLAY_NUMBER}</p>
           </a>
           <a
-            href="https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA=="
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noreferrer"
             className="rounded-3xl border border-[var(--border)] bg-white p-6 transition hover:border-[var(--primary)]"
           >
             <InstagramIcon className="mb-3 h-5 w-5 text-[var(--primary)]" />
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">Instagram</p>
+            <p className="mt-2 text-base font-semibold">@calzadolarcs</p>
+          </a>
+          <a
+            href={TIKTOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok de LARCS"
+            className="rounded-3xl border border-[var(--border)] bg-white p-6 transition hover:border-[var(--primary)]"
+          >
+            <TikTokIcon className="mb-3 h-5 w-5 text-[var(--primary)]" />
+            <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">TikTok</p>
             <p className="mt-2 text-base font-semibold">@calzadolarcs</p>
           </a>
         </div>
@@ -86,12 +98,23 @@ export function ConversionSections() {
             Conecta con nuestra comunidad para lanzamientos, editoriales y promociones en tiempo real.
           </p>
           <a
-            href="https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA=="
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noreferrer"
             className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)]"
           >
             <InstagramIcon className="h-4 w-4" />
+            @calzadolarcs
+            <ExternalLink className="h-4 w-4" />
+          </a>
+          <a
+            href={TIKTOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok de LARCS"
+            className="mt-4 ml-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)]"
+          >
+            <TikTokIcon className="h-4 w-4" />
             @calzadolarcs
             <ExternalLink className="h-4 w-4" />
           </a>

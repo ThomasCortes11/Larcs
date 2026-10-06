@@ -8,6 +8,7 @@ import { Minus, Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AddiButton } from "@/components/checkout/addi-button";
 import { CodCheckoutForm } from "@/components/checkout/cod-checkout-trigger";
+import { PickupWhatsAppButton } from "@/components/checkout/pickup-whatsapp-button";
 import { SHIPPING_COST } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
 import { getCartSubtotal, useCartStore } from "@/store/cart-store";
@@ -30,7 +31,7 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/45" />
-        <Dialog.Content className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-white p-5 shadow-2xl">
+        <Dialog.Content className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col overflow-y-auto bg-white p-5 shadow-2xl">
           <div className="mb-4 flex items-center justify-between">
             <Dialog.Title className="text-lg font-semibold">Tu carrito</Dialog.Title>
             <Dialog.Close asChild>
@@ -40,7 +41,7 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
             </Dialog.Close>
           </div>
 
-          <div className="flex-1 space-y-3 overflow-y-auto">
+          <div className="min-h-[9rem] flex-1 space-y-3 overflow-y-auto">
             {items.length === 0 ? <p className="text-sm text-[var(--muted-foreground)]">Aun no agregas productos.</p> : null}
             {items.map((item) => (
               <article key={`${item.id}-${item.size}-${item.color ?? ""}`} className="flex gap-3 rounded-2xl border border-[var(--border)] p-3">
@@ -90,6 +91,20 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
                 <Button className="w-full">Finalizar compra</Button>
               </Link>
             </Dialog.Close>
+            {items.length > 0 ? (
+              <PickupWhatsAppButton
+                className="pt-1"
+                items={items.map((item) => ({
+                  name: item.name,
+                  sku: item.reference ?? item.id,
+                  size: item.size,
+                  color: item.color,
+                  quantity: item.quantity,
+                  unitPrice: item.price
+                }))}
+                total={total}
+              />
+            ) : null}
             {items.length > 0 ? (
               <div className="space-y-3 border-t border-[var(--border)] pt-4">
                 <p className="text-xs font-semibold uppercase text-[var(--muted-foreground)]">Otras formas de pago</p>

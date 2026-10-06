@@ -12,6 +12,12 @@ export const WHATSAPP_DISPLAY_NUMBER = nationalWhatsAppNumber.replace(
   "$1 $2 $3"
 );
 export const ADDI_WHATSAPP_MESSAGE_BASE = "Hola, quiero pagar con ADDI";
+export const INSTAGRAM_URL = "https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA==";
+export const TIKTOK_URL = "https://www.tiktok.com/@calzadolarcs";
+// TODO: reemplazar por la dirección real de la tienda física.
+export const STORE_ADDRESS = "[DIRECCIÓN DE LA TIENDA - PENDIENTE], Bogotá";
+export const PICKUP_DISCOUNT_COPY =
+  "Al recoger en nuestro punto físico tienes descuento. Lo gestionamos directamente en la tienda.";
 
 export const CATEGORY_LABELS: Record<CategoryKey, string> = {
   botas: "Botas",

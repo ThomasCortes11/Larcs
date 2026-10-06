@@ -10,6 +10,8 @@ import { BrandLogo } from "@/components/layout/brand-logo";
 import { SearchAutocomplete } from "@/components/layout/search-autocomplete";
 import { Button } from "@/components/ui/button";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
+import { TikTokIcon } from "@/components/icons/TikTokIcon";
+import { INSTAGRAM_URL, TIKTOK_URL } from "@/lib/constants";
 import { useCartStore } from "@/store/cart-store";
 
 const CartDrawer = dynamic(
@@ -117,12 +119,21 @@ export function Header() {
 
               <div className="mt-6 grid gap-2.5 border-t border-[var(--border)] pt-5">
                 <a
-                  href="https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA=="
+                  href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-2xl border border-[var(--border)] bg-white/80 px-4 py-3 text-sm font-semibold text-[var(--foreground)]"
                 >
                   Instagram
+                </a>
+                <a
+                  href={TIKTOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok de LARCS"
+                  className="rounded-2xl border border-[var(--border)] bg-white/80 px-4 py-3 text-sm font-semibold text-[var(--foreground)]"
+                >
+                  TikTok
                 </a>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=Calzado+LARCS+Bogota+Colombia"
@@ -177,13 +188,22 @@ export function Header() {
         </nav>
         <SearchAutocomplete />
         <a
-          href="https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA=="
+          href={INSTAGRAM_URL}
           target="_blank"
           rel="noreferrer"
           aria-label="Instagram LARCS"
           className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white p-0 hover:bg-[var(--muted)] sm:inline-flex"
         >
           <InstagramIcon className="h-5 w-5" />
+        </a>
+        <a
+          href={TIKTOK_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok de LARCS"
+          className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white p-0 hover:bg-[var(--muted)] sm:inline-flex"
+        >
+          <TikTokIcon className="h-5 w-5" />
         </a>
         <a
           href="https://www.google.com/maps/search/?api=1&query=Calzado+LARCS+Bogota+Colombia"

@@ -10,7 +10,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
-import { buildCodWhatsAppMessage, type CodOrderItem } from "@/lib/cod-whatsapp";
+import { adaptWhatsAppMessageForDevice, buildCodWhatsAppMessage, type CodOrderItem } from "@/lib/cod-whatsapp";
 import { toCurrency } from "@/lib/utils";
 
 export type CodContext =
@@ -84,7 +84,7 @@ export function CodCheckoutDialog({ context, onClose, onSent }: CodCheckoutDialo
           context.type === "product"
             ? [{ ...context.product, size: values.size || context.product.size }]
             : context.items;
-        const message = buildCodWhatsAppMessage({
+        const message = adaptWhatsAppMessageForDevice(buildCodWhatsAppMessage({
           customer: {
             name: values.name,
             phone: values.phone,
@@ -96,7 +96,7 @@ export function CodCheckoutDialog({ context, onClose, onSent }: CodCheckoutDialo
           },
           items: validOrderItems,
           total
-        });
+        }));
         const phoneNumber = WHATSAPP_NUMBER.replace(/\D/g, "");
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 

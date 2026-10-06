@@ -2,7 +2,8 @@ import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 
 import { ContactForm } from "@/components/contact/contact-form";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
-import { WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
+import { TikTokIcon } from "@/components/icons/TikTokIcon";
+import { INSTAGRAM_URL, TIKTOK_URL, WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
 
 export default function ContactoPage() {
   return (
@@ -37,15 +38,30 @@ export default function ContactoPage() {
         </a>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-3">
         <a
-          href="https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA=="
+          href={INSTAGRAM_URL}
           target="_blank"
           rel="noreferrer"
           className="rounded-2xl border border-[var(--border)] bg-white p-5 transition hover:border-[var(--primary)]"
         >
           <InstagramIcon className="mb-2 h-5 w-5 text-[var(--primary)]" />
           <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">Instagram</p>
+          <p className="mt-2 inline-flex items-center gap-2 font-semibold">
+            @calzadolarcs
+            <ExternalLink className="h-4 w-4" />
+          </p>
+        </a>
+
+        <a
+          href={TIKTOK_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok de LARCS"
+          className="rounded-2xl border border-[var(--border)] bg-white p-5 transition hover:border-[var(--primary)]"
+        >
+          <TikTokIcon className="mb-2 h-5 w-5 text-[var(--primary)]" />
+          <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">TikTok</p>
           <p className="mt-2 inline-flex items-center gap-2 font-semibold">
             @calzadolarcs
             <ExternalLink className="h-4 w-4" />

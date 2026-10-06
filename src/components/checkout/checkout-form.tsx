@@ -3,12 +3,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { AddiButton } from "@/components/checkout/addi-button";
 import { CodCheckoutForm } from "@/components/checkout/cod-checkout-trigger";
+import { PickupWhatsAppButton } from "@/components/checkout/pickup-whatsapp-button";
 import { Input } from "@/components/ui/input";
 import { SHIPPING_COST } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
@@ -40,6 +41,7 @@ export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
     resolver: zodResolver(checkoutSchema),
     mode: "onChange"
   });
+  const [customerName, phone] = useWatch({ control: form.control, name: ["customerName", "phone"] });
 
   const onSubmit = form.handleSubmit(async (values) => {
     if (!items.length) {
@@ -163,7 +165,7 @@ export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
             Otros medios de pago
           </h3>
           <p className="text-xs text-[var(--muted-foreground)]">
-            Wompi es nuestra opción principal. También puedes solicitar ADDI o pagar contra entrega.
+            Wompi es nuestra opción principal. También puedes solicitar ADDI, pagar contra entrega o recoger en tienda.
           </p>
         </div>
         <AddiButton
@@ -193,6 +195,19 @@ export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
             })),
             total
           }}
+          disabled={items.length === 0}
+        />
+        <PickupWhatsAppButton
+          items={items.map((item) => ({
+            name: item.name,
+            sku: item.reference ?? item.id,
+            size: item.size,
+            color: item.color,
+            quantity: item.quantity,
+            unitPrice: item.price
+          }))}
+          total={total}
+          customer={{ name: customerName, phone }}
           disabled={items.length === 0}
         />
         {items.length === 0 ? (

@@ -4,7 +4,8 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { BrandIdentity } from "@/components/home/brand-identity";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
-import { WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
+import { TikTokIcon } from "@/components/icons/TikTokIcon";
+import { INSTAGRAM_URL, TIKTOK_URL, WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -48,12 +49,22 @@ export function Footer() {
                 <span>322 952 1433</span>
               </a>
               <a
-                href="https://www.instagram.com/calzadolarcs?igsh=MXBrc3VxamxmOGxjZA=="
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
               >
                 <InstagramIcon className="h-4 w-4 shrink-0" />
+                <span>@calzadolarcs</span>
+              </a>
+              <a
+                href={TIKTOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok de LARCS"
+                className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
+              >
+                <TikTokIcon className="h-4 w-4 shrink-0" />
                 <span>@calzadolarcs</span>
               </a>
               <a
