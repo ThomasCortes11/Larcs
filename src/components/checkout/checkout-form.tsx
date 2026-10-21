@@ -187,6 +187,12 @@ export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
         <Button type="submit" disabled={isSubmitting || items.length === 0 || !wompiConfigured || !form.formState.isValid}>
           {isSubmitting ? "Redirigiendo a Wompi..." : wompiConfigured ? "Pagar con Wompi" : "Wompi en preparación"}
         </Button>
+        <p className="text-xs text-[var(--muted-foreground)]">
+          Antes de pagar, revisa nuestra{" "}
+          <Link href="/politicas#garantia" className="font-medium text-[var(--primary)] hover:underline">garantía</Link>
+          {" "}y los{" "}
+          <Link href="/politicas#plazos-de-entrega" className="font-medium text-[var(--primary)] hover:underline">plazos de entrega</Link>.
+        </p>
       </form>
       <section
         aria-labelledby="other-payment-methods"

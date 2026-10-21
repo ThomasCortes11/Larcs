@@ -28,8 +28,10 @@ export function Footer() {
           <div className="space-y-4">
             <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">Ayuda</p>
             <div className="space-y-3 text-base text-[var(--muted-foreground)]">
-              <Link href="/politicas" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Politicas</Link>
-              <Link href="/terminos" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Terminos</Link>
+              <Link href="/politicas#garantia" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Garantía</Link>
+              <Link href="/politicas#plazos-de-entrega" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Plazos de entrega</Link>
+              <Link href="/politicas#defectos-de-fabricacion" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Defectos de fabricación</Link>
+              <Link href="/terminos" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Términos</Link>
             </div>
           </div>
 
