@@ -13,13 +13,15 @@ import { PickupWhatsAppButton } from "@/components/checkout/pickup-whatsapp-butt
 import { Input } from "@/components/ui/input";
 import { SHIPPING_COST } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
+import { saveWompiOrder } from "@/lib/wompi-order";
+import type { WompiCheckoutSummary } from "@/services/payments/wompi";
 import { getCartSubtotal, useCartStore } from "@/store/cart-store";
 
 const checkoutSchema = z.object({
   customerName: z.string().min(3, "Nombre requerido"),
-  email: z.string().email("Email invalido"),
+  email: z.string().email("Correo inválido"),
   phone: z.string().regex(/^3\d{9}$/, "Ingresa un celular colombiano de 10 dígitos."),
-  address: z.string().min(8, "Direccion requerida"),
+  address: z.string().min(8, "Dirección requerida"),
   city: z.string().min(2, "Ciudad requerida"),
   department: z.string().min(2, "Departamento requerido")
 });
@@ -45,7 +47,7 @@ export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
 
   const onSubmit = form.handleSubmit(async (values) => {
     if (!items.length) {
-      setErrorMessage("Tu carrito esta vacio. Agrega productos antes de pagar.");
+      setErrorMessage("Tu carrito está vacío. Agrega productos antes de pagar.");
       return;
     }
 
@@ -69,10 +71,40 @@ export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
         })
       });
 
-      const result = (await response.json()) as { checkoutUrl?: string; error?: string };
+      const result = (await response.json()) as {
+        checkoutUrl?: string;
+        reference?: string;
+        summary?: WompiCheckoutSummary;
+        error?: string;
+      };
 
       if (!response.ok || !result.checkoutUrl) {
         throw new Error(result.error ?? "No se pudo crear el checkout de Wompi.");
+      }
+
+      // Precios y total tal como los calculó el servidor; la referencia del producto sale del carrito.
+      if (result.reference && result.summary) {
+        saveWompiOrder({
+          reference: result.reference,
+          customer: {
+            name: values.customerName,
+            email: values.email,
+            phone: values.phone,
+            address: values.address,
+            city: values.city,
+            department: values.department
+          },
+          items: result.summary.items.map((line) => ({
+            name: line.name,
+            sku: items.find((item) => item.id === line.id)?.reference ?? line.id,
+            size: line.size,
+            color: line.color,
+            quantity: line.quantity,
+            unitPrice: line.unitPrice
+          })),
+          shipping: result.summary.shipping,
+          total: result.summary.total
+        });
       }
 
       window.location.assign(result.checkoutUrl);
@@ -103,7 +135,7 @@ export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
             <span>{toCurrency(subtotal)}</span>
           </div>
           <div className="mt-2 flex justify-between gap-4">
-            <span>Envio</span>
+            <span>Envío</span>
             <span>{toCurrency(shipping)}</span>
           </div>
           <div className="mt-2 flex justify-between gap-4 font-semibold">
@@ -113,7 +145,7 @@ export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
         </div>
       ) : (
         <div className="rounded-2xl border border-dashed border-[var(--border)] bg-[var(--muted)]/50 p-4 text-sm text-[var(--muted-foreground)]">
-          Tu carrito esta vacio. <Link href="/catalogo" className="inline-flex min-h-[44px] items-center underline">Volver al catálogo</Link> para agregar productos.
+          Tu carrito está vacío. <Link href="/catalogo" className="inline-flex min-h-[44px] items-center underline">Volver al catálogo</Link> para agregar productos.
         </div>
       )}
 

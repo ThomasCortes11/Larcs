@@ -48,7 +48,7 @@ export function StockAdminPanel({ products, requiresToken = false }: StockAdminP
     const parsed = rawValue === "" ? null : Number(rawValue);
 
     if (parsed != null && (!Number.isFinite(parsed) || parsed < 0)) {
-      toast.error("El stock debe ser un numero mayor o igual a 0.");
+      toast.error("El stock debe ser un número mayor o igual a 0.");
       return;
     }
 
@@ -106,7 +106,7 @@ export function StockAdminPanel({ products, requiresToken = false }: StockAdminP
           id="admin-stock-search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Nombre, referencia, slug o categoria"
+          placeholder="Nombre, referencia, slug o categoría"
           className="w-full rounded-xl border border-[var(--border)] bg-white px-3 py-2 text-sm outline-none focus:border-[var(--primary)]"
         />
       </div>
@@ -166,7 +166,7 @@ export function StockAdminPanel({ products, requiresToken = false }: StockAdminP
                         [product.id]: event.target.value
                       }))
                     }
-                    placeholder="vacio = sin control"
+                    placeholder="vacío = sin control"
                     className="w-full rounded-xl border border-[var(--border)] px-3 py-2 text-sm md:w-48"
                   />
                   <Button

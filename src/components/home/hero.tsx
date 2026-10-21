@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { startTransition, useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, RefreshCw, Ruler, ShieldCheck, Truck } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { Button } from "@/components/ui/button";
@@ -31,21 +31,21 @@ const categoryStories: Partial<Record<
   botas: {
     label: "Statement winter",
     title: "Botas con presencia editorial y estructura femenina.",
-    description: "Disenos de impacto para clima fresco, styling urbano y una silueta mas poderosa.",
+    description: "Diseños de impacto para clima fresco, styling urbano y una silueta más poderosa.",
     accent: "var(--accent-orange)",
-    note: "Envio nacional y asesoria de talla"
+    note: "Envío nacional y asesoría de talla"
   },
   botines: {
     label: "Signature best seller",
-    title: "Botines premium para una presencia impecable todos los dias.",
-    description: "La linea mas versatil de LARCS, pensada para combinar comodidad real con una lectura sofisticada.",
+    title: "Botines premium para una presencia impecable todos los días.",
+    description: "La línea más versátil de LARCS, pensada para combinar comodidad real con una lectura sofisticada.",
     accent: "var(--primary)",
     note: "Best sellers con rotacion continua"
   },
   sandalias: {
     label: "Light season",
     title: "Sandalias ligeras con detalles que refinan cada paso.",
-    description: "Opciones frescas para clima calido, escapadas, vacaciones y momentos especiales.",
+    description: "Opciones frescas para clima cálido, escapadas, vacaciones y momentos especiales.",
     accent: "var(--secondary)",
     note: "Siluetas frescas con enfoque femenino"
   },
@@ -54,9 +54,19 @@ const categoryStories: Partial<Record<
     title: "Tacones diseñados para eventos, oficina y ocasiones memorables.",
     description: "Altura, estabilidad y materiales seleccionados para una presencia segura y elegante.",
     accent: "var(--accent-rose)",
-    note: "Pagos seguros y cambios faciles"
+    note: "Pagos seguros y cambios fáciles"
   }
 };
+
+const trustPoints = [
+  { icon: Truck, label: "Envío nacional" },
+  { icon: ShieldCheck, label: "Pago seguro" },
+  { icon: RefreshCw, label: "Cambios fáciles" },
+  { icon: Ruler, label: "Asesoría de talla" }
+];
+
+// Cada cuánto cambia sola la categoría destacada, mientras la clienta no toque nada.
+const ROTATION_MS = 6000;
 
 function getFeaturedByCategory(products: Product[]) {
   return orderedCategories.reduce<Partial<Record<CategoryKey, Product>>>((accumulator, category) => {
@@ -76,6 +86,28 @@ export function Hero({ products = [] }: HeroProps) {
   const featuredByCategory = useMemo(() => getFeaturedByCategory(products), [products]);
   const availableCategories = orderedCategories.filter((category) => featuredByCategory[category]);
   const [activeCategory, setActiveCategory] = useState<CategoryKey>(availableCategories[0] ?? "botines");
+  const [autoRotate, setAutoRotate] = useState(true);
+  const categoriesKey = availableCategories.join(",");
+
+  useEffect(() => {
+    if (!autoRotate || availableCategories.length < 2) return;
+    const timer = window.setInterval(() => {
+      startTransition(() =>
+        setActiveCategory((current) => {
+          const index = availableCategories.indexOf(current);
+          return availableCategories[(index + 1) % availableCategories.length];
+        })
+      );
+    }, ROTATION_MS);
+    return () => window.clearInterval(timer);
+    // availableCategories cambia de identidad en cada render; categoriesKey resume su contenido.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoRotate, categoriesKey]);
+
+  const selectCategory = (category: CategoryKey) => {
+    setAutoRotate(false); // si la clienta escoge, dejamos de rotar
+    startTransition(() => setActiveCategory(category));
+  };
 
   const activeProduct = featuredByCategory[activeCategory] ?? featuredByCategory[availableCategories[0] ?? "botines"];
 
@@ -107,37 +139,45 @@ export function Hero({ products = [] }: HeroProps) {
         >
           <div className="inline-flex w-fit items-center gap-3 rounded-full border border-[color-mix(in_srgb,var(--primary)_26%,white)] bg-[color-mix(in_srgb,var(--primary)_8%,white)] px-4 py-2 text-[10px] uppercase tracking-[0.24em] text-[var(--muted-foreground)] backdrop-blur sm:text-[11px] sm:tracking-[0.28em]">
             <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
-            LARCS Atelier Digital
+            Calzado femenino<span className="hidden sm:inline"> · Envíos a toda Colombia</span>
           </div>
 
-          <h1 className="brand-display mt-5 max-w-xl text-[2.1rem] leading-[0.98] text-[var(--foreground)] sm:mt-6 sm:text-6xl md:text-7xl">
-            El par que transforma tu presencia empieza aqui.
+          <h1 className="brand-display mt-5 max-w-xl text-[2.1rem] leading-[1.02] text-[var(--foreground)] sm:mt-6 sm:text-5xl lg:text-6xl">
+            El par que transforma tu presencia{" "}
+            <span className="bg-[linear-gradient(120deg,var(--primary),var(--secondary))] bg-clip-text text-transparent">
+              empieza aquí.
+            </span>
           </h1>
 
-          <p className="mt-4 max-w-xl text-sm leading-6 text-[var(--muted-foreground)] sm:mt-5 sm:text-base sm:leading-8 md:text-lg">
-            Calzado femenino premium con una curaduria enfocada en botines, tacones, botas, sandalias y flats.
-            Compra con envio nacional, pagos seguros y acompanamiento en talla.
+          <p className="mt-4 max-w-lg text-sm leading-6 text-[var(--muted-foreground)] sm:mt-5 sm:text-base sm:leading-7 md:text-lg md:leading-8">
+            Botines, tacones, botas, sandalias y flats con diseño premium. Te asesoramos en la talla y te lo
+            enviamos a toda Colombia.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
             <Link href="/catalogo" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full bg-[linear-gradient(120deg,color-mix(in_srgb,var(--primary)_90%,white),color-mix(in_srgb,var(--secondary)_88%,white))] shadow-[0_16px_30px_-18px_var(--primary)]">
-                Comprar coleccion
+              <Button size="lg" className="w-full px-4 transition-transform hover:-translate-y-0.5 active:scale-[0.98] bg-[linear-gradient(120deg,color-mix(in_srgb,var(--primary)_90%,white),color-mix(in_srgb,var(--secondary)_88%,white))] shadow-[0_16px_30px_-18px_var(--primary)]">
+                Comprar colección
               </Button>
             </Link>
             <Link href={activeProduct.slug ? `/producto/${activeProduct.slug}` : "/catalogo"} className="w-full sm:w-auto">
-              <Button size="lg" variant="secondary" className="w-full border-[color-mix(in_srgb,var(--primary)_22%,white)] bg-white/80">
-                Ver producto destacado
+              <Button size="lg" variant="secondary" className="w-full border-[color-mix(in_srgb,var(--primary)_22%,white)] bg-white/80 px-4 transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
+                <span className="sm:hidden">Ver destacado</span>
+                <span className="hidden sm:inline">Ver producto destacado</span>
               </Button>
             </Link>
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 border-t border-[var(--border)] pt-4 text-xs text-[var(--muted-foreground)] sm:mt-8 sm:gap-x-5 sm:pt-5 sm:text-sm">
-            <span>Envio nacional</span>
-            <span>Pago seguro</span>
-            <span>Cambios faciles</span>
-            <span>Asesoria de talla</span>
-          </div>
+          <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-[var(--border)] pt-4 text-xs text-[var(--muted-foreground)] sm:mt-8 sm:flex sm:flex-wrap sm:gap-x-6 sm:pt-5 sm:text-sm">
+            {trustPoints.map(({ icon: Icon, label }) => (
+              <li key={label} className="flex items-center gap-2">
+                <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--primary)_10%,white)] text-[var(--primary)]">
+                  <Icon className="h-3.5 w-3.5" aria-hidden />
+                </span>
+                {label}
+              </li>
+            ))}
+          </ul>
 
           <div className="mt-4 flex w-fit max-w-full flex-wrap items-center gap-2 rounded-full border border-[var(--border)] bg-white/70 px-3 py-2 text-xs text-[var(--muted-foreground)]">
             <Image
@@ -155,7 +195,7 @@ export function Hero({ products = [] }: HeroProps) {
             </Link>
           </div>
 
-          <div className="mt-6 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:mt-8 sm:mx-0 sm:flex-wrap sm:gap-5 sm:overflow-visible sm:px-0">
+          <div className="mt-6 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mt-8 sm:mx-0 sm:flex-wrap sm:gap-5 sm:overflow-visible sm:px-0">
             {availableCategories.map((category) => {
               const isActive = category === activeCategory;
 
@@ -163,7 +203,8 @@ export function Hero({ products = [] }: HeroProps) {
                 <button
                   key={category}
                   type="button"
-                  onClick={() => startTransition(() => setActiveCategory(category))}
+                  onClick={() => selectCategory(category)}
+                  aria-pressed={isActive}
                   className={[
                     "min-h-[44px] shrink-0 rounded-full px-3 py-2 text-left text-xs uppercase tracking-[0.2em] transition-all duration-300 sm:rounded-none sm:px-0 sm:py-0 sm:pb-2 sm:text-sm",
                     isActive
@@ -201,6 +242,18 @@ export function Hero({ products = [] }: HeroProps) {
                 style={{ background: `color-mix(in srgb, ${activeStory.accent} 18%, white)` }}
               />
               <div className="absolute inset-x-[10%] inset-y-[8%] rounded-[5rem] border border-[color-mix(in_srgb,var(--foreground)_8%,white)] sm:inset-x-[14%] sm:rounded-[9rem]" />
+
+              {/* Precarga las fotos de todas las categorías para que la rotación no muestre huecos. */}
+              <div className="hidden" aria-hidden>
+                {availableCategories.map((category) => {
+                  const image = featuredByCategory[category]?.imageUrls[0];
+                  return image ? (
+                    <div key={`preload-${category}`} className="relative">
+                      <Image src={image} alt="" fill priority sizes="(max-width: 640px) 92vw, (max-width: 1024px) 60vw, 48vw" />
+                    </div>
+                  ) : null;
+                })}
+              </div>
 
               <AnimatePresence mode="wait">
                 <motion.div

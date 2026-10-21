@@ -84,7 +84,7 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
 
           <div className="mt-4 space-y-2 border-t border-[var(--border)] pt-4 text-sm">
             <p className="flex justify-between"><span>Subtotal</span><span>{toCurrency(subtotal)}</span></p>
-            <p className="flex justify-between"><span>Envio</span><span>{toCurrency(shipping)}</span></p>
+            <p className="flex justify-between"><span>Envío</span><span>{toCurrency(shipping)}</span></p>
             <p className="flex justify-between font-semibold"><span>Total</span><span>{toCurrency(total)}</span></p>
             <Dialog.Close asChild>
               <Link href="/pago" className="block pt-2">

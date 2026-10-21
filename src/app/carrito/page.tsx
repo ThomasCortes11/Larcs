@@ -61,13 +61,13 @@ export default function CarritoPage() {
               </div>
             </article>
           ))}
-          {items.length === 0 ? <p className="text-sm">Tu carrito esta vacio.</p> : null}
+          {items.length === 0 ? <p className="text-sm">Tu carrito está vacío.</p> : null}
         </div>
         <aside className="rounded-2xl border border-[var(--border)] bg-white p-5">
           <p className="font-semibold">Resumen</p>
           <div className="mt-4 space-y-2 text-sm">
             <p className="flex justify-between"><span>Subtotal</span><span>{toCurrency(subtotal)}</span></p>
-            <p className="flex justify-between"><span>Envio</span><span>{toCurrency(items.length ? SHIPPING_COST : 0)}</span></p>
+            <p className="flex justify-between"><span>Envío</span><span>{toCurrency(items.length ? SHIPPING_COST : 0)}</span></p>
             <p className="flex justify-between font-bold"><span>Total</span><span>{toCurrency(total)}</span></p>
           </div>
           <Link href="/pago" className="mt-5 block">

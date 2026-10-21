@@ -43,7 +43,12 @@ export default async function CatalogoPage({ searchParams }: CatalogoPageProps) 
 
   return (
     <section className="mx-auto max-w-7xl space-y-6 px-4 py-10 md:px-6">
-      <h1 className="text-3xl font-bold">Catalogo</h1>
+      <div className="flex flex-wrap items-end justify-between gap-2">
+        <h1 className="text-3xl font-bold">Catálogo</h1>
+        <p className="text-sm text-[var(--muted-foreground)]">
+          {filtered.length} {filtered.length === 1 ? "modelo" : "modelos"}
+        </p>
+      </div>
       <CatalogFilters
         searchQuery={query}
         selectedCategory={category}

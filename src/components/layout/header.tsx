@@ -209,7 +209,7 @@ export function Header() {
           href="https://www.google.com/maps/search/?api=1&query=Calzado+LARCS+Bogota+Colombia"
           target="_blank"
           rel="noreferrer"
-          aria-label="Ver ubicacion en Google Maps"
+          aria-label="Ver ubicación en Google Maps"
           className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white p-0 hover:bg-[var(--muted)] md:inline-flex"
         >
           <MapPin className="h-5 w-5" />

@@ -3,6 +3,7 @@ import Script from "next/script";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+import { MobileBuyBar } from "@/components/catalog/mobile-buy-bar";
 import { ProductDetailActions } from "@/components/catalog/product-detail-actions";
 import { ProductGallery } from "@/components/catalog/product-gallery";
 import { ProductGrid } from "@/components/catalog/product-grid";
@@ -16,7 +17,9 @@ interface ProductPageProps {
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params
+}: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
 
@@ -47,7 +50,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const products = await getAllProducts();
   const related = products
-    .filter((item) => item.category === product.category && item.id !== product.id)
+    .filter(
+      (item) => item.category === product.category && item.id !== product.id
+    )
     .slice(0, 4);
 
   const productSchema = {
@@ -65,14 +70,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
       "@type": "Offer",
       priceCurrency: "COP",
       price: String(product.price),
-        ...(product.variant.stock == null
-          ? {}
-          : {
-              availability:
-                product.variant.stock > 0
-                  ? "https://schema.org/InStock"
-                  : "https://schema.org/OutOfStock"
-            })
+      ...(product.variant.stock == null
+        ? {}
+        : {
+            availability:
+              product.variant.stock > 0
+                ? "https://schema.org/InStock"
+                : "https://schema.org/OutOfStock"
+          })
     }
   };
 
@@ -84,38 +89,62 @@ export default async function ProductPage({ params }: ProductPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
 
-      <nav aria-label="Breadcrumb" className="text-sm text-[var(--muted-foreground)]">
+      <nav
+        aria-label="Breadcrumb"
+        className="text-sm text-[var(--muted-foreground)]"
+      >
         <ol className="flex items-center gap-2">
           <li>
-            <Link href="/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2">Inicio</Link>
+            <Link
+              href="/"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2"
+            >
+              Inicio
+            </Link>
           </li>
           <li>/</li>
           <li>
-            <Link href="/catalogo" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2">Catalogo</Link>
+            <Link
+              href="/catalogo"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2"
+            >
+              Catálogo
+            </Link>
           </li>
           <li>/</li>
-          <li className="line-clamp-1 text-[var(--foreground)]">{product.name}</li>
+          <li className="line-clamp-1 text-[var(--foreground)]">
+            {product.name}
+          </li>
         </ol>
       </nav>
 
       <div className="grid gap-8 md:grid-cols-2">
         <ProductGallery name={product.name} imageUrls={product.imageUrls} />
         <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.2em] text-[var(--primary)]">
+          <p className="text-xs tracking-[0.2em] text-[var(--primary)] uppercase">
             {product.categoryLabel ?? CATEGORY_LABELS[product.category]}
           </p>
           <h1 className="text-3xl font-bold">{product.name}</h1>
           <div className="flex items-end gap-3">
             <p className="text-2xl font-bold">{toCurrency(product.price)}</p>
             {product.previousPrice ? (
-              <p className="text-sm text-[var(--muted-foreground)] line-through">{toCurrency(product.previousPrice)}</p>
+              <p className="text-sm text-[var(--muted-foreground)] line-through">
+                {toCurrency(product.previousPrice)}
+              </p>
             ) : null}
-            {product.discountPercentage ? <p className="text-sm font-semibold text-[var(--primary)]">-{product.discountPercentage}%</p> : null}
+            {product.discountPercentage ? (
+              <p className="text-sm font-semibold text-[var(--primary)]">
+                -{product.discountPercentage}%
+              </p>
+            ) : null}
           </div>
-          <p className="text-sm text-[var(--muted-foreground)]">{product.description}</p>
+          <p className="text-sm text-[var(--muted-foreground)]">
+            {product.description}
+          </p>
           <div className="grid grid-cols-2 gap-2 rounded-2xl border border-[var(--border)] bg-white p-4 text-sm">
             <p>
-              <span className="text-[var(--muted-foreground)]">Color:</span> {product.variant.color}
+              <span className="text-[var(--muted-foreground)]">Color:</span>{" "}
+              {product.variant.color}
             </p>
             <p>
               <span className="text-[var(--muted-foreground)]">
@@ -131,21 +160,30 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <li key={feature}>• {feature}</li>
             ))}
           </ul>
-          <ProductDetailActions
-            id={product.id}
-            slug={product.slug}
-            name={product.name}
-            sku={product.reference ?? product.webReference ?? product.id}
-            reference={product.reference ?? product.webReference ?? product.id}
-            imageUrl={product.imageUrls[0] ?? BLUR_PLACEHOLDER}
-            price={product.price}
-            color={product.variant.color}
-            colors={product.variant.colors}
-            sizes={product.variant.sizes}
-            stock={product.variant.stock}
-          />
+          <div id="opciones-compra" className="scroll-mt-24">
+            <ProductDetailActions
+              id={product.id}
+              slug={product.slug}
+              name={product.name}
+              sku={product.reference ?? product.webReference ?? product.id}
+              reference={
+                product.reference ?? product.webReference ?? product.id
+              }
+              imageUrl={product.imageUrls[0] ?? BLUR_PLACEHOLDER}
+              price={product.price}
+              color={product.variant.color}
+              colors={product.variant.colors}
+              sizes={product.variant.sizes}
+              stock={product.variant.stock}
+            />
+          </div>
         </div>
       </div>
+      <MobileBuyBar
+        name={product.name}
+        price={product.price}
+        targetId="opciones-compra"
+      />
 
       <div className="space-y-5">
         <h2 className="text-2xl font-bold">Productos relacionados</h2>

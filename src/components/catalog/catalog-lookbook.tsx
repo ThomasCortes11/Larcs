@@ -22,7 +22,7 @@ export function CatalogLookbook({ products }: CatalogLookbookProps) {
     <section className="space-y-4 rounded-3xl border border-[var(--border)] bg-white p-5 md:p-6">
       <div>
         <p className="text-xs uppercase tracking-[0.2em] text-[color-mix(in_srgb,var(--primary)_82%,black)]">Lookbook completo</p>
-        <h2 className="brand-display mt-1 text-3xl">Todas las imagenes de esta seccion</h2>
+        <h2 className="brand-display mt-1 text-3xl">Todas las imágenes de esta sección</h2>
         <p className="text-sm text-[var(--muted-foreground)]">{images.length} imagenes disponibles</p>
       </div>
 

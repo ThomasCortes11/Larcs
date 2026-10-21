@@ -29,16 +29,16 @@ export function ProductCard({ product }: ProductCardProps) {
       layout
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group overflow-hidden rounded-3xl border border-[var(--border)] bg-white shadow-[0_18px_40px_-36px_var(--ink-black)] transition hover:-translate-y-1 hover:shadow-[0_26px_48px_-34px_var(--ink-black)]"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border sm:rounded-3xl border-[var(--border)] bg-white shadow-[0_18px_40px_-36px_var(--ink-black)] transition hover:-translate-y-1 hover:shadow-[0_26px_48px_-34px_var(--ink-black)]"
     >
-      <Link href={`/producto/${product.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_28%,white),white)] p-4">
+      <Link href={`/producto/${product.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_28%,white),white)] p-2 sm:p-4">
         <div className="absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-white/15 to-transparent" />
         <Image
           src={product.imageUrls[0] ?? BLUR_PLACEHOLDER}
           alt={product.imageUrls[0] ? product.name : `Imagen no disponible para ${product.name}`}
           fill
-          className="object-contain p-5 transition duration-500 group-hover:scale-105"
-          sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(50vw - 1.5rem), (max-width: 1350px) calc(33vw - 2rem), 400px"
+          className="object-contain p-2 transition duration-500 group-hover:scale-105 sm:p-5"
+          sizes="(max-width: 639px) 50vw, (max-width: 1023px) calc(50vw - 1.5rem), (max-width: 1350px) calc(33vw - 2rem), 400px"
           placeholder="blur"
           blurDataURL={BLUR_PLACEHOLDER}
         />
@@ -47,7 +47,7 @@ export function ProductCard({ product }: ProductCardProps) {
         type="button"
         aria-label="Guardar en favoritos"
         className={[
-          "absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full border bg-white/92 p-0 shadow-sm backdrop-blur transition",
+          "absolute right-2 top-2 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full border bg-white/92 p-0 shadow-sm backdrop-blur transition active:scale-90 sm:right-4 sm:top-4 sm:h-11 sm:w-11",
           isWishlisted
             ? "border-[var(--primary)] text-[var(--primary)]"
             : "border-[var(--border)] text-[var(--foreground)] hover:border-[var(--primary)]"
@@ -65,8 +65,8 @@ export function ProductCard({ product }: ProductCardProps) {
       >
         <Heart className="h-4 w-4" fill={isWishlisted ? "currentColor" : "none"} />
       </button>
-      <div className="space-y-3 p-4">
-        <div className="flex items-center justify-between">
+      <div className="flex flex-1 flex-col gap-2 p-3 sm:gap-3 sm:p-4">
+        <div className="flex flex-wrap items-center justify-between gap-1">
           <Badge>{product.categoryLabel ?? CATEGORY_LABELS[product.category]}</Badge>
           {isOutOfStock ? (
             <Badge>Agotado</Badge>
@@ -74,13 +74,13 @@ export function ProductCard({ product }: ProductCardProps) {
             <Badge>-{product.discountPercentage}%</Badge>
           ) : null}
         </div>
-        <Link href={`/producto/${product.slug}`} className="flex min-h-11 items-center truncate text-lg font-semibold text-[var(--foreground)]">
+        <Link href={`/producto/${product.slug}`} className="min-h-10 text-sm font-semibold leading-snug text-[var(--foreground)] line-clamp-2 sm:flex sm:min-h-11 sm:items-center sm:truncate sm:text-lg">
           {product.name}
         </Link>
-        <div className="flex items-end gap-2">
-          <span className="text-lg font-bold">{toCurrency(product.price)}</span>
+        <div className="mt-auto flex flex-wrap items-end gap-x-2">
+          <span className="text-base font-bold sm:text-lg">{toCurrency(product.price)}</span>
           {product.previousPrice ? (
-            <span className="text-sm text-[var(--muted-foreground)] line-through">
+            <span className="text-xs text-[var(--muted-foreground)] line-through sm:text-sm">
               {toCurrency(product.previousPrice)}
             </span>
           ) : null}
@@ -88,7 +88,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="flex gap-2">
           <Button
             variant="secondary"
-            className="flex-1"
+            className="flex-1 px-2 text-xs transition active:scale-[0.97] sm:px-4 sm:text-sm"
             disabled={isOutOfStock}
             onClick={() => {
               addItem({
@@ -104,10 +104,11 @@ export function ProductCard({ product }: ProductCardProps) {
               toast.success("Producto agregado al carrito");
             }}
           >
-            {isOutOfStock ? "Agotado" : "Anadir al carrito"}
+            {isOutOfStock ? "Agotado" : "Añadir al carrito"}
           </Button>
 
-          <Link href={`/producto/${product.slug}`} className="flex-1">
+          {/* En celular la foto y el nombre ya llevan al detalle: dejamos un solo botón para que quepa. */}
+          <Link href={`/producto/${product.slug}`} className="hidden flex-1 sm:block">
             <Button className="w-full">Ver detalles</Button>
           </Link>
         </div>

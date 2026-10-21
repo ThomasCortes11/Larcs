@@ -48,7 +48,7 @@ flowchart TD
     H -->|Sí| J[API crea enlace del checkout Wompi]
 ```
 
-El envío a WhatsApp no completa automáticamente un pago ni vacía el carrito. El negocio confirma manualmente el pedido. Wompi requiere configurar el entorno antes de habilitar su checkout.
+Con Wompi, el pedido (productos, tallas y datos de envío) se guarda en el navegador del cliente al iniciar el pago; cuando Wompi lo aprueba, la página `/pago/resultado` muestra un botón para enviarlo completo a la tienda por WhatsApp, con la referencia y la transacción. Los eventos de Wompi (`/api/payments/wompi/events`) quedan en el registro del servidor como respaldo. El envío a WhatsApp no completa automáticamente un pago ni vacía el carrito. El negocio confirma manualmente el pedido. Wompi requiere configurar el entorno antes de habilitar su checkout.
 
 ## Estructura
 
@@ -97,7 +97,7 @@ Copia `.env.example` a `.env.local` y completa solo los valores necesarios. Nunc
 | `WOMPI_INTEGRITY_SECRET` | Secreto para firmar la solicitud de checkout. |
 | `WOMPI_PRIVATE_KEY` | Llave privada para consultar transacciones desde el servidor. |
 | `WOMPI_EVENTS_SECRET` | Secreto para validar eventos entrantes de Wompi. |
-| `WOMPI_API_BASE_URL` | URL de la API de Wompi; por defecto usa sandbox. |
+| `WOMPI_API_BASE_URL` | Opcional. Se detecta sola por la llave pública: `pub_test_` usa sandbox y `pub_prod_` producción. |
 | `WOMPI_REDIRECT_URL` | URL pública opcional de retorno tras el checkout. |
 
 Wompi permanece en preparación mientras falten `NEXT_PUBLIC_WOMPI_PUBLIC_KEY` o `WOMPI_INTEGRITY_SECRET`. No se deben escribir llaves en el código fuente, README, capturas ni mensajes de commit.

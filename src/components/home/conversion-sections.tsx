@@ -16,7 +16,7 @@ const locationLinks = {
 
 const benefits = [
   {
-    title: "Envio rapido nacional",
+    title: "Envío rápido nacional",
     detail: "Despachos priorizados en principales ciudades de Colombia.",
     icon: Truck
   },
@@ -27,7 +27,7 @@ const benefits = [
   },
   {
     title: "Cambios sencillos",
-    detail: "Politica clara para cambios de talla y referencias.",
+    detail: "Política clara para cambios de talla y referencias.",
     icon: Undo2
   }
 ];
@@ -131,7 +131,7 @@ export function ConversionSections() {
         >
           <div className="grid gap-6 md:grid-cols-[1fr_1.15fr] md:items-center">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-[var(--primary)]">Ubicacion</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-[var(--primary)]">Ubicación</p>
               <h2 className="mt-2 text-2xl font-bold">Visitanos en la zona exacta</h2>
               <p className="mt-2 max-w-xl text-sm text-[var(--muted-foreground)]">
                 LARCS está ubicado en Bogotá y te lleva directo al punto más cercano para recoger o visitar la tienda.

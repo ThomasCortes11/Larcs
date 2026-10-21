@@ -74,7 +74,7 @@ export function Footer() {
                 className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
               >
                 <MapPin className="h-4 w-4 shrink-0" />
-                <span>Ver ubicacion</span>
+                <span>Ver ubicación</span>
               </a>
             </div>
           </div>

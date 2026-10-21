@@ -173,6 +173,15 @@ export function buildWompiCheckoutUrl(options: {
   };
 }
 
+// Las llaves de producción (pub_prod_…) consultan producción y las de prueba (pub_test_…) el sandbox.
+// WOMPI_API_BASE_URL solo se usa si se quiere forzar otra URL.
+export function wompiApiBaseUrl() {
+  if (process.env.WOMPI_API_BASE_URL) return process.env.WOMPI_API_BASE_URL;
+  return process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY?.startsWith("pub_prod_")
+    ? "https://production.wompi.co/v1"
+    : "https://sandbox.wompi.co/v1";
+}
+
 export async function fetchWompiTransaction(transactionId: string) {
   const privateKey = process.env.WOMPI_PRIVATE_KEY;
 
@@ -180,8 +189,7 @@ export async function fetchWompiTransaction(transactionId: string) {
     throw new Error("Falta configurar WOMPI_PRIVATE_KEY.");
   }
 
-  const apiBaseUrl = process.env.WOMPI_API_BASE_URL ?? "https://sandbox.wompi.co/v1";
-  const response = await fetch(`${apiBaseUrl}/transactions/${transactionId}`, {
+  const response = await fetch(`${wompiApiBaseUrl()}/transactions/${transactionId}`, {
     headers: {
       Authorization: `Bearer ${privateKey}`
     },

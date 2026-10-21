@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ClearCartOnApproval } from "@/components/checkout/clear-cart-on-approval";
+import { WompiOrderWhatsApp } from "@/components/checkout/wompi-order-whatsapp";
 import { Button } from "@/components/ui/button";
 import { toCurrency } from "@/lib/utils";
 import { fetchWompiTransaction } from "@/services/payments/wompi";
@@ -31,12 +32,13 @@ function statusLabel(status?: string) {
 export default async function PagoResultadoPage({ searchParams }: PagoResultadoPageProps) {
   const params = await searchParams;
   const transactionId = getSingleParam(params.id);
-  const reference = getSingleParam(params.reference);
-
   const transaction = transactionId ? await fetchWompiTransaction(transactionId).catch(() => null) : null;
+  // La referencia confirmada por Wompi manda sobre la de la URL.
+  const reference = transaction?.reference ?? getSingleParam(params.reference);
+  // Solo se confía en el estado que devuelve la API de Wompi, nunca en el de la URL.
   const status = transaction?.status ?? getSingleParam(params.status);
   const amountInCents = transaction?.amount_in_cents;
-  const approved = status === "APPROVED";
+  const approved = transaction?.status === "APPROVED";
 
   return (
     <section className="mx-auto grid max-w-4xl gap-6 px-4 py-10 md:px-6">
@@ -80,6 +82,14 @@ export default async function PagoResultadoPage({ searchParams }: PagoResultadoP
           </div>
         </div>
       </div>
+
+      {approved && reference ? (
+        <WompiOrderWhatsApp
+          reference={reference}
+          transactionId={transactionId}
+          paymentMethod={transaction?.payment_method_type}
+        />
+      ) : null}
 
       <div className="flex flex-wrap gap-3">
         <Link href="/catalogo">
