@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import { MobileBuyBar } from "@/components/catalog/mobile-buy-bar";
+import { PurchaseGuarantees } from "@/components/legal/purchase-guarantees";
 import { ProductDetailActions } from "@/components/catalog/product-detail-actions";
 import { ProductGallery } from "@/components/catalog/product-gallery";
 import { ProductGrid } from "@/components/catalog/product-grid";
@@ -177,6 +178,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               stock={product.variant.stock}
             />
           </div>
+          <PurchaseGuarantees variant="card" />
         </div>
       </div>
       <MobileBuyBar

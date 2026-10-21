@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { unstable_noStore as noStore } from "next/cache";
 
@@ -41,30 +41,6 @@ export async function getAllProducts() {
 export async function getProductBySlug(slug: string) {
   const products = await getAllProducts();
   return products.find((product) => product.slug === slug) ?? null;
-}
-
-export async function updateProductStock(productId: string, stock: number | null) {
-  const products = await readProductsFile();
-  const productIndex = products.findIndex((product) => product.id === productId);
-
-  if (productIndex === -1) {
-    return null;
-  }
-
-  const safeStock = stock == null ? null : Math.max(0, Math.trunc(stock));
-  const updatedProduct: Product = {
-    ...products[productIndex],
-    variant: {
-      ...products[productIndex].variant,
-      stock: safeStock
-    }
-  };
-
-  const updatedProducts = [...products];
-  updatedProducts[productIndex] = updatedProduct;
-  await writeFile(productsJsonPath, `${JSON.stringify(updatedProducts, null, 2)}\n`, "utf8");
-
-  return updatedProduct;
 }
 
 export async function searchProducts(query: string) {

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { AddiButton } from "@/components/checkout/addi-button";
 import { CodCheckoutForm } from "@/components/checkout/cod-checkout-trigger";
 import { PickupWhatsAppButton } from "@/components/checkout/pickup-whatsapp-button";
+import { PurchaseGuarantees } from "@/components/legal/purchase-guarantees";
 import { SHIPPING_COST } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
 import { getCartSubtotal, useCartStore } from "@/store/cart-store";
@@ -254,6 +255,7 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
                   </Button>
                 </Link>
               </Dialog.Close>
+              <PurchaseGuarantees variant="inline" onNavigate={() => onOpenChange(false)} />
             </div>
           ) : null}
         </Dialog.Content>

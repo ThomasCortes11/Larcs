@@ -1,4 +1,5 @@
 import { CheckoutForm } from "@/components/checkout/checkout-form";
+import { PurchaseGuarantees } from "@/components/legal/purchase-guarantees";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,7 @@ export default function PagoPage() {
         </p>
       </div>
       <CheckoutForm wompiConfigured={wompiConfigured} />
+      <PurchaseGuarantees variant="card" />
     </section>
   );
 }

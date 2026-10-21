@@ -1,18 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  ChevronRight,
   ExternalLink,
   Mail,
   MapPin,
   Navigation,
-  Phone,
-  ShieldCheck,
-  Truck,
-  Undo2
+  Phone
 } from "lucide-react";
 
+import { GUARANTEES } from "@/components/legal/purchase-guarantees";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
 import { TikTokIcon } from "@/components/icons/TikTokIcon";
 import {
@@ -30,41 +30,33 @@ const locationLinks = {
   waze: WAZE_URL
 };
 
-const benefits = [
-  {
-    title: "Envío rápido nacional",
-    detail: "Despachos priorizados en principales ciudades de Colombia.",
-    icon: Truck
-  },
-  {
-    title: "Pago 100% seguro",
-    detail: "Arquitectura preparada para Stripe, Mercado Pago, Wompi y PayU.",
-    icon: ShieldCheck
-  },
-  {
-    title: "Cambios sencillos",
-    detail: "Política clara para cambios de talla y referencias.",
-    icon: Undo2
-  }
-];
-
 export function ConversionSections() {
   return (
     <>
       <section className="mx-auto max-w-7xl space-y-5 px-4 py-10 md:px-6">
         <h2 className="text-2xl font-bold">Beneficios de comprar en LARCS</h2>
-        <div className="grid gap-4 md:grid-cols-3">
-          {benefits.map((benefit) => (
-            <article
-              key={benefit.title}
-              className="rounded-3xl border border-[var(--border)] bg-white p-5"
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          {GUARANTEES.map(({ href, icon: Icon, title, detail }) => (
+            <Link
+              key={href}
+              href={href}
+              className="group flex flex-col rounded-3xl border border-[var(--border)] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[var(--primary)] hover:shadow-[0_18px_40px_-30px_var(--primary)] sm:p-5"
             >
-              <benefit.icon className="mb-3 h-6 w-6 text-[var(--primary)]" />
-              <h3 className="font-semibold">{benefit.title}</h3>
-              <p className="mt-1 text-sm text-[var(--muted-foreground)]">
-                {benefit.detail}
+              <span className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--primary)_10%,white)] text-[var(--primary)]">
+                <Icon className="h-5 w-5" aria-hidden />
+              </span>
+              <h3 className="font-semibold">{title}</h3>
+              <p className="mt-1 flex-1 text-sm text-[var(--muted-foreground)]">
+                {detail}
               </p>
-            </article>
+              <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--primary)]">
+                Ver política
+                <ChevronRight
+                  className="h-3.5 w-3.5 transition group-hover:translate-x-0.5"
+                  aria-hidden
+                />
+              </span>
+            </Link>
           ))}
         </div>
       </section>
