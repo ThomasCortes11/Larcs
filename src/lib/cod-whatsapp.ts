@@ -38,7 +38,8 @@ export function sanitizeText(value: string) {
 
 function formatItemName(item: CodOrderItem) {
   const name = sanitizeText(item.name);
-  const sku = sanitizeText(item.sku);
+  // Algunas referencias del catálogo ya traen "Ref:" adelante; se quita para no repetirlo.
+  const sku = sanitizeText(item.sku).replace(/^ref\.?\s*:?\s*/i, "");
   return `${name}${sku ? ` (Ref: ${sku})` : ""}`;
 }
 
