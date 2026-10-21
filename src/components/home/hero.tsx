@@ -1,14 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, RefreshCw, Ruler, ShieldCheck, Truck } from "lucide-react";
+import Link from "next/link";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, ArrowUpRight, RefreshCw, Ruler, ShieldCheck, Truck } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
-import { BrandLogo } from "@/components/layout/brand-logo";
 import { Button } from "@/components/ui/button";
-import { BLUR_PLACEHOLDER, CATEGORY_LABELS } from "@/lib/constants";
+import { BLUR_PLACEHOLDER, BRAND_LOGO_PURPLE, CATEGORY_LABELS } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
 import type { CategoryKey, Product } from "@/types/product";
 
@@ -16,47 +15,7 @@ interface HeroProps {
   products?: Product[];
 }
 
-const orderedCategories: CategoryKey[] = ["botines", "tacones", "flats", "botas", "sandalias"];
-
-const categoryStories: Partial<Record<
-  CategoryKey,
-  {
-    label: string;
-    title: string;
-    description: string;
-    accent: string;
-    note: string;
-  }
->> = {
-  botas: {
-    label: "Statement winter",
-    title: "Botas con presencia editorial y estructura femenina.",
-    description: "Diseños de impacto para clima fresco, styling urbano y una silueta más poderosa.",
-    accent: "var(--accent-orange)",
-    note: "Envío nacional y asesoría de talla"
-  },
-  botines: {
-    label: "Signature best seller",
-    title: "Botines premium para una presencia impecable todos los días.",
-    description: "La línea más versátil de LARCS, pensada para combinar comodidad real con una lectura sofisticada.",
-    accent: "var(--primary)",
-    note: "Best sellers con rotacion continua"
-  },
-  sandalias: {
-    label: "Light season",
-    title: "Sandalias ligeras con detalles que refinan cada paso.",
-    description: "Opciones frescas para clima cálido, escapadas, vacaciones y momentos especiales.",
-    accent: "var(--secondary)",
-    note: "Siluetas frescas con enfoque femenino"
-  },
-  tacones: {
-    label: "Evening focus",
-    title: "Tacones diseñados para eventos, oficina y ocasiones memorables.",
-    description: "Altura, estabilidad y materiales seleccionados para una presencia segura y elegante.",
-    accent: "var(--accent-rose)",
-    note: "Pagos seguros y cambios fáciles"
-  }
-};
+const orderedCategories: CategoryKey[] = ["botines", "tacones", "botas", "sandalias", "flats"];
 
 const trustPoints = [
   { icon: Truck, label: "Envío nacional" },
@@ -65,255 +24,248 @@ const trustPoints = [
   { icon: Ruler, label: "Asesoría de talla" }
 ];
 
-// Cada cuánto cambia sola la categoría destacada, mientras la clienta no toque nada.
-const ROTATION_MS = 6000;
+// Cada cuánto cambian las fotos de los arcos.
+const ROTATION_MS = 4500;
 
-function getFeaturedByCategory(products: Product[]) {
-  return orderedCategories.reduce<Partial<Record<CategoryKey, Product>>>((accumulator, category) => {
-    const candidate = products
-      .filter((product) => product.category === category)
-      .sort((first, second) => Number(second.isPromo) - Number(first.isPromo) || second.popularity - first.popularity)[0];
+// Los productos más populares de cada categoría, con foto: alimentan los arcos.
+function getShowcase(products: Product[]) {
+  return orderedCategories
+    .map((category) =>
+      products
+        .filter((product) => product.category === category && product.imageUrls[0])
+        .sort((first, second) => Number(second.isPromo) - Number(first.isPromo) || second.popularity - first.popularity)[0]
+    )
+    .filter((product): product is Product => Boolean(product));
+}
 
-    if (candidate) {
-      accumulator[category] = candidate;
-    }
+// Un arco con su foto. Al cambiar de producto, la foto se funde y se acerca despacio.
+function Arch({
+  product,
+  className,
+  sizes,
+  priority = false
+}: {
+  product: Product;
+  className: string;
+  sizes: string;
+  priority?: boolean;
+}) {
+  return (
+    <div className={`relative overflow-hidden rounded-t-full rounded-b-[2rem] bg-[color-mix(in_srgb,var(--muted)_70%,white)] shadow-[0_40px_80px_-40px_rgba(92,48,76,0.55)] ${className}`}>
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={product.id}
+          initial={{ opacity: 0, scale: 1.12 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ opacity: { duration: 0.9 }, scale: { duration: ROTATION_MS / 1000 + 1.5, ease: "easeOut" } }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={product.imageUrls[0] ?? BLUR_PLACEHOLDER}
+            alt={product.name}
+            fill
+            priority={priority}
+            sizes={sizes}
+            className="object-cover"
+          />
+        </motion.div>
+      </AnimatePresence>
+      <div className="pointer-events-none absolute inset-0 rounded-t-full rounded-b-[2rem] ring-1 ring-inset ring-white/40" />
+    </div>
+  );
+}
 
-    return accumulator;
-  }, {});
+// Sello circular que gira: "Más de 30 años · Hecho en Colombia".
+function SpinningSeal({ className }: { className: string }) {
+  return (
+    <div className={`pointer-events-none select-none ${className}`} aria-hidden>
+      <div className="relative h-full w-full rounded-full bg-white/90 shadow-[0_18px_40px_-20px_rgba(92,48,76,0.6)] backdrop-blur">
+        <svg viewBox="0 0 120 120" className="hero-seal absolute inset-0 h-full w-full">
+          <defs>
+            <path id="hero-seal-path" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
+          </defs>
+          <text className="fill-[var(--primary)] text-[10px] font-semibold">
+            <textPath href="#hero-seal-path" textLength="286" lengthAdjust="spacing">
+              MÁS DE 30 AÑOS · HECHO EN COLOMBIA ·
+            </textPath>
+          </text>
+        </svg>
+        <div className="absolute inset-[30%]">
+          <Image src={BRAND_LOGO_PURPLE} alt="" fill sizes="48px" className="object-contain" />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function Hero({ products = [] }: HeroProps) {
-  const featuredByCategory = useMemo(() => getFeaturedByCategory(products), [products]);
-  const availableCategories = orderedCategories.filter((category) => featuredByCategory[category]);
-  const [activeCategory, setActiveCategory] = useState<CategoryKey>(availableCategories[0] ?? "botines");
-  const [autoRotate, setAutoRotate] = useState(true);
-  const categoriesKey = availableCategories.join(",");
+  const showcase = useMemo(() => getShowcase(products), [products]);
+  const [tick, setTick] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!autoRotate || availableCategories.length < 2) return;
-    const timer = window.setInterval(() => {
-      startTransition(() =>
-        setActiveCategory((current) => {
-          const index = availableCategories.indexOf(current);
-          return availableCategories[(index + 1) % availableCategories.length];
-        })
-      );
-    }, ROTATION_MS);
+    if (reduceMotion || showcase.length < 2) return;
+    const timer = window.setInterval(() => setTick((value) => value + 1), ROTATION_MS);
     return () => window.clearInterval(timer);
-    // availableCategories cambia de identidad en cada render; categoriesKey resume su contenido.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoRotate, categoriesKey]);
+  }, [reduceMotion, showcase.length]);
 
-  const selectCategory = (category: CategoryKey) => {
-    setAutoRotate(false); // si la clienta escoge, dejamos de rotar
-    startTransition(() => setActiveCategory(category));
-  };
+  if (showcase.length === 0) return null;
 
-  const activeProduct = featuredByCategory[activeCategory] ?? featuredByCategory[availableCategories[0] ?? "botines"];
+  // Cada arco muestra un producto distinto y van rotando juntos.
+  const at = (offset: number) => showcase[(tick + offset) % showcase.length];
+  const center = at(0);
 
-  if (!activeProduct) {
-    return null;
-  }
-
-  const activeStory = categoryStories[activeCategory] ?? {
-    label: CATEGORY_LABELS[activeCategory],
-    title: activeProduct.name,
-    description: activeProduct.description,
-    accent: "var(--primary)",
-    note: ""
-  };
+  const textIn = (delay: number) =>
+    reduceMotion
+      ? {}
+      : { initial: { opacity: 0, y: 22 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const } };
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fff9fb_0%,color-mix(in_srgb,var(--background)_86%,white)_38%,#f7f0f4_100%)]">
-      <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--primary),transparent)]" />
-      <div className="absolute -left-12 top-8 h-32 w-32 rounded-full bg-[color-mix(in_srgb,var(--primary)_18%,transparent)] blur-3xl sm:-left-20 sm:top-12 sm:h-72 sm:w-72" />
-      <div className="absolute right-0 top-20 h-48 w-48 rounded-full bg-[color-mix(in_srgb,var(--secondary)_14%,transparent)] blur-3xl sm:h-80 sm:w-80" />
-      <div className="absolute bottom-8 left-1/2 hidden h-48 w-48 -translate-x-1/2 rounded-full bg-[color-mix(in_srgb,var(--accent-rose)_12%,transparent)] blur-3xl sm:block sm:h-56 sm:w-56" />
+    <>
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fff9fb_0%,color-mix(in_srgb,var(--background)_86%,white)_45%,#f7eef3_100%)]">
+        {/* Luces de color de fondo */}
+        <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-[color-mix(in_srgb,var(--primary)_20%,transparent)] blur-3xl" />
+        <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-[color-mix(in_srgb,var(--secondary)_18%,transparent)] blur-3xl" />
 
-      <div className="mx-auto grid min-w-0 max-w-7xl gap-6 px-4 py-6 sm:gap-8 sm:py-12 md:min-h-[88vh] md:grid-cols-12 md:px-6 md:py-20">
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10 flex min-w-0 flex-col justify-center md:col-span-5"
-        >
-          <div className="inline-flex w-fit items-center gap-3 rounded-full border border-[color-mix(in_srgb,var(--primary)_26%,white)] bg-[color-mix(in_srgb,var(--primary)_8%,white)] px-4 py-2 text-[10px] uppercase tracking-[0.24em] text-[var(--muted-foreground)] backdrop-blur sm:text-[11px] sm:tracking-[0.28em]">
-            <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
-            Calzado femenino<span className="hidden sm:inline"> · Envíos a toda Colombia</span>
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-10 pt-12 sm:pt-16 md:px-6 lg:min-h-[calc(100svh-5rem)] lg:grid-cols-12 lg:items-center lg:gap-8 lg:py-12">
+          {/* Arcos con fotos (en celular van primero) */}
+          <div className="relative lg:order-2 lg:col-span-7">
+            <div className="relative mx-auto flex max-w-xl items-end justify-center gap-3 sm:gap-4 lg:max-w-none">
+              <motion.div
+                className="w-[27%]"
+                {...(reduceMotion ? {} : { initial: { opacity: 0, y: 40 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, delay: 0.15 } })}
+              >
+                <Arch product={at(1)} className="hero-float-slow aspect-[3/5]" sizes="(max-width: 1024px) 28vw, 16vw" />
+              </motion.div>
+              <motion.div
+                className="relative w-[40%] -translate-y-4 sm:-translate-y-10"
+                {...(reduceMotion ? {} : { initial: { opacity: 0, y: 40 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8 } })}
+              >
+                <Arch product={center} className="hero-float aspect-[3/5]" sizes="(max-width: 1024px) 42vw, 24vw" priority />
+                <Link
+                  href={`/producto/${center.slug}`}
+                  className="group absolute -bottom-5 left-1/2 z-10 flex w-max max-w-[150%] -translate-x-1/2 items-center gap-2 rounded-full border border-white/80 bg-white/95 py-1.5 pl-4 pr-1.5 text-xs shadow-[0_16px_34px_-16px_rgba(0,0,0,0.4)] backdrop-blur transition hover:-translate-y-0.5 sm:text-sm"
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.span
+                      key={center.id}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.25 }}
+                      className="flex items-center gap-2"
+                    >
+                      <span className="font-semibold">{center.name}</span>
+                      <span className="text-[var(--primary)]">{toCurrency(center.price)}</span>
+                    </motion.span>
+                  </AnimatePresence>
+                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[var(--primary)] text-white transition group-hover:rotate-45 sm:h-8 sm:w-8">
+                    <ArrowUpRight className="h-4 w-4" aria-hidden />
+                  </span>
+                </Link>
+              </motion.div>
+              <motion.div
+                className="w-[27%]"
+                {...(reduceMotion ? {} : { initial: { opacity: 0, y: 40 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, delay: 0.3 } })}
+              >
+                <Arch product={at(2)} className="hero-float-slow aspect-[3/5] [animation-delay:-3s]" sizes="(max-width: 1024px) 28vw, 16vw" />
+              </motion.div>
+
+              <SpinningSeal className="absolute -top-2 right-0 h-20 w-20 sm:h-28 sm:w-28 lg:-right-2 lg:top-2" />
+            </div>
           </div>
 
-          <h1 className="brand-display mt-5 max-w-xl text-[2.1rem] leading-[1.02] text-[var(--foreground)] sm:mt-6 sm:text-5xl lg:text-6xl">
-            El par que transforma tu presencia{" "}
-            <span className="bg-[linear-gradient(120deg,var(--primary),var(--secondary))] bg-clip-text text-transparent">
-              empieza aquí.
-            </span>
-          </h1>
+          {/* Texto */}
+          <div className="relative z-10 text-center lg:order-1 lg:col-span-5 lg:text-left">
+            <motion.p
+              {...textIn(0.05)}
+              className="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--primary)_26%,white)] bg-white/70 px-4 py-2 text-[10px] uppercase tracking-[0.26em] text-[var(--muted-foreground)] backdrop-blur sm:text-[11px]"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)]" />
+              Calzado femenino · Hecho en Colombia
+            </motion.p>
 
-          <p className="mt-4 max-w-lg text-sm leading-6 text-[var(--muted-foreground)] sm:mt-5 sm:text-base sm:leading-7 md:text-lg md:leading-8">
-            Botines, tacones, botas, sandalias y flats con diseño premium. Te asesoramos en la talla y te lo
-            enviamos a toda Colombia.
-          </p>
+            <motion.h1
+              {...textIn(0.15)}
+              className="brand-display mx-auto mt-5 max-w-xl text-[2.35rem] leading-[1.02] text-[var(--foreground)] sm:text-6xl lg:mx-0 lg:text-[3.4rem] xl:text-[3.8rem]"
+            >
+              El par que transforma tu presencia{" "}
+              <span className="bg-[linear-gradient(120deg,var(--primary),var(--secondary))] bg-clip-text text-transparent">
+                empieza aquí.
+              </span>
+            </motion.h1>
 
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
-            <Link href="/catalogo" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full px-4 transition-transform hover:-translate-y-0.5 active:scale-[0.98] bg-[linear-gradient(120deg,color-mix(in_srgb,var(--primary)_90%,white),color-mix(in_srgb,var(--secondary)_88%,white))] shadow-[0_16px_30px_-18px_var(--primary)]">
-                Comprar colección
-              </Button>
-            </Link>
-            <Link href={activeProduct.slug ? `/producto/${activeProduct.slug}` : "/catalogo"} className="w-full sm:w-auto">
-              <Button size="lg" variant="secondary" className="w-full border-[color-mix(in_srgb,var(--primary)_22%,white)] bg-white/80 px-4 transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
-                <span className="sm:hidden">Ver destacado</span>
-                <span className="hidden sm:inline">Ver producto destacado</span>
-              </Button>
-            </Link>
+            <motion.p
+              {...textIn(0.25)}
+              className="mx-auto mt-5 max-w-md text-sm leading-6 text-[var(--muted-foreground)] sm:text-base sm:leading-7 lg:mx-0 lg:text-lg lg:leading-8"
+            >
+              Botines, tacones, botas, sandalias y flats con diseño premium. Te asesoramos en la talla y te lo enviamos
+              a toda Colombia.
+            </motion.p>
+
+            <motion.div {...textIn(0.35)} className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+              <Link href="/catalogo" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  className="group w-full gap-2 bg-[linear-gradient(120deg,color-mix(in_srgb,var(--primary)_92%,white),color-mix(in_srgb,var(--secondary)_88%,white))] px-8 shadow-[0_18px_34px_-18px_var(--primary)] transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+                >
+                  Comprar colección
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
+                </Button>
+              </Link>
+              <Link href={`/producto/${center.slug}`} className="w-full sm:w-auto">
+                <Button size="lg" variant="secondary" className="w-full bg-white/80 px-8 transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
+                  Ver destacado
+                </Button>
+              </Link>
+            </motion.div>
+
+            <motion.ul
+              {...textIn(0.45)}
+              className="mx-auto mt-8 grid max-w-md grid-cols-2 gap-x-4 gap-y-3 text-left text-xs text-[var(--muted-foreground)] sm:max-w-none sm:grid-cols-4 sm:text-sm lg:mx-0 lg:grid-cols-2"
+            >
+              {trustPoints.map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-center gap-2">
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[var(--primary)] shadow-[0_6px_14px_-10px_var(--primary)]">
+                    <Icon className="h-4 w-4" aria-hidden />
+                  </span>
+                  {label}
+                </li>
+              ))}
+            </motion.ul>
+
+            <motion.div
+              {...textIn(0.55)}
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/70 px-3 py-1.5 text-xs text-[var(--muted-foreground)]"
+            >
+              <Image src="/api/assets/Logos/logo-addi.png" width={44} height={22} unoptimized alt="Logo de ADDI" className="h-5 w-10 object-contain" />
+              Compra hoy y paga después con ADDI
+            </motion.div>
           </div>
+        </div>
+      </section>
 
-          <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-[var(--border)] pt-4 text-xs text-[var(--muted-foreground)] sm:mt-8 sm:flex sm:flex-wrap sm:gap-x-6 sm:pt-5 sm:text-sm">
-            {trustPoints.map(({ icon: Icon, label }) => (
-              <li key={label} className="flex items-center gap-2">
-                <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--primary)_10%,white)] text-[var(--primary)]">
-                  <Icon className="h-3.5 w-3.5" aria-hidden />
-                </span>
-                {label}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-4 flex w-fit max-w-full flex-wrap items-center gap-2 rounded-full border border-[var(--border)] bg-white/70 px-3 py-2 text-xs text-[var(--muted-foreground)]">
-            <Image
-              src="/api/assets/Logos/logo-addi.png"
-              width={56}
-              height={28}
-              unoptimized
-              alt="Logo de ADDI"
-              className="h-6 w-12 object-contain"
-            />
-            <span>Paga después con ADDI</span>
-            <span aria-hidden="true">·</span>
-            <Link href="/catalogo" className="inline-flex min-h-[44px] items-center font-semibold text-[var(--primary)] hover:underline">
-              Ver catálogo
-            </Link>
-          </div>
-
-          <div className="mt-6 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mt-8 sm:mx-0 sm:flex-wrap sm:gap-5 sm:overflow-visible sm:px-0">
-            {availableCategories.map((category) => {
-              const isActive = category === activeCategory;
-
-              return (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => selectCategory(category)}
-                  aria-pressed={isActive}
-                  className={[
-                    "min-h-[44px] shrink-0 rounded-full px-3 py-2 text-left text-xs uppercase tracking-[0.2em] transition-all duration-300 sm:rounded-none sm:px-0 sm:py-0 sm:pb-2 sm:text-sm",
-                    isActive
-                      ? "border border-[color-mix(in_srgb,var(--primary)_26%,white)] bg-[color-mix(in_srgb,var(--primary)_12%,white)] text-[var(--foreground)] sm:border-b sm:border-x-0 sm:border-t-0 sm:bg-transparent"
-                      : "border border-transparent bg-white/60 text-[var(--muted-foreground)] hover:text-[var(--foreground)] sm:border-b sm:border-x-0 sm:border-t-0 sm:bg-transparent"
-                  ].join(" ")}
+      {/* Cinta de categorías */}
+      <nav aria-label="Categorías" className="overflow-hidden border-y border-[color-mix(in_srgb,var(--primary)_40%,white)] bg-[var(--primary)] py-3 text-white">
+        <div className="hero-marquee flex w-max gap-8 hover:[animation-play-state:paused]">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex gap-8" aria-hidden={copy === 1}>
+              {orderedCategories.map((category) => (
+                <Link
+                  key={`${copy}-${category}`}
+                  href={`/catalogo?categoria=${category}`}
+                  tabIndex={copy === 1 ? -1 : undefined}
+                  className="brand-display flex items-center gap-8 whitespace-nowrap text-lg uppercase tracking-[0.18em] transition hover:opacity-80 sm:text-xl"
                 >
                   {CATEGORY_LABELS[category]}
-                </button>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.1 }}
-          className="relative z-10 min-w-0 md:col-span-7"
-        >
-          <div className="relative overflow-hidden rounded-[1.5rem] border border-[color-mix(in_srgb,var(--primary)_18%,white)] bg-[linear-gradient(160deg,rgba(255,255,255,0.96)_0%,color-mix(in_srgb,var(--muted)_78%,white)_100%)] p-3 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.28)] sm:rounded-[2rem] sm:p-4 md:rounded-[2.25rem] md:p-8">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,color-mix(in_srgb,var(--primary)_14%,transparent),transparent_32%),radial-gradient(circle_at_15%_85%,color-mix(in_srgb,var(--secondary)_12%,transparent),transparent_25%)]" />
-
-            <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--primary)]">{activeStory.label}</p>
-                <p className="mt-3 hidden max-w-sm text-sm leading-7 text-[var(--muted-foreground)] sm:block">{activeStory.description}</p>
-              </div>
-              <BrandLogo variant="bw" width={92} height={26} className="h-[44px] min-h-[44px] w-[92px] shrink-0" />
+                  <span className="text-sm opacity-70">✦</span>
+                </Link>
+              ))}
             </div>
-
-            <div className="relative mt-5 aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-[color-mix(in_srgb,var(--primary)_12%,white)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_34%,white),white)] sm:mt-6 sm:aspect-[5/4] sm:rounded-[1.6rem] md:mt-8 md:aspect-auto md:min-h-[480px] md:rounded-[1.9rem] md:px-10 md:py-12">
-              <div
-                className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl md:h-72 md:w-72"
-                style={{ background: `color-mix(in srgb, ${activeStory.accent} 18%, white)` }}
-              />
-              <div className="absolute inset-x-[10%] inset-y-[8%] rounded-[5rem] border border-[color-mix(in_srgb,var(--foreground)_8%,white)] sm:inset-x-[14%] sm:rounded-[9rem]" />
-
-              {/* Precarga las fotos de todas las categorías para que la rotación no muestre huecos. */}
-              <div className="hidden" aria-hidden>
-                {availableCategories.map((category) => {
-                  const image = featuredByCategory[category]?.imageUrls[0];
-                  return image ? (
-                    <div key={`preload-${category}`} className="relative">
-                      <Image src={image} alt="" fill priority sizes="(max-width: 640px) 92vw, (max-width: 1024px) 60vw, 48vw" />
-                    </div>
-                  ) : null;
-                })}
-              </div>
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeProduct.id}
-                  initial={{ opacity: 0, y: 18, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.97 }}
-                  transition={{ duration: 0.4 }}
-                  whileHover={{ scale: 1.03, y: -4 }}
-                  className="absolute inset-3 z-10 sm:inset-5 md:inset-10"
-                >
-                  <Image
-                    src={activeProduct.imageUrls[0] ?? BLUR_PLACEHOLDER}
-                    alt={activeProduct.imageUrls[0] ? activeProduct.name : `Imagen no disponible para ${activeProduct.name}`}
-                    fill
-                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 60vw, 48vw"
-                    className="object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.18)]"
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            <div className="relative z-10 mt-4 grid gap-4 md:mt-5 md:grid-cols-[1.15fr_0.85fr]">
-              <AnimatePresence mode="wait">
-                <motion.article
-                  key={`story-${activeCategory}`}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.28 }}
-                  className="rounded-[1.2rem] border border-[var(--border)] bg-white/88 p-4 sm:rounded-[1.35rem] sm:p-5"
-                >
-                  <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted-foreground)]">{CATEGORY_LABELS[activeCategory]}</p>
-                  <h2 className="brand-display mt-3 max-w-md text-xl leading-tight text-[var(--foreground)] sm:text-3xl">
-                    {activeStory.title}
-                  </h2>
-                  <div className="mt-4 flex flex-wrap items-end gap-2 sm:mt-5 sm:gap-3">
-                    <p className="text-lg font-semibold text-[var(--foreground)] sm:text-xl">{toCurrency(activeProduct.price)}</p>
-                    <p className="text-xs text-[var(--muted-foreground)] sm:text-sm">{activeStory.note}</p>
-                  </div>
-                </motion.article>
-              </AnimatePresence>
-
-              <Link
-                href={`/producto/${activeProduct.slug}`}
-                className="flex min-w-0 items-end justify-between rounded-[1.2rem] border border-[color-mix(in_srgb,var(--secondary)_24%,white)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--secondary)_12%,white),color-mix(in_srgb,var(--muted)_62%,white))] p-4 transition hover:border-[var(--primary)] sm:rounded-[1.35rem] sm:p-5"
-              >
-                <div>
-                  <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted-foreground)]">Producto destacado</p>
-                  <p className="mt-3 line-clamp-2 text-base font-semibold text-[var(--foreground)] sm:text-lg">{activeProduct.name}</p>
-                  <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-                    Tallas {activeProduct.variant.sizes.slice(0, 4).join(" - ")}
-                  </p>
-                </div>
-                <ArrowUpRight className="h-5 w-5 text-[var(--foreground)]" />
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+          ))}
+        </div>
+      </nav>
+    </>
   );
 }

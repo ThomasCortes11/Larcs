@@ -1,13 +1,16 @@
 import type { MetadataRoute } from "next";
 
+import { SITE_URL } from "@/lib/constants";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/"
+        allow: "/",
+        disallow: ["/admin", "/api/", "/pago/resultado"]
       }
     ],
-    sitemap: "https://www.larcs.co/sitemap.xml"
+    sitemap: `${SITE_URL}/sitemap.xml`
   };
 }

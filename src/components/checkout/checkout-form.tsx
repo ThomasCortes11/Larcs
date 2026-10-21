@@ -188,10 +188,11 @@ export function CheckoutForm({ wompiConfigured }: CheckoutFormProps) {
           {isSubmitting ? "Redirigiendo a Wompi..." : wompiConfigured ? "Pagar con Wompi" : "Wompi en preparación"}
         </Button>
         <p className="text-xs text-[var(--muted-foreground)]">
-          Antes de pagar, revisa nuestra{" "}
-          <Link href="/politicas#garantia" className="font-medium text-[var(--primary)] hover:underline">garantía</Link>
-          {" "}y los{" "}
-          <Link href="/politicas#plazos-de-entrega" className="font-medium text-[var(--primary)] hover:underline">plazos de entrega</Link>.
+          Al pagar aceptas nuestros{" "}
+          <Link href="/terminos" className="font-medium text-[var(--primary)] hover:underline">términos y condiciones</Link>, las{" "}
+          <Link href="/politicas" className="font-medium text-[var(--primary)] hover:underline">políticas de garantía, entrega y retracto</Link> y autorizas el
+          tratamiento de tus datos según nuestra{" "}
+          <Link href="/privacidad" className="font-medium text-[var(--primary)] hover:underline">política de datos personales</Link>.
         </p>
       </form>
       <section

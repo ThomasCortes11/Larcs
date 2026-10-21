@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     const integritySecret = process.env.WOMPI_INTEGRITY_SECRET;
 
     if (!publicKey || !integritySecret) {
-      // TODO: Configure the Wompi keys per environment before enabling this gateway.
+      // Sin llaves de Wompi (ver .env.example) el checkout queda en preparación.
       return NextResponse.json(
         { error: "Wompi está en preparación. Usa ADDI o contra entrega mientras se configura." },
         { status: 503 }

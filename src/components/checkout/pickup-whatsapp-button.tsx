@@ -1,6 +1,6 @@
 "use client";
 
-import { Store } from "lucide-react";
+import { ChevronRight, Store } from "lucide-react";
 
 import { PICKUP_DISCOUNT_COPY, WHATSAPP_NUMBER } from "@/lib/constants";
 import { adaptWhatsAppMessageForDevice, type CodOrderItem } from "@/lib/cod-whatsapp";
@@ -13,6 +13,8 @@ interface PickupWhatsAppButtonProps {
   customer?: { name?: string; phone?: string };
   className?: string;
   disabled?: boolean;
+  // "option": fila compacta para el carrito lateral.
+  variant?: "default" | "option";
 }
 
 export function PickupWhatsAppButton({
@@ -20,7 +22,8 @@ export function PickupWhatsAppButton({
   total,
   customer,
   className,
-  disabled = false
+  disabled = false,
+  variant = "default"
 }: PickupWhatsAppButtonProps) {
   function handleClick() {
     const message = adaptWhatsAppMessageForDevice(
@@ -29,6 +32,26 @@ export function PickupWhatsAppButton({
     const phoneNumber = WHATSAPP_NUMBER.replace(/\D/g, "");
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  if (variant === "option") {
+    return (
+      <button
+        type="button"
+        disabled={disabled}
+        className={cn("flex min-h-14 w-full items-center gap-3 rounded-2xl border border-[var(--border)] bg-white px-3 py-2.5 text-left transition hover:border-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--muted)_45%,white)] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50", className)}
+        onClick={handleClick}
+      >
+        <span className="flex h-10 w-12 shrink-0 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--muted)_60%,white)] text-[var(--primary)]">
+          <Store className="h-5 w-5" aria-hidden />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-semibold">Recoge en tienda</span>
+          <span className="block text-xs text-[var(--muted-foreground)]">Con descuento en nuestro punto físico</span>
+        </span>
+        <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" aria-hidden />
+      </button>
+    );
   }
 
   return (

@@ -2,16 +2,32 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ExternalLink, Mail, MapPin, Navigation, Phone, ShieldCheck, Truck, Undo2 } from "lucide-react";
+import {
+  ExternalLink,
+  Mail,
+  MapPin,
+  Navigation,
+  Phone,
+  ShieldCheck,
+  Truck,
+  Undo2
+} from "lucide-react";
 
 import { InstagramIcon } from "@/components/ui/instagram-icon";
 import { TikTokIcon } from "@/components/icons/TikTokIcon";
-import { INSTAGRAM_URL, TIKTOK_URL, WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
+import {
+  INSTAGRAM_URL,
+  TIKTOK_URL,
+  WHATSAPP_DISPLAY_NUMBER,
+  WHATSAPP_NUMBER,
+  GOOGLE_MAPS_URL,
+  WAZE_URL
+} from "@/lib/constants";
 import mapsImage from "@/Img/Logos/Maps.jpeg";
 
 const locationLinks = {
-  googleMaps: "https://www.google.com/maps/search/?api=1&query=Calzado+LARCS+Bogota+Colombia",
-  waze: "https://www.waze.com/ul?q=Calzado%20LARCS%20Bogota%20Colombia&navigate=yes"
+  googleMaps: GOOGLE_MAPS_URL,
+  waze: WAZE_URL
 };
 
 const benefits = [
@@ -39,10 +55,15 @@ export function ConversionSections() {
         <h2 className="text-2xl font-bold">Beneficios de comprar en LARCS</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {benefits.map((benefit) => (
-            <article key={benefit.title} className="rounded-3xl border border-[var(--border)] bg-white p-5">
+            <article
+              key={benefit.title}
+              className="rounded-3xl border border-[var(--border)] bg-white p-5"
+            >
               <benefit.icon className="mb-3 h-6 w-6 text-[var(--primary)]" />
               <h3 className="font-semibold">{benefit.title}</h3>
-              <p className="mt-1 text-sm text-[var(--muted-foreground)]">{benefit.detail}</p>
+              <p className="mt-1 text-sm text-[var(--muted-foreground)]">
+                {benefit.detail}
+              </p>
             </article>
           ))}
         </div>
@@ -56,16 +77,24 @@ export function ConversionSections() {
             className="rounded-3xl border border-[var(--border)] bg-white p-6 transition hover:border-[var(--primary)]"
           >
             <Mail className="mb-3 h-5 w-5 text-[var(--primary)]" />
-            <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">Correo</p>
-            <p className="mt-2 text-base font-semibold">larscalzado@gmail.com</p>
+            <p className="text-xs tracking-[0.2em] text-[var(--muted-foreground)] uppercase">
+              Correo
+            </p>
+            <p className="mt-2 text-base font-semibold">
+              larscalzado@gmail.com
+            </p>
           </a>
           <a
-              href={`tel:+${WHATSAPP_NUMBER}`}
+            href={`tel:+${WHATSAPP_NUMBER}`}
             className="rounded-3xl border border-[var(--border)] bg-white p-6 transition hover:border-[var(--primary)]"
           >
             <Phone className="mb-3 h-5 w-5 text-[var(--primary)]" />
-            <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">Contacto</p>
-              <p className="mt-2 text-base font-semibold">{WHATSAPP_DISPLAY_NUMBER}</p>
+            <p className="text-xs tracking-[0.2em] text-[var(--muted-foreground)] uppercase">
+              Contacto
+            </p>
+            <p className="mt-2 text-base font-semibold">
+              {WHATSAPP_DISPLAY_NUMBER}
+            </p>
           </a>
           <a
             href={INSTAGRAM_URL}
@@ -74,7 +103,9 @@ export function ConversionSections() {
             className="rounded-3xl border border-[var(--border)] bg-white p-6 transition hover:border-[var(--primary)]"
           >
             <InstagramIcon className="mb-3 h-5 w-5 text-[var(--primary)]" />
-            <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">Instagram</p>
+            <p className="text-xs tracking-[0.2em] text-[var(--muted-foreground)] uppercase">
+              Instagram
+            </p>
             <p className="mt-2 text-base font-semibold">@calzadolarcs</p>
           </a>
           <a
@@ -85,7 +116,9 @@ export function ConversionSections() {
             className="rounded-3xl border border-[var(--border)] bg-white p-6 transition hover:border-[var(--primary)]"
           >
             <TikTokIcon className="mb-3 h-5 w-5 text-[var(--primary)]" />
-            <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)]">TikTok</p>
+            <p className="text-xs tracking-[0.2em] text-[var(--muted-foreground)] uppercase">
+              TikTok
+            </p>
             <p className="mt-2 text-base font-semibold">@calzadolarcs</p>
           </a>
         </div>
@@ -95,7 +128,8 @@ export function ConversionSections() {
         <h2 className="text-2xl font-bold">Instagram</h2>
         <div className="rounded-3xl border border-[var(--border)] bg-[linear-gradient(120deg,#f7e7df,#f2d8cb)] p-8">
           <p className="max-w-xl text-sm text-[var(--muted-foreground)]">
-            Conecta con nuestra comunidad para lanzamientos, editoriales y promociones en tiempo real.
+            Conecta con nuestra comunidad para lanzamientos, editoriales y
+            promociones en tiempo real.
           </p>
           <a
             href={INSTAGRAM_URL}
@@ -131,10 +165,15 @@ export function ConversionSections() {
         >
           <div className="grid gap-6 md:grid-cols-[1fr_1.15fr] md:items-center">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-[var(--primary)]">Ubicación</p>
-              <h2 className="mt-2 text-2xl font-bold">Visitanos en la zona exacta</h2>
+              <p className="text-xs tracking-[0.2em] text-[var(--primary)] uppercase">
+                Ubicación
+              </p>
+              <h2 className="mt-2 text-2xl font-bold">
+                Visitanos en la zona exacta
+              </h2>
               <p className="mt-2 max-w-xl text-sm text-[var(--muted-foreground)]">
-                LARCS está ubicado en Bogotá y te lleva directo al punto más cercano para recoger o visitar la tienda.
+                LARCS está ubicado en Bogotá y te lleva directo al punto más
+                cercano para recoger o visitar la tienda.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <a
@@ -174,9 +213,14 @@ export function ConversionSections() {
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(25,15,20,0.04)_15%,rgba(25,15,20,0.82)_100%)]" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                <p className="text-xs uppercase tracking-[0.18em] text-white/80">Calzado LARCS</p>
+                <p className="text-xs tracking-[0.18em] text-white/80 uppercase">
+                  Calzado LARCS
+                </p>
                 <p className="mt-2 text-2xl font-semibold">Ruta exacta</p>
-                <p className="mt-3 max-w-md text-sm text-white/90">Toca aquí para abrir la ubicación correcta y navegar directo al punto.</p>
+                <p className="mt-3 max-w-md text-sm text-white/90">
+                  Toca aquí para abrir la ubicación correcta y navegar directo
+                  al punto.
+                </p>
                 <div className="mt-5 flex items-center gap-2 text-sm font-medium">
                   <span>Ir ahora</span>
                   <ExternalLink className="h-4 w-4" />

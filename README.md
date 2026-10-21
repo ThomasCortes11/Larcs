@@ -99,6 +99,8 @@ Copia `.env.example` a `.env.local` y completa solo los valores necesarios. Nunc
 | `WOMPI_EVENTS_SECRET` | Secreto para validar eventos entrantes de Wompi. |
 | `WOMPI_API_BASE_URL` | Opcional. Se detecta sola por la llave pública: `pub_test_` usa sandbox y `pub_prod_` producción. |
 | `WOMPI_REDIRECT_URL` | URL pública opcional de retorno tras el checkout. |
+| `NEXT_PUBLIC_SITE_URL` | Dominio público (ej. `https://www.larcs.co`) para SEO, sitemap y vistas previas al compartir. |
+| `ADMIN_TOKEN` | Contraseña del panel de stock `/admin`. Obligatoria en producción: sin ella el panel queda desactivado. |
 
 Wompi permanece en preparación mientras falten `NEXT_PUBLIC_WOMPI_PUBLIC_KEY` o `WOMPI_INTEGRITY_SECRET`. No se deben escribir llaves en el código fuente, README, capturas ni mensajes de commit.
 

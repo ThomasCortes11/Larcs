@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { AddiButton } from "@/components/checkout/addi-button";
 import { CodCheckoutForm } from "@/components/checkout/cod-checkout-trigger";
 import { useCartStore } from "@/store/cart-store";
+import { cartItemKey, useCartUiStore } from "@/store/cart-ui-store";
 import { useWishlistStore } from "@/store/wishlist-store";
 
 interface ProductDetailActionsProps {
@@ -40,9 +41,11 @@ export function ProductDetailActions({
 }: ProductDetailActionsProps) {
   const router = useRouter();
   const addItem = useCartStore((state) => state.addItem);
+  const showAdded = useCartUiStore((state) => state.showAdded);
   const toggleWishlistItem = useWishlistStore((state) => state.toggleItem);
   const isWishlisted = useWishlistStore((state) => state.hasItem(id));
-  const [size, setSize] = useState(sizes[0] ?? "37");
+  // La talla no se preselecciona (salvo que haya una sola): la clienta debe escogerla.
+  const [size, setSize] = useState(sizes.length === 1 ? sizes[0] : "");
   const [selectedColor, setSelectedColor] = useState(colors[0] ?? color);
   const [quantity, setQuantity] = useState(1);
   const hasManagedStock = stock != null;
@@ -62,7 +65,9 @@ export function ProductDetailActions({
       ) : null}
 
       <div>
-        <p className="mb-2 text-sm font-semibold">Talla</p>
+        <p className="mb-2 text-sm font-semibold">
+          Talla{size ? `: ${size}` : <span className="font-normal text-[var(--primary)]"> · escoge la tuya</span>}
+        </p>
         <div className="flex flex-wrap gap-2">
           {sizes.map((item) => (
             <button
@@ -132,20 +137,19 @@ export function ProductDetailActions({
 
       <div className="flex flex-wrap gap-3">
         <Button
-          disabled={isOutOfStock}
+          disabled={isOutOfStock || !size}
           onClick={() => {
-            addItem({ id, slug, name, reference, imageUrl, price, size, color: selectedColor }, quantity);
-            toast.success(`${quantity} producto${quantity === 1 ? "" : "s"} agregado${quantity === 1 ? "" : "s"} al carrito`);
+            addItem({ id, slug, name, reference, imageUrl, price, size, color: selectedColor, sizes }, quantity);
+            showAdded(cartItemKey(id, size, selectedColor));
           }}
         >
-          Agregar al carrito
+          {size ? "Agregar al carrito" : "Escoge tu talla"}
         </Button>
         <Button
           variant="secondary"
-          disabled={isOutOfStock}
+          disabled={isOutOfStock || !size}
           onClick={() => {
-            addItem({ id, slug, name, reference, imageUrl, price, size, color: selectedColor }, quantity);
-            toast.success("Producto listo para comprar");
+            addItem({ id, slug, name, reference, imageUrl, price, size, color: selectedColor, sizes }, quantity);
             router.push("/pago");
           }}
         >

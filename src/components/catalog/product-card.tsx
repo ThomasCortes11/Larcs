@@ -2,24 +2,30 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BLUR_PLACEHOLDER, CATEGORY_LABELS } from "@/lib/constants";
 import { toCurrency } from "@/lib/utils";
-import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
 import type { Product } from "@/types/product";
+
+const QuickAddDialog = dynamic(
+  () => import("@/components/catalog/quick-add-dialog").then((module) => module.QuickAddDialog),
+  { ssr: false }
+);
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const addItem = useCartStore((state) => state.addItem);
+  const [quickAddOpen, setQuickAddOpen] = useState(false);
   const toggleWishlistItem = useWishlistStore((state) => state.toggleItem);
   const isWishlisted = useWishlistStore((state) => state.hasItem(product.id));
   const isOutOfStock = product.variant.stock != null && product.variant.stock <= 0;
@@ -90,19 +96,7 @@ export function ProductCard({ product }: ProductCardProps) {
             variant="secondary"
             className="flex-1 px-2 text-xs transition active:scale-[0.97] sm:px-4 sm:text-sm"
             disabled={isOutOfStock}
-            onClick={() => {
-              addItem({
-                id: product.id,
-                slug: product.slug,
-                imageUrl: product.imageUrls[0] ?? BLUR_PLACEHOLDER,
-                name: product.name,
-                reference: product.reference ?? product.webReference ?? product.id,
-                price: product.price,
-                size: product.variant.sizes[0] ?? "37",
-                color: product.variant.colors[0] ?? product.variant.color
-              });
-              toast.success("Producto agregado al carrito");
-            }}
+            onClick={() => setQuickAddOpen(true)}
           >
             {isOutOfStock ? "Agotado" : "Añadir al carrito"}
           </Button>
@@ -113,6 +107,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </Link>
         </div>
       </div>
+      {quickAddOpen ? <QuickAddDialog product={product} onClose={() => setQuickAddOpen(false)} /> : null}
     </motion.article>
   );
 }

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 import { ProductGrid } from "@/components/catalog/product-grid";
 import { Button } from "@/components/ui/button";
@@ -12,9 +11,6 @@ interface CategorySectionsProps {
 }
 
 const orderedCategories: CategoryKey[] = ["botas", "botines", "tacones", "sandalias", "flats"];
-
-// En el inicio solo una muestra por categoría; el resto vive en el catálogo.
-const PREVIEW_COUNT = 4;
 
 export function CategorySections({ products }: CategorySectionsProps) {
   return (
@@ -36,16 +32,7 @@ export function CategorySections({ products }: CategorySectionsProps) {
                   <Button variant="secondary">Ver toda la sección</Button>
                 </Link>
               </div>
-              <ProductGrid products={items.slice(0, PREVIEW_COUNT)} wide />
-              {items.length > PREVIEW_COUNT ? (
-                <Link
-                  href={`/catalogo?categoria=${category}`}
-                  className="group flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--primary)_26%,white)] bg-white/80 px-5 text-sm font-semibold text-[var(--foreground)] transition hover:border-[var(--primary)] hover:text-[var(--primary)] sm:mx-auto sm:w-fit"
-                >
-                  Ver los {items.length} modelos de {CATEGORY_LABELS[category].toLowerCase()}
-                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
-                </Link>
-              ) : null}
+              <ProductGrid products={items} wide />
             </article>
           </Reveal>
         );

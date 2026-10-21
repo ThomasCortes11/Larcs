@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -32,6 +33,8 @@ interface AddiButtonProps {
   context: AddiContext;
   className?: string;
   disabled?: boolean;
+  // "option": fila compacta para el carrito lateral.
+  variant?: "default" | "option";
 }
 
 const AddiDialog = dynamic(
@@ -39,8 +42,32 @@ const AddiDialog = dynamic(
   { ssr: false }
 );
 
-export function AddiButton({ context, className, disabled = false }: AddiButtonProps) {
+export function AddiButton({ context, className, disabled = false, variant = "default" }: AddiButtonProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const dialog = isDialogOpen ? <AddiDialog context={context} onClose={() => setIsDialogOpen(false)} /> : null;
+
+  if (variant === "option") {
+    return (
+      <div className={className}>
+        <button
+          type="button"
+          disabled={disabled}
+          className="flex min-h-14 w-full items-center gap-3 rounded-2xl border border-[var(--border)] bg-white px-3 py-2.5 text-left transition hover:border-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--muted)_45%,white)] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+          onClick={() => setIsDialogOpen(true)}
+        >
+          <span className="flex h-10 w-12 shrink-0 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--muted)_60%,white)]">
+            <Image src="/api/assets/Logos/logo-addi.png" width={40} height={20} unoptimized alt="" className="h-5 w-10 object-contain" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-semibold">Paga con ADDI</span>
+            <span className="block text-xs text-[var(--muted-foreground)]">Compra hoy y paga después</span>
+          </span>
+          <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" aria-hidden />
+        </button>
+        {dialog}
+      </div>
+    );
+  }
 
   return (
     <div className={cn("space-y-2", className)}>
@@ -64,9 +91,7 @@ export function AddiButton({ context, className, disabled = false }: AddiButtonP
       <p className="text-center text-xs text-[var(--muted-foreground)]">
         Compra ahora y paga después con ADDI. Te atenderemos por WhatsApp.
       </p>
-      {isDialogOpen ? (
-        <AddiDialog context={context} onClose={() => setIsDialogOpen(false)} />
-      ) : null}
+      {dialog}
     </div>
   );
 }

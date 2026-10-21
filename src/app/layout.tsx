@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
-import { BRAND_LOGO_PURPLE } from "@/lib/constants";
+import { BRAND_LOGO_PURPLE, SITE_URL } from "@/lib/constants";
 import { brandBody, brandDisplay, brandHeading } from "@/lib/fonts";
 
 import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.larcs.co"),
+  metadataBase: new URL(SITE_URL),
   icons: {
     icon: BRAND_LOGO_PURPLE
   },

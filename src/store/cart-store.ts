@@ -12,6 +12,7 @@ interface CartItem {
   imageUrl: string;
   size: string;
   color?: string;
+  sizes?: string[]; // tallas disponibles, para poder cambiarla desde el carrito
   quantity: number;
 }
 
@@ -20,6 +21,7 @@ interface CartState {
   addItem: (item: Omit<CartItem, "quantity">, quantity?: number) => void;
   removeItem: (id: string, size: string, color?: string) => void;
   updateQuantity: (id: string, size: string, quantity: number, color?: string) => void;
+  updateSize: (id: string, size: string, newSize: string, color?: string) => void;
   clear: () => void;
 }
 
@@ -65,6 +67,25 @@ export const useCartStore = create<CartState>()(
               : cartItem
           )
         })),
+      updateSize: (id, size, newSize, color) =>
+        set((state) => {
+          const current = state.items.find(
+            (cartItem) => cartItem.id === id && cartItem.size === size && cartItem.color === color
+          );
+          if (!current || size === newSize) return state;
+          const existing = state.items.find(
+            (cartItem) => cartItem.id === id && cartItem.size === newSize && cartItem.color === color
+          );
+          // Si ya había ese mismo producto en la nueva talla, se suman las cantidades.
+          const items = existing
+            ? state.items
+                .filter((cartItem) => cartItem !== current)
+                .map((cartItem) =>
+                  cartItem === existing ? { ...cartItem, quantity: cartItem.quantity + current.quantity } : cartItem
+                )
+            : state.items.map((cartItem) => (cartItem === current ? { ...cartItem, size: newSize } : cartItem));
+          return { items };
+        }),
       clear: () => set({ items: [] })
     }),
     {

@@ -9,6 +9,10 @@ interface StockPatchBody {
 
 export async function PATCH(request: Request) {
   const configuredAdminToken = process.env.ADMIN_TOKEN;
+  // En producción el panel nunca queda abierto: sin ADMIN_TOKEN no se permite cambiar el stock.
+  if (!configuredAdminToken && process.env.NODE_ENV === "production") {
+    return NextResponse.json({ error: "El panel de stock está desactivado: falta configurar ADMIN_TOKEN." }, { status: 503 });
+  }
   if (configuredAdminToken) {
     const providedToken = request.headers.get("x-admin-token");
     if (!providedToken || providedToken !== configuredAdminToken) {

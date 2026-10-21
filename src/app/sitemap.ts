@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { SITE_URL } from "@/lib/constants";
 import { getAllProducts } from "@/lib/products";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -13,16 +14,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contacto",
     "/nosotros",
     "/politicas",
-    "/terminos"
+    "/terminos",
+    "/privacidad"
   ].map((route) => ({
-    url: `https://www.larcs.co${route}`,
+    url: `${SITE_URL}${route}`,
     lastModified: new Date(),
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : 0.8
   }));
 
   const productPages: MetadataRoute.Sitemap = products.map((product) => ({
-    url: `https://www.larcs.co/producto/${product.slug}`,
+    url: `${SITE_URL}/producto/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly",
     priority: 0.9

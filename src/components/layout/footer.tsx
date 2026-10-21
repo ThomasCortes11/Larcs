@@ -5,7 +5,13 @@ import { BrandLogo } from "@/components/layout/brand-logo";
 import { BrandIdentity } from "@/components/home/brand-identity";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
 import { TikTokIcon } from "@/components/icons/TikTokIcon";
-import { INSTAGRAM_URL, TIKTOK_URL, WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "@/lib/constants";
+import {
+  INSTAGRAM_URL,
+  TIKTOK_URL,
+  WHATSAPP_DISPLAY_NUMBER,
+  WHATSAPP_NUMBER,
+  GOOGLE_MAPS_URL
+} from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -13,40 +19,102 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 lg:py-14">
         <div className="grid justify-items-center gap-8 text-center lg:grid-cols-[1.1fr_0.9fr_0.9fr_1.1fr] lg:items-start">
           <div className="flex w-full flex-col items-center gap-4">
-            <BrandLogo variant="purple" className="h-[120px] w-[180px]" width={180} height={120} />
+            <BrandLogo
+              variant="purple"
+              className="h-[120px] w-[180px]"
+              width={180}
+              height={120}
+            />
             <BrandIdentity variant="compact" />
           </div>
 
           <div className="space-y-4">
-            <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">Empresa</p>
+            <p className="text-lg font-semibold tracking-[0.14em] text-[var(--foreground)] uppercase">
+              Empresa
+            </p>
             <div className="space-y-3 text-base text-[var(--muted-foreground)]">
-              <Link href="/nosotros" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Nosotros</Link>
-              <Link href="/contacto" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Contacto</Link>
+              <Link
+                href="/nosotros"
+                className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]"
+              >
+                Nosotros
+              </Link>
+              <Link
+                href="/contacto"
+                className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]"
+              >
+                Contacto
+              </Link>
             </div>
           </div>
 
           <div className="space-y-4">
-            <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">Ayuda</p>
+            <p className="text-lg font-semibold tracking-[0.14em] text-[var(--foreground)] uppercase">
+              Ayuda
+            </p>
             <div className="space-y-3 text-base text-[var(--muted-foreground)]">
-              <Link href="/politicas#garantia" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Garantía</Link>
-              <Link href="/politicas#plazos-de-entrega" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Plazos de entrega</Link>
-              <Link href="/politicas#defectos-de-fabricacion" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Defectos de fabricación</Link>
-              <Link href="/terminos" className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]">Términos</Link>
+              <Link
+                href="/politicas#garantia"
+                className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]"
+              >
+                Garantía
+              </Link>
+              <Link
+                href="/politicas#plazos-de-entrega"
+                className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]"
+              >
+                Plazos de entrega
+              </Link>
+              <Link
+                href="/politicas#defectos-de-fabricacion"
+                className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]"
+              >
+                Defectos de fabricación
+              </Link>
+              <Link
+                href="/politicas#derecho-de-retracto"
+                className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]"
+              >
+                Derecho de retracto
+              </Link>
+              <Link
+                href="/terminos"
+                className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]"
+              >
+                Términos y condiciones
+              </Link>
+              <Link
+                href="/privacidad"
+                className="flex min-h-[44px] items-center justify-center transition hover:text-[var(--foreground)]"
+              >
+                Datos personales
+              </Link>
             </div>
           </div>
 
           <div className="w-full max-w-sm rounded-[1.8rem] border border-[var(--border)] bg-white/70 p-5 shadow-[0_18px_40px_-32px_rgba(60,35,35,0.35)] backdrop-blur-sm sm:p-6">
-            <p className="mb-5 text-lg font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">Contacto</p>
+            <p className="mb-5 text-lg font-semibold tracking-[0.14em] text-[var(--foreground)] uppercase">
+              Contacto
+            </p>
             <div className="space-y-4 text-sm text-[var(--muted-foreground)] sm:text-base">
-              <a href="mailto:larscalzado@gmail.com" className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
+              <a
+                href="mailto:larscalzado@gmail.com"
+                className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
+              >
                 <Mail className="h-4 w-4 shrink-0" />
                 <span>larscalzado@gmail.com</span>
               </a>
-              <a href={`tel:+${WHATSAPP_NUMBER}`} className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
+              <a
+                href={`tel:+${WHATSAPP_NUMBER}`}
+                className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
+              >
                 <Phone className="h-4 w-4 shrink-0" />
                 <span>{WHATSAPP_DISPLAY_NUMBER}</span>
               </a>
-              <a href="tel:+573229521433" className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]">
+              <a
+                href="tel:+573229521433"
+                className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
+              >
                 <Phone className="h-4 w-4 shrink-0" />
                 <span>322 952 1433</span>
               </a>
@@ -70,7 +138,7 @@ export function Footer() {
                 <span>@calzadolarcs</span>
               </a>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Calzado+LARCS+Bogota+Colombia"
+                href={GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="flex min-h-[44px] items-center justify-center gap-3 transition hover:text-[var(--foreground)]"
@@ -83,8 +151,13 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-[var(--border)] pt-5 text-center text-xs text-[var(--muted-foreground)] sm:text-sm md:flex md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Calzado LARCS. Todos los derechos reservados.</p>
-          <p className="mt-2 md:mt-0">Hecho para una experiencia premium de compra.</p>
+          <p>
+            © {new Date().getFullYear()} Calzado LARCS. Todos los derechos
+            reservados.
+          </p>
+          <p className="mt-2 md:mt-0">
+            Hecho para una experiencia premium de compra.
+          </p>
         </div>
       </div>
     </footer>

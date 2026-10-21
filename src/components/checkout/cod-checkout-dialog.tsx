@@ -1,7 +1,8 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { Truck, X } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, Truck, X } from "lucide-react";
 import { type FormEvent } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -10,7 +11,11 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
-import { adaptWhatsAppMessageForDevice, buildCodWhatsAppMessage, type CodOrderItem } from "@/lib/cod-whatsapp";
+import {
+  adaptWhatsAppMessageForDevice,
+  buildCodWhatsAppMessage,
+  type CodOrderItem
+} from "@/lib/cod-whatsapp";
 import { toCurrency } from "@/lib/utils";
 
 export type CodContext =
@@ -51,7 +56,11 @@ function getContextTotal(context: CodContext) {
     : context.total;
 }
 
-export function CodCheckoutDialog({ context, onClose, onSent }: CodCheckoutDialogProps) {
+export function CodCheckoutDialog({
+  context,
+  onClose,
+  onSent
+}: CodCheckoutDialogProps) {
   const items = getContextItems(context);
   const total = getContextTotal(context);
   const requiresSize = context.type === "product" && !context.product.size;
@@ -82,21 +91,28 @@ export function CodCheckoutDialog({ context, onClose, onSent }: CodCheckoutDialo
       (values) => {
         const validOrderItems =
           context.type === "product"
-            ? [{ ...context.product, size: values.size || context.product.size }]
+            ? [
+                {
+                  ...context.product,
+                  size: values.size || context.product.size
+                }
+              ]
             : context.items;
-        const message = adaptWhatsAppMessageForDevice(buildCodWhatsAppMessage({
-          customer: {
-            name: values.name,
-            phone: values.phone,
-            city: values.city,
-            department: values.department,
-            address: values.address,
-            reference: values.reference,
-            observations: values.observations
-          },
-          items: validOrderItems,
-          total
-        }));
+        const message = adaptWhatsAppMessageForDevice(
+          buildCodWhatsAppMessage({
+            customer: {
+              name: values.name,
+              phone: values.phone,
+              city: values.city,
+              department: values.department,
+              address: values.address,
+              reference: values.reference,
+              observations: values.observations
+            },
+            items: validOrderItems,
+            total
+          })
+        );
         const phoneNumber = WHATSAPP_NUMBER.replace(/\D/g, "");
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -119,14 +135,27 @@ export function CodCheckoutDialog({ context, onClose, onSent }: CodCheckoutDialo
   return (
     <Dialog.Root open onOpenChange={(open) => !open && onClose()}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/45 backdrop-blur-[1px]" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 z-50 max-h-[90dvh] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl border border-[var(--border)] bg-white p-5 shadow-2xl sm:p-6">
+        <Dialog.Overlay className="cart-overlay fixed inset-0 z-50 bg-black/45 backdrop-blur-[2px]" />
+        <Dialog.Content className="dialog-sheet fixed inset-x-0 bottom-0 z-50 max-h-[92dvh] w-full overflow-y-auto rounded-t-3xl border border-[var(--border)] bg-white p-5 pt-3 shadow-2xl sm:inset-x-auto sm:top-1/2 sm:bottom-auto sm:left-1/2 sm:w-[calc(100%-2rem)] sm:max-w-lg sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-3xl sm:p-6 sm:pt-6">
+          {/* En celular la ventana sube desde abajo; esta barrita lo indica. */}
+          <div
+            className="mx-auto mb-3 h-1.5 w-12 rounded-full bg-[var(--border)] sm:hidden"
+            aria-hidden
+          />
           <div className="mb-4 flex items-start justify-between gap-4">
-            <div className="space-y-1">
-              <Dialog.Title className="text-xl font-semibold">Pedido contra entrega</Dialog.Title>
-              <Dialog.Description className="text-sm text-[var(--muted-foreground)]">
-                Completa tus datos. Un asesor te escribirá para confirmar el envío y el pago al recibir.
-              </Dialog.Description>
+            <div className="flex items-start gap-3">
+              <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--primary)_12%,white)] text-[var(--primary)]">
+                <Truck className="h-6 w-6" aria-hidden />
+              </span>
+              <div className="space-y-1">
+                <Dialog.Title className="text-xl font-semibold">
+                  Pedido contra entrega
+                </Dialog.Title>
+                <Dialog.Description className="text-sm text-[var(--muted-foreground)]">
+                  Completa tus datos. Un asesor te escribirá para confirmar el
+                  envío y el pago al recibir.
+                </Dialog.Description>
+              </div>
             </div>
             <Dialog.Close asChild>
               <button
@@ -139,72 +168,242 @@ export function CodCheckoutDialog({ context, onClose, onSent }: CodCheckoutDialo
             </Dialog.Close>
           </div>
 
-          <div className="mb-5 space-y-2 rounded-xl bg-[var(--muted)] p-3 text-sm" aria-label="Datos del pedido">
+          <div
+            className="mb-5 space-y-2 rounded-2xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--muted)_45%,white)] p-4 text-sm"
+            aria-label="Datos del pedido"
+          >
             {items.map((item, index) => (
-              <div key={`${item.sku}-${item.size}-${index}`} className="flex justify-between gap-3">
+              <div
+                key={`${item.sku}-${item.size}-${index}`}
+                className="flex justify-between gap-3"
+              >
                 <p className="min-w-0">
                   {item.quantity} x {item.name}{" "}
                   <span className="text-[var(--muted-foreground)]">
-                    (Ref: {item.sku}, talla {item.size || "por seleccionar"}{item.color ? `, ${item.color}` : ""})
+                    (Ref: {item.sku.replace(/^ref\.?\s*:?\s*/i, "")}, talla{" "}
+                    {item.size || "por seleccionar"}
+                    {item.color ? `, ${item.color}` : ""})
                   </span>
                 </p>
-                <p className="shrink-0">{toCurrency(item.unitPrice * item.quantity)}</p>
+                <p className="shrink-0">
+                  {toCurrency(item.unitPrice * item.quantity)}
+                </p>
               </div>
             ))}
-            <p className="border-t border-[var(--border)] pt-2 text-right font-semibold">Total: {toCurrency(total)}</p>
+            <p className="border-t border-[var(--border)] pt-2 text-right font-semibold">
+              Total: {toCurrency(total)}
+            </p>
           </div>
 
-          <form onSubmit={handleSubmit} noValidate className="grid gap-3 sm:grid-cols-2">
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className="grid gap-3 sm:grid-cols-2"
+          >
             <div className="space-y-1 sm:col-span-2">
-              <label htmlFor="cod-name" className="text-sm font-medium">Nombre completo *</label>
-              <Input id="cod-name" autoComplete="name" aria-invalid={Boolean(form.formState.errors.name)} aria-describedby={form.formState.errors.name ? "cod-name-error" : undefined} {...form.register("name")} />
-              {form.formState.errors.name ? <p id="cod-name-error" className="text-xs text-red-600">{form.formState.errors.name.message}</p> : null}
+              <label htmlFor="cod-name" className="text-sm font-medium">
+                Nombre completo *
+              </label>
+              <Input
+                id="cod-name"
+                autoComplete="name"
+                aria-invalid={Boolean(form.formState.errors.name)}
+                aria-describedby={
+                  form.formState.errors.name ? "cod-name-error" : undefined
+                }
+                {...form.register("name")}
+              />
+              {form.formState.errors.name ? (
+                <p id="cod-name-error" className="text-xs text-red-600">
+                  {form.formState.errors.name.message}
+                </p>
+              ) : null}
             </div>
             <div className="space-y-1 sm:col-span-2">
-              <label htmlFor="cod-phone" className="text-sm font-medium">Teléfono / celular *</label>
-              <Input id="cod-phone" type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={10} placeholder="3001234567" aria-invalid={Boolean(form.formState.errors.phone)} aria-describedby={form.formState.errors.phone ? "cod-phone-error" : "cod-phone-hint"} {...form.register("phone")} />
-              <p id="cod-phone-hint" className="text-xs text-[var(--muted-foreground)]">Ingresa 10 dígitos, sin indicativo ni espacios.</p>
-              {form.formState.errors.phone ? <p id="cod-phone-error" className="text-xs text-red-600">{form.formState.errors.phone.message}</p> : null}
+              <label htmlFor="cod-phone" className="text-sm font-medium">
+                Teléfono / celular *
+              </label>
+              <Input
+                id="cod-phone"
+                type="tel"
+                inputMode="numeric"
+                autoComplete="tel-national"
+                maxLength={10}
+                placeholder="3001234567"
+                aria-invalid={Boolean(form.formState.errors.phone)}
+                aria-describedby={
+                  form.formState.errors.phone
+                    ? "cod-phone-error"
+                    : "cod-phone-hint"
+                }
+                {...form.register("phone")}
+              />
+              <p
+                id="cod-phone-hint"
+                className="text-xs text-[var(--muted-foreground)]"
+              >
+                Ingresa 10 dígitos, sin indicativo ni espacios.
+              </p>
+              {form.formState.errors.phone ? (
+                <p id="cod-phone-error" className="text-xs text-red-600">
+                  {form.formState.errors.phone.message}
+                </p>
+              ) : null}
             </div>
             <div className="space-y-1">
-              <label htmlFor="cod-city" className="text-sm font-medium">Ciudad *</label>
-              <Input id="cod-city" autoComplete="address-level2" aria-invalid={Boolean(form.formState.errors.city)} aria-describedby={form.formState.errors.city ? "cod-city-error" : undefined} {...form.register("city")} />
-              {form.formState.errors.city ? <p id="cod-city-error" className="text-xs text-red-600">{form.formState.errors.city.message}</p> : null}
+              <label htmlFor="cod-city" className="text-sm font-medium">
+                Ciudad *
+              </label>
+              <Input
+                id="cod-city"
+                autoComplete="address-level2"
+                aria-invalid={Boolean(form.formState.errors.city)}
+                aria-describedby={
+                  form.formState.errors.city ? "cod-city-error" : undefined
+                }
+                {...form.register("city")}
+              />
+              {form.formState.errors.city ? (
+                <p id="cod-city-error" className="text-xs text-red-600">
+                  {form.formState.errors.city.message}
+                </p>
+              ) : null}
             </div>
             <div className="space-y-1">
-              <label htmlFor="cod-department" className="text-sm font-medium">Departamento *</label>
-              <Input id="cod-department" autoComplete="address-level1" aria-invalid={Boolean(form.formState.errors.department)} aria-describedby={form.formState.errors.department ? "cod-department-error" : undefined} {...form.register("department")} />
-              {form.formState.errors.department ? <p id="cod-department-error" className="text-xs text-red-600">{form.formState.errors.department.message}</p> : null}
+              <label htmlFor="cod-department" className="text-sm font-medium">
+                Departamento *
+              </label>
+              <Input
+                id="cod-department"
+                autoComplete="address-level1"
+                aria-invalid={Boolean(form.formState.errors.department)}
+                aria-describedby={
+                  form.formState.errors.department
+                    ? "cod-department-error"
+                    : undefined
+                }
+                {...form.register("department")}
+              />
+              {form.formState.errors.department ? (
+                <p id="cod-department-error" className="text-xs text-red-600">
+                  {form.formState.errors.department.message}
+                </p>
+              ) : null}
             </div>
             <div className="space-y-1 sm:col-span-2">
-              <label htmlFor="cod-address" className="text-sm font-medium">Dirección completa *</label>
-              <Input id="cod-address" autoComplete="street-address" aria-invalid={Boolean(form.formState.errors.address)} aria-describedby={form.formState.errors.address ? "cod-address-error" : undefined} {...form.register("address")} />
-              {form.formState.errors.address ? <p id="cod-address-error" className="text-xs text-red-600">{form.formState.errors.address.message}</p> : null}
+              <label htmlFor="cod-address" className="text-sm font-medium">
+                Dirección completa *
+              </label>
+              <Input
+                id="cod-address"
+                autoComplete="street-address"
+                aria-invalid={Boolean(form.formState.errors.address)}
+                aria-describedby={
+                  form.formState.errors.address
+                    ? "cod-address-error"
+                    : undefined
+                }
+                {...form.register("address")}
+              />
+              {form.formState.errors.address ? (
+                <p id="cod-address-error" className="text-xs text-red-600">
+                  {form.formState.errors.address.message}
+                </p>
+              ) : null}
             </div>
             {requiresSize && context.type === "product" ? (
               <div className="space-y-1 sm:col-span-2">
-                <label htmlFor="cod-size" className="text-sm font-medium">Talla *</label>
-                <select id="cod-size" aria-invalid={Boolean(form.formState.errors.size)} aria-describedby={form.formState.errors.size ? "cod-size-error" : undefined} className="h-11 w-full rounded-xl border border-[var(--border)] bg-white px-4 text-sm focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:outline-none" {...form.register("size")}>
+                <label htmlFor="cod-size" className="text-sm font-medium">
+                  Talla *
+                </label>
+                <select
+                  id="cod-size"
+                  aria-invalid={Boolean(form.formState.errors.size)}
+                  aria-describedby={
+                    form.formState.errors.size ? "cod-size-error" : undefined
+                  }
+                  className="h-11 w-full rounded-xl border border-[var(--border)] bg-white px-4 text-sm focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:outline-none"
+                  {...form.register("size")}
+                >
                   <option value="">Selecciona una talla</option>
-                  {context.sizes.map((size) => <option key={size} value={size}>{size}</option>)}
+                  {context.sizes.map((size) => (
+                    <option key={size} value={size}>
+                      {size}
+                    </option>
+                  ))}
                 </select>
-                {form.formState.errors.size ? <p id="cod-size-error" className="text-xs text-red-600">{form.formState.errors.size.message}</p> : null}
+                {form.formState.errors.size ? (
+                  <p id="cod-size-error" className="text-xs text-red-600">
+                    {form.formState.errors.size.message}
+                  </p>
+                ) : null}
               </div>
             ) : null}
             <div className="space-y-1 sm:col-span-2">
-              <label htmlFor="cod-reference" className="text-sm font-medium">Barrio / punto de referencia</label>
-              <Input id="cod-reference" aria-invalid={Boolean(form.formState.errors.reference)} aria-describedby={form.formState.errors.reference ? "cod-reference-error" : undefined} {...form.register("reference")} />
-              {form.formState.errors.reference ? <p id="cod-reference-error" className="text-xs text-red-600">{form.formState.errors.reference.message}</p> : null}
+              <label htmlFor="cod-reference" className="text-sm font-medium">
+                Barrio / punto de referencia
+              </label>
+              <Input
+                id="cod-reference"
+                aria-invalid={Boolean(form.formState.errors.reference)}
+                aria-describedby={
+                  form.formState.errors.reference
+                    ? "cod-reference-error"
+                    : undefined
+                }
+                {...form.register("reference")}
+              />
+              {form.formState.errors.reference ? (
+                <p id="cod-reference-error" className="text-xs text-red-600">
+                  {form.formState.errors.reference.message}
+                </p>
+              ) : null}
             </div>
             <div className="space-y-1 sm:col-span-2">
-              <label htmlFor="cod-observations" className="text-sm font-medium">Observaciones</label>
-              <textarea id="cod-observations" rows={3} aria-invalid={Boolean(form.formState.errors.observations)} aria-describedby={form.formState.errors.observations ? "cod-observations-error" : undefined} className="w-full rounded-xl border border-[var(--border)] bg-white px-4 py-3 text-sm focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:outline-none" {...form.register("observations")} />
-              {form.formState.errors.observations ? <p id="cod-observations-error" className="text-xs text-red-600">{form.formState.errors.observations.message}</p> : null}
+              <label htmlFor="cod-observations" className="text-sm font-medium">
+                Observaciones
+              </label>
+              <textarea
+                id="cod-observations"
+                rows={3}
+                aria-invalid={Boolean(form.formState.errors.observations)}
+                aria-describedby={
+                  form.formState.errors.observations
+                    ? "cod-observations-error"
+                    : undefined
+                }
+                className="w-full rounded-xl border border-[var(--border)] bg-white px-4 py-3 text-sm focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:outline-none"
+                {...form.register("observations")}
+              />
+              {form.formState.errors.observations ? (
+                <p id="cod-observations-error" className="text-xs text-red-600">
+                  {form.formState.errors.observations.message}
+                </p>
+              ) : null}
             </div>
             <div className="sm:col-span-2">
-              <Button type="submit" disabled={!form.formState.isValid || form.formState.isSubmitting} className="w-full">
+              <Button
+                type="submit"
+                size="lg"
+                disabled={
+                  !form.formState.isValid || form.formState.isSubmitting
+                }
+                className="w-full gap-2"
+              >
+                <MessageCircle className="h-4 w-4" aria-hidden />
                 Enviar pedido por WhatsApp
               </Button>
+              <p className="text-center text-xs text-[var(--muted-foreground)]">
+                Al enviar autorizas el tratamiento de tus datos según nuestra{" "}
+                <Link
+                  href="/privacidad"
+                  target="_blank"
+                  className="font-medium text-[var(--primary)] hover:underline"
+                >
+                  política de datos personales
+                </Link>
+                .
+              </p>
             </div>
           </form>
         </Dialog.Content>

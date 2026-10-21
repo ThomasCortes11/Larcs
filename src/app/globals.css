@@ -42,3 +42,56 @@ a {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
+
+/* Carrito lateral: entra deslizando desde la derecha. */
+@keyframes cart-panel-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes cart-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.cart-panel { animation: cart-panel-in 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.cart-overlay { animation: cart-overlay-in 0.25s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-panel, .cart-overlay { animation: none; }
+}
+
+/* Ventanas de ADDI y contra entrega: suben desde abajo en celular y aparecen suave en pantallas grandes. */
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes sheet-pop {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.dialog-sheet { animation: sheet-up 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (min-width: 640px) {
+  .dialog-sheet { animation: sheet-pop 0.25s ease-out; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dialog-sheet { animation: none; }
+}
+
+/* Hero: arcos que flotan suave, sello que gira y cinta de categorías. */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes hero-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes hero-marquee {
+  to { transform: translateX(-50%); }
+}
+.hero-float { animation: hero-float 7s ease-in-out infinite; }
+.hero-float-slow { animation: hero-float 9s ease-in-out infinite; }
+.hero-seal { animation: hero-spin 22s linear infinite; }
+.hero-marquee { animation: hero-marquee 28s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-float, .hero-float-slow, .hero-seal, .hero-marquee { animation: none; }
+}
